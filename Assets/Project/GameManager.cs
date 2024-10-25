@@ -15,26 +15,25 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        rotationFinishEvent = new UnityEvent();
         rotationFinishEvent.AddListener(RotationEventFinished);
     }
 
     void Start()
     {
-        DisableRigidBodiesInScene();
-        CalculateCenter();
-        
-        //Do it in a 
-        StartCoroutine(Move());
-        //RotateObjectsInScene();
 
-        
     }
 
 
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            DisableRigidBodiesInScene();
+            CalculateCenter();
+            StartCoroutine(Move());
+        }
+
     }
 
     void RotateObjectsInScene()
@@ -94,7 +93,8 @@ public class GameManager : MonoBehaviour
         }
 
         Vector3 sum = Vector3.zero;
-
+         centerPoint = Camera.main.transform.position;
+        /*
         foreach (GameObject obj in objectsToConsider)
         {
             if (obj != null)
@@ -102,9 +102,10 @@ public class GameManager : MonoBehaviour
                 sum += obj.transform.position;
             }
         }
-
+        
         centerPoint = sum / objectsToConsider.Count;
         Debug.Log("Center Point: " + centerPoint);
+        */
     }
 
     IEnumerator Move()
@@ -117,7 +118,8 @@ public class GameManager : MonoBehaviour
             yield return null; 
 
         }
-        
+        yield return new WaitForFixedUpdate();
+        rotationFinishEvent.Invoke();
     }
 
     void RotationEventFinished()
