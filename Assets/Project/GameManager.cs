@@ -8,10 +8,12 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager;
 
     public UnityEvent rotationFinishEvent;
-    public float rotationSpeed = 90f; // Degrees per second
+    public float rotationSpeed = 90.0f; // Degrees per second
     public List<GameObject> objectsToConsider; // Assign in the inspector
 
     private Vector3 centerPoint;
+
+    private bool isRotating = false;
 
     private void Awake()
     {
@@ -19,24 +21,31 @@ public class GameManager : MonoBehaviour
         rotationFinishEvent.AddListener(RotationEventFinished);
     }
 
-    void Start()
-    {
-
-    }
-
-
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(!isRotating)
         {
-            DisableRigidBodiesInScene();
-            CalculateCenter();
-            StartCoroutine(Move());
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                isRotating = true;
+                DisableRigidBodiesInScene();
+                CalculateCenter();
+                StartCoroutine(Move(rotationSpeed));
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                isRotating = true;
+                DisableRigidBodiesInScene();
+                CalculateCenter();
+                StartCoroutine(Move(-rotationSpeed));
+            }
         }
+       
 
     }
 
-    void RotateObjectsInScene()
+    void RotateObjectsInScene(float speedRotation)
     {
         //Rigidbody2D rb;
         foreach (GameObject obj in objectsToConsider)
@@ -48,7 +57,7 @@ public class GameManager : MonoBehaviour
                     rb.simulated = false;
                 }
                 // Rotate around the Y-axis
-                obj.transform.RotateAround(centerPoint,Vector3.forward, rotationSpeed * Time.deltaTime);
+                obj.transform.RotateAround(centerPoint,Vector3.forward, speedRotation * Time.deltaTime);
                
             }
         }
@@ -108,23 +117,35 @@ public class GameManager : MonoBehaviour
         */
     }
 
-    IEnumerator Move()
+    IEnumerator Move(float speedRotation)
     {
         float totalRotated = 0f;
-        while(totalRotated <= 90f)
+        while(totalRotated <= 90.00f)
         {
-            totalRotated += rotationSpeed * Time.deltaTime;
-            RotateObjectsInScene();
+            float frameThisRotation = rotationSpeed * Time.deltaTime;
+            totalRotated += frameThisRotation;
+            RotateObjectsInScene(speedRotation);
             yield return null; 
 
         }
+        
         yield return new WaitForFixedUpdate();
         rotationFinishEvent.Invoke();
+        isRotating = false;
     }
 
     void RotationEventFinished()
     {
         EnableRigidBodiesInScene();
     }
+
+
+    public bool GetIsRotating()
+    {
+        return isRotating;
+    }
+
+    
+
 
 }
