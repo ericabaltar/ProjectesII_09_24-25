@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     private Vector3 centerPoint;
 
-    private bool isRotating = false;
+    public bool isRotating = false;
 
     private void Awake()
     {

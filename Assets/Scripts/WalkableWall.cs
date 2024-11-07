@@ -5,34 +5,36 @@ using UnityEngine;
 public class WalkableWalls : MonoBehaviour
 {
     public bool isWalkable = false;
-    private Rigidbody playerRigidbody; 
-    private bool playerIsOnWall = false;
+    private Rigidbody2D playerRigidbody; 
+    [SerializeField]private bool playerIsOnWall = false;
+    private float resetGravity;
 
 
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-
-        if (isWalkable && other.CompareTag("Player"))
+        
+        if (isWalkable && other.transform.CompareTag("Player"))
         {
             
-            playerRigidbody = other.GetComponent<Rigidbody>();
+            playerRigidbody = other.transform.GetComponent<Rigidbody2D>();
+            Debug.Log(playerRigidbody);
             if (playerRigidbody != null)
             {
-                playerRigidbody.useGravity = false; 
+                resetGravity = playerRigidbody.gravityScale;
+                playerRigidbody.gravityScale = 0; 
                 playerIsOnWall = true;
             }
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit2D(Collision2D other)
     {
-        if (isWalkable && other.CompareTag("Player"))
+        if (isWalkable && other.transform.CompareTag("Player"))
         {
             
             if (playerRigidbody != null)
             {
-                playerRigidbody.useGravity = true; 
+                playerRigidbody.gravityScale = resetGravity; 
                 playerIsOnWall = false;
             }
         }
@@ -43,16 +45,16 @@ public class WalkableWalls : MonoBehaviour
         if (playerIsOnWall && playerRigidbody != null)
         {
             
-            playerRigidbody.velocity = new Vector3(0, 0, 0); 
+            //playerRigidbody.velocity = new Vector3(0, 0, 0); 
 
             
             if (Input.GetKey(KeyCode.W))
             {
-                playerRigidbody.position += transform.up * Time.deltaTime;
+                playerRigidbody.AddForce(transform.up);
             }
             if (Input.GetKey(KeyCode.S))
             {
-                playerRigidbody.position -= transform.up * Time.deltaTime;
+                playerRigidbody.AddForce(-transform.up);
             }
         }
     }
