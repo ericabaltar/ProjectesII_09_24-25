@@ -5,25 +5,36 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager gameManager;
+    public static GameManager Instance;
 
     public UnityEvent rotationFinishEvent;
     public float rotationSpeed = 90.0f; // Degrees per second
     public List<GameObject> objectsToConsider; // Assign in the inspector
-
+    public PlayerController playerController;
+    private Rigidbody2D rb;
     private Vector3 centerPoint;
+    private float threshold = 0.1f;
 
     public bool isRotating = false;
+
+    private void OnEnable()
+    {
+        if (Instance != null)
+            return;
+
+        Instance = this;
+    }
 
     private void Awake()
     {
         rotationFinishEvent = new UnityEvent();
         rotationFinishEvent.AddListener(RotationEventFinished);
+        rb = playerController.GetComponent<Rigidbody2D>();    
     }
 
     void Update()
     {
-        if(!isRotating)
+        if(!isRotating && (Mathf.Abs(rb.velocity.x) < threshold && (Mathf.Abs(rb.velocity.y) < threshold)))
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {

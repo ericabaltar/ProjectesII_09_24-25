@@ -11,7 +11,7 @@ public class WalkableWalls : MonoBehaviour
 
     public float wallMoveSpeed = 5f; 
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (isWalkable && other.transform.CompareTag("Player"))
         {
@@ -26,7 +26,7 @@ public class WalkableWalls : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (isWalkable && other.transform.CompareTag("Player"))
         {
@@ -48,12 +48,12 @@ public class WalkableWalls : MonoBehaviour
             
             if (Input.GetKey(KeyCode.W))
             {
-                wallMovement = transform.up * wallMoveSpeed;
+                wallMovement = Vector2.up * wallMoveSpeed;
             }
             
             else if (Input.GetKey(KeyCode.S))
             {
-                wallMovement = -transform.up * wallMoveSpeed;
+                wallMovement = Vector2.down * wallMoveSpeed;
             }
 
             // si no se presiona ninguna tecla se detiene el movimiento
