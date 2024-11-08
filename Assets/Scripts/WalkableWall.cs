@@ -5,24 +5,23 @@ using UnityEngine;
 public class WalkableWalls : MonoBehaviour
 {
     public bool isWalkable = false;
-    private Rigidbody2D playerRigidbody; 
-    [SerializeField]private bool playerIsOnWall = false;
+    private Rigidbody2D playerRigidbody;
+    [SerializeField] private bool playerIsOnWall = false;
     private float resetGravity;
 
+    public float wallMoveSpeed = 5f; 
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        
         if (isWalkable && other.transform.CompareTag("Player"))
         {
-            
             playerRigidbody = other.transform.GetComponent<Rigidbody2D>();
-            Debug.Log(playerRigidbody);
             if (playerRigidbody != null)
             {
                 resetGravity = playerRigidbody.gravityScale;
-                playerRigidbody.gravityScale = 0; 
+                playerRigidbody.gravityScale = 0;
                 playerIsOnWall = true;
+                playerRigidbody.velocity = Vector2.zero; // detener cualquier movimiento previo
             }
         }
     }
@@ -31,11 +30,11 @@ public class WalkableWalls : MonoBehaviour
     {
         if (isWalkable && other.transform.CompareTag("Player"))
         {
-            
             if (playerRigidbody != null)
             {
-                playerRigidbody.gravityScale = resetGravity; 
+                playerRigidbody.gravityScale = resetGravity;
                 playerIsOnWall = false;
+                playerRigidbody.velocity = Vector2.zero; // detener movimiento al salir de la pared
             }
         }
     }
@@ -44,20 +43,24 @@ public class WalkableWalls : MonoBehaviour
     {
         if (playerIsOnWall && playerRigidbody != null)
         {
-            
-            //playerRigidbody.velocity = new Vector3(0, 0, 0); 
+            Vector2 wallMovement = Vector2.zero;
 
             
             if (Input.GetKey(KeyCode.W))
             {
-                playerRigidbody.AddForce(transform.up);
+                wallMovement = transform.up * wallMoveSpeed;
             }
-            if (Input.GetKey(KeyCode.S))
+            
+            else if (Input.GetKey(KeyCode.S))
             {
-                playerRigidbody.AddForce(-transform.up);
+                wallMovement = -transform.up * wallMoveSpeed;
             }
+
+            // si no se presiona ninguna tecla se detiene el movimiento
+            playerRigidbody.velocity = wallMovement;
         }
     }
 }
+
 
 
