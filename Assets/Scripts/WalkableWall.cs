@@ -18,6 +18,7 @@ public class WalkableWalls : MonoBehaviour
             playerRigidbody = other.transform.GetComponent<Rigidbody2D>();
             if (playerRigidbody != null)
             {
+                GetComponent<SpriteRenderer>().color = Color.red;
                 resetGravity = playerRigidbody.gravityScale;
                 playerRigidbody.gravityScale = 0;
                 playerIsOnWall = true;
@@ -32,6 +33,7 @@ public class WalkableWalls : MonoBehaviour
         {
             if (playerRigidbody != null)
             {
+                GetComponent<SpriteRenderer>().color = Color.white;
                 playerRigidbody.gravityScale = resetGravity;
                 playerIsOnWall = false;
                 playerRigidbody.velocity = Vector2.zero; // detener movimiento al salir de la pared
