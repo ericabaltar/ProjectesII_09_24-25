@@ -8,8 +8,16 @@ public class WalkableWalls : MonoBehaviour
     private Rigidbody2D playerRigidbody;
     [SerializeField] private bool playerIsOnWall = false;
     private float resetGravity;
+    Color saveColor;
 
-    public float wallMoveSpeed = 5f; 
+    public float wallMoveSpeed = 5f;
+    SpriteRenderer spriteRenderer;
+
+
+    private void Awake()
+    {
+       spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,7 +26,9 @@ public class WalkableWalls : MonoBehaviour
             playerRigidbody = other.transform.GetComponent<Rigidbody2D>();
             if (playerRigidbody != null)
             {
-                GetComponent<SpriteRenderer>().color = Color.red;
+                
+                saveColor = spriteRenderer.color;
+                spriteRenderer.color = Color.red;
                 resetGravity = playerRigidbody.gravityScale;
                 playerRigidbody.gravityScale = 0;
                 playerIsOnWall = true;
@@ -33,7 +43,7 @@ public class WalkableWalls : MonoBehaviour
         {
             if (playerRigidbody != null)
             {
-                GetComponent<SpriteRenderer>().color = Color.white;
+                spriteRenderer.color = saveColor;
                 playerRigidbody.gravityScale = resetGravity;
                 playerIsOnWall = false;
                 playerRigidbody.velocity = Vector2.zero; // detener movimiento al salir de la pared
