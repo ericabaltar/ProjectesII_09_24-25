@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem particlesRight;
     public ParticleSystem particlesUp;
     public ParticleSystem particlesDown;
+    Scene scene;
 
     [SerializeField] bool isWallWalking = false;
 
@@ -112,6 +113,12 @@ public class PlayerController : MonoBehaviour
         if(collision.transform.CompareTag("Enemy"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if(collision.transform.CompareTag("Door"))
+        {
+            scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.buildIndex + 1);
         }
     }
 
