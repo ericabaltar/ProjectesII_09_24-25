@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         if(isWallWalking )
         {
             
-            RaycastHit2D hit1 = Physics2D.Raycast(transform.position, Vector2.left,1.5f,layerMask);
+            RaycastHit2D hit1 = Physics2D.Raycast(transform.position, -transform.right,1.5f,layerMask);
             
             //Debug.DrawRay(transform.position, Vector2.left * 4.5f, Color.red); // Visualize the ray
             if (hit1.collider != null)
@@ -56,8 +56,8 @@ public class PlayerController : MonoBehaviour
                     particlesLeft.Play();
             }
 
-
-            RaycastHit2D hit2 = Physics2D.Raycast(transform.position, Vector2.right, 1.5f, layerMask);
+            
+            RaycastHit2D hit2 = Physics2D.Raycast(transform.position, transform.right, 1.5f, layerMask);
 
             if (hit2.collider != null)
             {
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
                     particlesRight.Play();
             }
 
-            RaycastHit2D hit3 = Physics2D.Raycast(transform.position, Vector2.up, 1.5f, layerMask);
+            RaycastHit2D hit3 = Physics2D.Raycast(transform.position, transform.up, 1.5f, layerMask);
 
             if (hit3.collider != null)
             {
@@ -73,13 +73,14 @@ public class PlayerController : MonoBehaviour
                     particlesUp.Play();
             }
 
-            RaycastHit2D hit4 = Physics2D.Raycast(transform.position, Vector2.down, 1.5f, layerMask);
+            RaycastHit2D hit4 = Physics2D.Raycast(transform.position, -transform.up, 1.5f, layerMask);
 
             if (hit4.collider != null)
             {
                 if (!particlesDown.isPlaying)
                     particlesDown.Play();
             }
+            
         }
         else
         {
