@@ -32,16 +32,16 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        this.characterRigidBody = GetComponent<Rigidbody2D>();
+        characterRigidBody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.moveHorizontal = Input.GetAxis("Horizontal");
-        this.moveVertical = Input.GetAxis("Vertical");
-        this.currentVelocity = this.characterRigidBody.velocity;
+        moveHorizontal = Input.GetAxis("Horizontal");
+        moveVertical = Input.GetAxis("Vertical");
+        
 
         //Raycasts
 
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
             
             RaycastHit2D hit1 = Physics2D.Raycast(transform.position, -transform.right,1.5f,layerMask);
             
-            //Debug.DrawRay(transform.position, Vector2.left * 4.5f, Color.red); // Visualize the ray
+            
             if (hit1.collider != null)
             {
                 if(!particlesLeft.isPlaying)
@@ -98,7 +98,8 @@ public class PlayerController : MonoBehaviour
     {
         if (this.moveHorizontal != 0)
         {
-            this.characterRigidBody.velocity = new Vector2(this.moveHorizontal * this.movementSpeed, this.currentVelocity.y);
+            characterRigidBody.AddForce(new Vector2(moveHorizontal,0.00f) * movementSpeed,ForceMode2D.Force);
+            //this.characterRigidBody.velocity = new Vector2(this.moveHorizontal * this.movementSpeed, this.currentVelocity.y);
         }
     }
 

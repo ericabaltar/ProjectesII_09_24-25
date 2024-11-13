@@ -53,23 +53,29 @@ public class WalkableWalls : MonoBehaviour
 
     private void Update()
     {
+       
+    }
+
+
+    private void FixedUpdate()
+    {
         if (playerIsOnWall && playerRigidbody != null)
         {
             Vector2 wallMovement = Vector2.zero;
 
-            
+
             if (Input.GetKey(KeyCode.W))
             {
                 wallMovement = Vector2.up * wallMoveSpeed;
             }
-            
+
             else if (Input.GetKey(KeyCode.S))
             {
                 wallMovement = Vector2.down * wallMoveSpeed;
             }
 
             // si no se presiona ninguna tecla se detiene el movimiento
-            playerRigidbody.velocity = wallMovement;
+            playerRigidbody.AddForce(wallMovement);
         }
     }
 }
