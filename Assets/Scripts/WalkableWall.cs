@@ -13,6 +13,10 @@ public class WalkableWalls : MonoBehaviour
     public float wallMoveSpeed = 5f;
     SpriteRenderer spriteRenderer;
 
+    public AudioSource audioSource;
+    public AudioClip attachSound;
+    public AudioClip detachSound;
+
 
     private void Awake()
     {
@@ -33,6 +37,11 @@ public class WalkableWalls : MonoBehaviour
                 playerRigidbody.gravityScale = 0;
                 playerIsOnWall = true;
                 playerRigidbody.velocity = Vector2.zero; // detener cualquier movimiento previo
+
+                if (audioSource != null && attachSound != null)
+                {
+                    audioSource.PlayOneShot(attachSound);
+                }
             }
         }
     }
@@ -47,6 +56,11 @@ public class WalkableWalls : MonoBehaviour
                 playerRigidbody.gravityScale = resetGravity;
                 playerIsOnWall = false;
                 playerRigidbody.velocity = Vector2.zero; // detener movimiento al salir de la pared
+
+                if (audioSource != null && attachSound != null)
+                {
+                    audioSource.PlayOneShot(attachSound);
+                }
             }
         }
     }

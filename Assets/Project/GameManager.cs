@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 centerPoint;
     private float threshold = 0.1f;
+    public AudioSource rotationSound;
 
     public bool isRotating = false;
 
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
                 DisableRigidBodiesInScene();
                 CalculateCenter();
                 StartCoroutine(Move(rotationSpeed));
+                PlayRotationSound();
             }
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
                 DisableRigidBodiesInScene();
                 CalculateCenter();
                 StartCoroutine(Move(-rotationSpeed));
+                PlayRotationSound();
             }
         }
        
@@ -156,7 +159,19 @@ public class GameManager : MonoBehaviour
         return isRotating;
     }
 
-    
+    void PlayRotationSound()
+    {
+        if (rotationSound != null)
+        {
+            rotationSound.Play();
+        }
+        else
+        {
+            Debug.LogWarning("No se ha asignado un sonido.");
+        }
+    }
+
+
 
 
 }
