@@ -24,7 +24,7 @@ public class PlayerSound : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (rb.velocity.y < 2)
+        if (rb.velocity.y < -4)
         {
             audioSource.Play();
             Debug.Log("SONUIDO");

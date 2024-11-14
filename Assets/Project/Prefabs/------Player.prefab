@@ -14496,7 +14496,6 @@ GameObject:
   - component: {fileID: 8596845540295813161}
   - component: {fileID: 1142165313409666511}
   - component: {fileID: 3586818785476077658}
-  - component: {fileID: 3291824311299362937}
   - component: {fileID: 2261130306478367038}
   m_Layer: 0
   m_Name: ------Player
@@ -14519,7 +14518,7 @@ Transform:
   m_Children:
   - {fileID: 3635913222610637449}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &8596845540295813161
 BoxCollider2D:
@@ -14689,19 +14688,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3291824311299362937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4566900565145589108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90faf77a7cae40842883697d9a822ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0}
 --- !u!114 &2261130306478367038
 MonoBehaviour:
   m_ObjectHideFlags: 0
