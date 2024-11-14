@@ -103,6 +103,12 @@ public class GameManager : MonoBehaviour
                     rb.simulated = true;
                 }
             }
+
+            float newValueZ = Mathf.Round(obj.transform.eulerAngles.z);
+
+
+            obj.transform.rotation =Quaternion.Euler(obj.transform.eulerAngles.x, obj.transform.eulerAngles.y,newValueZ );
+            
         }
     }
 

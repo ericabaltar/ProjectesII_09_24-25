@@ -14518,7 +14518,7 @@ Transform:
   m_Children:
   - {fileID: 3635913222610637449}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &8596845540295813161
 BoxCollider2D:
@@ -14577,8 +14577,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 2
+  m_Mass: 1.6
+  m_LinearDrag: 0.44
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 00147a573011af8449404990bc36c091, type: 2}
@@ -14700,8 +14700,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91cb346f077d83d4f9e62b4e6ac1a7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
   isGrounded: 0
+  movementSpeed: 11
   layerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -14711,6 +14711,9 @@ MonoBehaviour:
   particlesDown: {fileID: 6000968786687558268}
   sceneSound: {fileID: 3586818785476077658}
   isWallWalking: 0
+  moveUiToCenterList:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8125823780048917780
 GameObject:
   m_ObjectHideFlags: 0
