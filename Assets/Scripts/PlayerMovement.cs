@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem particlesUp;
     public ParticleSystem particlesDown;
     Scene scene;
+
+    float time = 2f;
+
+    public AudioSource sceneSound;
+
     [SerializeField] bool isWallWalking = false;
     [Space(10)]
     [Header("UI Transition")]
@@ -123,11 +128,25 @@ public class PlayerController : MonoBehaviour
 
         if(collision.transform.CompareTag("Door"))
         {
-            scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.buildIndex + 1);
+
+            if (sceneSound != null)
+            {
+                
+                sceneSound.Play();
+             
+            }
+            StartCoroutine(Wait(time));
+           
         }
     }
 
+    IEnumerator Wait(float time)
+    {
+       
+        yield return new WaitForSeconds(time);
+        scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.buildIndex + 1);
+    }
 
     private void OnCollisionExit2D(Collision2D collision)
     {

@@ -14578,7 +14578,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 00147a573011af8449404990bc36c091, type: 2}
@@ -14602,8 +14602,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c08867eceae685c4a955fab6d8679427, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 0655f4d2b4be0c5439ccca6391d7355c, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -14700,7 +14700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91cb346f077d83d4f9e62b4e6ac1a7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 10
   isGrounded: 0
   layerMask:
     serializedVersion: 2
@@ -14709,6 +14709,7 @@ MonoBehaviour:
   particlesRight: {fileID: 2170858853662783952}
   particlesUp: {fileID: 3643958013477291478}
   particlesDown: {fileID: 6000968786687558268}
+  sceneSound: {fileID: 3586818785476077658}
   isWallWalking: 0
 --- !u!1 &8125823780048917780
 GameObject:
