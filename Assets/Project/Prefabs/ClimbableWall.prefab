@@ -146,3 +146,6 @@ MonoBehaviour:
   isWalkable: 1
   playerIsOnWall: 0
   wallMoveSpeed: 5
+  audioSource: {fileID: 0}
+  attachSound: {fileID: 8300000, guid: eb1d85b980ff1b24292b2f8fbe86e1cd, type: 3}
+  detachSound: {fileID: 8300000, guid: eb1d85b980ff1b24292b2f8fbe86e1cd, type: 3}
