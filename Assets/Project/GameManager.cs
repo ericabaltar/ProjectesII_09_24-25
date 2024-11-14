@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         //Rigidbody2D rb;
         foreach (GameObject obj in objectsToConsider)
         {
-            if (obj != null)
+            if (obj != null && obj.tag != "StaticText")
             {
                 if (obj.TryGetComponent(out Rigidbody2D rb))
                 {
