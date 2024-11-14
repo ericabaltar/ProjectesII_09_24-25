@@ -133,6 +133,10 @@ public class PlayerController : MonoBehaviour
             {
                 
                 sceneSound.Play();
+                foreach (MoveUiToCenter ui in moveUiToCenterList)
+                {
+                    ui.MoveToCloseCurtains();
+                }
              
             }
             StartCoroutine(Wait(time));

@@ -8,11 +8,11 @@ public class MoveUiToCenter : MonoBehaviour
     void Start()
     {
         
-        transform.DOMoveX(transform.position.x*3, 1);
+        transform.DOMoveX(transform.position.x*5, 1);
     }
 
-    public void EndGame()
+    public void MoveToCloseCurtains()
     {
-        transform.DOMoveX(transform.position.x/3, 1); 
+        transform.DOMoveX(transform.position.x/5, 1); 
     }
 }
