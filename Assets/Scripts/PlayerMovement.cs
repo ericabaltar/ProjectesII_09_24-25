@@ -7,18 +7,20 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Part")]
-    
+    public bool isGrounded;
     private float moveHorizontal;
     private float moveVertical;
     private Vector2 currentVelocity;
     [SerializeField] //para poder editar la velocidad desde el editor de unity aunque la variable sea privada
     private float movementSpeed = 3f;
     private Rigidbody2D characterRigidBody;
-    public bool isGrounded;
-    [Space(5)]
+    
+
+    [Space(10)]
     [Header("Particles Part")]
-    List<ParticleSystem> particles = new List<ParticleSystem>();
+    [Space(10)]
     public LayerMask layerMask;
+    
 
     public ParticleSystem particlesLeft;
     public ParticleSystem particlesRight;
@@ -31,6 +33,10 @@ public class PlayerController : MonoBehaviour
     public AudioSource sceneSound;
 
     [SerializeField] bool isWallWalking = false;
+    [Space(10)]
+    [Header("UI Transition")]
+    public List<MoveUiToCenter> moveUiToCenterList = new List<MoveUiToCenter>();
+
 
     Collider2D myCollider;
     // Start is called before the first frame update
@@ -127,6 +133,10 @@ public class PlayerController : MonoBehaviour
             {
                 
                 sceneSound.Play();
+                foreach (MoveUiToCenter ui in moveUiToCenterList)
+                {
+                    ui.MoveToCloseCurtains();
+                }
              
             }
             StartCoroutine(Wait(time));
