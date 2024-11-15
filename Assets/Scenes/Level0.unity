@@ -2566,13 +2566,36 @@ MonoBehaviour:
   rotationFinishEvent:
     m_PersistentCalls:
       m_Calls: []
-  rotationSpeed: 89.99
+  rotationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rotationTime: 1
   objectsToConsider:
   - {fileID: 1298190606}
   - {fileID: 126432038}
   playerController: {fileID: 126432039}
   rotationSound: {fileID: 1318662068}
-  isRotating: 0
 --- !u!4 &1318662067
 Transform:
   m_ObjectHideFlags: 0

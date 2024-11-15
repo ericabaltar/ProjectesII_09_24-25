@@ -8,15 +8,20 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public UnityEvent rotationFinishEvent;
-    public float rotationSpeed = 90.0f; // Degrees per second
+
+    public AnimationCurve rotationCurve;
+    public const float RotationAngle = 90.0f;
+    public float rotationTime = 2.0f;
+    private float currentRotationTime = 0.0f;
+    private float lastAngle = 0.0f;
+
     public List<GameObject> objectsToConsider; // Assign in the inspector
     public PlayerController playerController;
-    private Rigidbody2D rb;
     private Vector3 centerPoint;
-    private float threshold = 0.1f;
     public AudioSource rotationSound;
 
-    public bool isRotating = false;
+    public bool isRotating { get; private set; } = false;
+    private bool rotatingRight = false;
 
     private void OnEnable()
     {
@@ -25,41 +30,53 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
     }
-
-    private void Awake()
-    {
-        rotationFinishEvent = new UnityEvent();
-        rotationFinishEvent.AddListener(RotationEventFinished);
-        rb = playerController.GetComponent<Rigidbody2D>();    
-    }
-
     void Update()
     {
-        if(!isRotating && (Mathf.Abs(rb.velocity.x) < threshold && (Mathf.Abs(rb.velocity.y) < threshold)))
+        if (isRotating)
+        { //Update rotation
+            currentRotationTime = Mathf.Min(currentRotationTime + Time.deltaTime, rotationTime);
+            float t = currentRotationTime / rotationTime;
+
+            float rot = rotationCurve.Evaluate(t) * (rotatingRight ? 1.0f : -1.0f);
+            rot *= RotationAngle;
+
+            //update rotation
+            float rotationAngle = rot - lastAngle;
+            lastAngle = rot;
+            RotateObjectsInScene(rotationAngle);
+
+            if (t == 1.0f)
+            {
+                //Rotation completed
+                StartCoroutine(WaitFixedUpdateAndEnableRigidbodies());
+                rotationFinishEvent.Invoke();
+                isRotating = false;
+            }
+        }
+        else if(playerController.isGrounded)
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                isRotating = true;
-                DisableRigidBodiesInScene();
-                CalculateCenter();
-                StartCoroutine(Move(rotationSpeed));
-                PlayRotationSound();
+                StartRotation(false);
             }
-
             if (Input.GetKeyDown(KeyCode.E))
             {
-                isRotating = true;
-                DisableRigidBodiesInScene();
-                CalculateCenter();
-                StartCoroutine(Move(-rotationSpeed));
-                PlayRotationSound();
+                StartRotation(true);
             }
         }
-       
-
     }
 
-    void RotateObjectsInScene(float speedRotation)
+    void StartRotation(bool goesRight)
+    {
+        isRotating = true;
+        rotatingRight = goesRight;
+        PlayRotationSound();
+        lastAngle = 0;
+        currentRotationTime = 0.0f;
+        ToggleRigidbodiesInScene(false);
+    }
+
+    void RotateObjectsInScene(float angle)
     {
         //Rigidbody2D rb;
         foreach (GameObject obj in objectsToConsider)
@@ -71,13 +88,13 @@ public class GameManager : MonoBehaviour
                     rb.simulated = false;
                 }
                 // Rotate around the Y-axis
-                obj.transform.RotateAround(centerPoint,Vector3.forward, speedRotation * Time.deltaTime);
+                obj.transform.RotateAround(centerPoint,Vector3.forward, angle);
                
             }
         }
     }
 
-    void DisableRigidBodiesInScene()
+    void ToggleRigidbodiesInScene(bool active)
     {
         //Rigidbody2D rb;
         foreach (GameObject obj in objectsToConsider)
@@ -86,35 +103,11 @@ public class GameManager : MonoBehaviour
             {
                 if (obj.TryGetComponent(out Rigidbody2D rb))
                 {
-                    rb.simulated = false;
+                    rb.simulated = active;
                 }
             }
         }
     }
-    void EnableRigidBodiesInScene()
-    {
-        //Rigidbody2D rb;
-        foreach (GameObject obj in objectsToConsider)
-        {
-            if (obj != null)
-            {
-                if (obj.TryGetComponent(out Rigidbody2D rb))
-                {
-                    rb.simulated = true;
-                }
-            }
-
-            Vector3 currentEulerAngles = obj.transform.eulerAngles;
-
-            float newValueZ = Mathf.RoundToInt(currentEulerAngles.z);
-
-
-            obj.transform.rotation =Quaternion.Euler(obj.transform.eulerAngles.x, obj.transform.eulerAngles.y,newValueZ );
-            Debug.Log($"X: {currentEulerAngles.x}, Y: {currentEulerAngles.y}, Z: {newValueZ}");
-
-        }
-    }
-
 
     void CalculateCenter()
     {
@@ -125,62 +118,20 @@ public class GameManager : MonoBehaviour
         }
 
         Vector3 sum = Vector3.zero;
-         centerPoint = Camera.main.transform.position;
-        /*
-        foreach (GameObject obj in objectsToConsider)
-        {
-            if (obj != null)
-            {
-                sum += obj.transform.position;
-            }
-        }
-        
-        centerPoint = sum / objectsToConsider.Count;
-        Debug.Log("Center Point: " + centerPoint);
-        */
+        centerPoint = Camera.main.transform.position;
     }
 
-    IEnumerator Move(float speedRotation)
+    IEnumerator WaitFixedUpdateAndEnableRigidbodies()
     {
-        float totalRotated = 0f;
-        while(totalRotated <= 90.00f)
-        {
-            float frameThisRotation = rotationSpeed * Time.deltaTime;
-            totalRotated += frameThisRotation;
-            RotateObjectsInScene(speedRotation);
-            yield return null; 
-
-        }
-        
         yield return new WaitForFixedUpdate();
-        rotationFinishEvent.Invoke();
-        isRotating = false;
-    }
-
-    void RotationEventFinished()
-    {
-        EnableRigidBodiesInScene();
-    }
-
-
-    public bool GetIsRotating()
-    {
-        return isRotating;
+        ToggleRigidbodiesInScene(true);
     }
 
     void PlayRotationSound()
     {
         if (rotationSound != null)
-        {
             rotationSound.Play();
-        }
         else
-        {
             Debug.LogWarning("No se ha asignado un sonido.");
-        }
     }
-
-
-
-
 }
