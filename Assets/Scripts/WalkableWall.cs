@@ -65,10 +65,6 @@ public class WalkableWalls : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-       
-    }
 
 
     private void FixedUpdate()
