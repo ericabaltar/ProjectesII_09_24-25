@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
             currentRotationTime = Mathf.Min(currentRotationTime + Time.deltaTime, rotationTime);
             float t = currentRotationTime / rotationTime;
 
-            float rot = rotationCurve.Evaluate(t) * (rotatingRight ? 1.0f : -1.0f);
+            float rot = rotationCurve.Evaluate(t) * (rotatingRight ? -1.0f : 1.0f);
             rot *= RotationAngle;
 
             //update rotation
