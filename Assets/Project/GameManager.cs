@@ -104,11 +104,14 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            float newValueZ = Mathf.Round(obj.transform.eulerAngles.z);
+            Vector3 currentEulerAngles = obj.transform.eulerAngles;
+
+            float newValueZ = Mathf.RoundToInt(currentEulerAngles.z);
 
 
             obj.transform.rotation =Quaternion.Euler(obj.transform.eulerAngles.x, obj.transform.eulerAngles.y,newValueZ );
-            
+            Debug.Log($"X: {currentEulerAngles.x}, Y: {currentEulerAngles.y}, Z: {newValueZ}");
+
         }
     }
 
