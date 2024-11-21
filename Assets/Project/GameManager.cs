@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
                 isRotating = false;
             }
         }
-        else if(playerController.isGrounded)
+        else if(playerController.isGrounded || playerController.isWallWalking)
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {

@@ -85,7 +85,7 @@ public class WalkableWalls : MonoBehaviour
             }
 
             // si no se presiona ninguna tecla se detiene el movimiento
-            playerRigidbody.AddForce(wallMovement);
+            playerRigidbody.velocity = wallMovement;
         }
     }
 }

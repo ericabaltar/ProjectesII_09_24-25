@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour
 
     public AudioSource sceneSound;
 
-    [SerializeField] bool isWallWalking = false;
+    public bool isWallWalking { get; private set; } = false;
+
     [Space(10)]
     [Header("UI Transition")]
     public List<MoveUiToCenter> moveUiToCenterList = new List<MoveUiToCenter>();
@@ -106,11 +107,13 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (this.moveHorizontal != 0)
-        {
-            characterRigidBody.AddForce(new Vector2(moveHorizontal,0.00f) * movementSpeed,ForceMode2D.Force);
-            //this.characterRigidBody.velocity = new Vector2(this.moveHorizontal * this.movementSpeed, this.currentVelocity.y);
-        }
+        
+            if (moveHorizontal != 0)
+            {
+                characterRigidBody.AddForce(new Vector2(moveHorizontal,0.00f) * movementSpeed,ForceMode2D.Force);
+                //this.characterRigidBody.velocity = new Vector2(this.moveHorizontal * this.movementSpeed, this.currentVelocity.y);
+            }
+        
     }
 
 
@@ -179,4 +182,7 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
+    
+
 }
