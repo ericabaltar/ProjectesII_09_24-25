@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IdlePlayerState : PlayerBaseState
 {
@@ -10,8 +12,10 @@ public class IdlePlayerState : PlayerBaseState
 
     public override void Enter()
     {
-        Debug.Log("Entering Idle");
+        stateMachine.InputReader.RotateLeftEvent += RotateLeft;
+        stateMachine.InputReader.RotateRightEvent += RotateRight;
     }
+
 
 
     public override void Tick(float deltaTime)
@@ -21,11 +25,27 @@ public class IdlePlayerState : PlayerBaseState
         {
             stateMachine.SwitchState(new MovingPlayerState(stateMachine));
         }
+
+
+
+
     }
 
 
     public override void Exit()
     {
         Debug.Log("Leaving Idle");
+    }
+
+
+
+    private void RotateLeft()
+    {
+        
+    }
+
+    private void RotateRight()
+    {
+        
     }
 }
