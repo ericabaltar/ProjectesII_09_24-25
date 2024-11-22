@@ -20,13 +20,18 @@ public class MovingPlayerState : PlayerBaseState
     {
         if(stateMachine.InputReader.MovementValue.x >0f || stateMachine.InputReader.MovementValue.x < 0f)
         {
-            stateMachine.rigidbody2d.AddForce(new Vector2(stateMachine.InputReader.MovementValue.x, 0f)  * 5  );
+            stateMachine.rigidbody2d.AddForce(new Vector2(stateMachine.InputReader.MovementValue.x, 0f)  * stateMachine.playerSpeed);
         }
 
 
         if ((stateMachine.InputReader.MovementValue.x > 0.0f || stateMachine.InputReader.MovementValue.x < 0.0f) && (stateMachine.rigidbody2d.velocity.magnitude < 0.0f) || (stateMachine.rigidbody2d.velocity.magnitude > 0.0f))
         {
             stateMachine.SwitchState(new IdlePlayerState(stateMachine));
+        }
+
+        if (stateMachine.isWallWalking)
+        {
+            stateMachine.SwitchState(new WallWalkingState(stateMachine));
         }
 
     }
@@ -36,4 +41,7 @@ public class MovingPlayerState : PlayerBaseState
         stateMachine.InputReader.RotateLeftEvent -= stateMachine.RotateLeft;
         stateMachine.InputReader.RotateRightEvent -= stateMachine.RotateRight;
     }
+
+
+
 }
