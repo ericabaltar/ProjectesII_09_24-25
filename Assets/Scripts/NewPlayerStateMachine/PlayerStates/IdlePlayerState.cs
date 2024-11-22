@@ -12,40 +12,31 @@ public class IdlePlayerState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.InputReader.RotateLeftEvent += RotateLeft;
-        stateMachine.InputReader.RotateRightEvent += RotateRight;
+        stateMachine.InputReader.RotateLeftEvent += stateMachine.RotateLeft;
+        stateMachine.InputReader.RotateRightEvent += stateMachine.RotateRight;
     }
 
 
 
     public override void Tick(float deltaTime)
     {
-        Debug.Log("Ticking Idle");
-        if(Input.GetKeyDown(KeyCode.Space))
+        
+
+
+        if(stateMachine.InputReader.MovementValue.x> 0f || stateMachine.InputReader.MovementValue.x < 0f)
         {
             stateMachine.SwitchState(new MovingPlayerState(stateMachine));
         }
-
-
-
 
     }
 
 
     public override void Exit()
     {
-        Debug.Log("Leaving Idle");
+        stateMachine.InputReader.RotateLeftEvent -= stateMachine.RotateLeft;
+        stateMachine.InputReader.RotateRightEvent -= stateMachine.RotateRight;
     }
 
 
 
-    private void RotateLeft()
-    {
-        
-    }
-
-    private void RotateRight()
-    {
-        
-    }
 }

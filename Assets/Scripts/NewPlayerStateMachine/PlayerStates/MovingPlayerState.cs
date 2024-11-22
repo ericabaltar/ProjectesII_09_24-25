@@ -10,22 +10,30 @@ public class MovingPlayerState : PlayerBaseState
 
     public override void Enter()
     {
-        Debug.Log("Entering Moving");
+        stateMachine.InputReader.RotateLeftEvent += stateMachine.RotateLeft;
+        stateMachine.InputReader.RotateRightEvent += stateMachine.RotateRight;
     }
 
 
 
     public override void Tick(float deltaTime)
     {
-        Debug.Log("Ticking Moving");
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(stateMachine.InputReader.MovementValue.x >0f || stateMachine.InputReader.MovementValue.x < 0f)
+        {
+            stateMachine.rigidbody2d.AddForce(new Vector2(stateMachine.InputReader.MovementValue.x, 0f)  * 5  );
+        }
+
+
+        if ((stateMachine.InputReader.MovementValue.x > 0.0f || stateMachine.InputReader.MovementValue.x < 0.0f) && (stateMachine.rigidbody2d.velocity.magnitude < 0.0f) || (stateMachine.rigidbody2d.velocity.magnitude > 0.0f))
         {
             stateMachine.SwitchState(new IdlePlayerState(stateMachine));
         }
+
     }
 
     public override void Exit()
     {
-        Debug.Log("Exiting Moving");
+        stateMachine.InputReader.RotateLeftEvent -= stateMachine.RotateLeft;
+        stateMachine.InputReader.RotateRightEvent -= stateMachine.RotateRight;
     }
 }

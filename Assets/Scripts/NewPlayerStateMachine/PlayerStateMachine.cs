@@ -14,4 +14,16 @@ public class PlayerStateMachine : StateMachine
         SwitchState(new IdlePlayerState(this));
     }
 
+
+
+    public void RotateLeft()
+    {
+        GameManager.Instance.StartRotation(false);
+    }
+
+    public void RotateRight()
+    {
+        GameManager.Instance.StartRotation(true);
+    }
+
 }

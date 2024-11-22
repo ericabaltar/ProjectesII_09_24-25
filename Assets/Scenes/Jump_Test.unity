@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2d: {fileID: 850258880}
-  <InputReader>k__BackingField: {fileID: 0}
+  <InputReader>k__BackingField: {fileID: 850258881}
 --- !u!50 &850258880 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
@@ -433,6 +433,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf990b7f7defcaa4eb425fe6a6304541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &850258882 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3586818785476077658, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+  m_PrefabInstance: {fileID: 8571761594304870438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1057781333
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,7 +682,25 @@ MonoBehaviour:
       m_Calls: []
   rotationCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -688,7 +711,7 @@ MonoBehaviour:
   - {fileID: 1996542785}
   - {fileID: 850258870}
   playerController: {fileID: 850258876}
-  rotationSound: {fileID: 0}
+  rotationSound: {fileID: 850258882}
 --- !u!1 &1725964039
 GameObject:
   m_ObjectHideFlags: 0
