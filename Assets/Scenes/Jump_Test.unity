@@ -396,6 +396,30 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 3586818785476077658, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
   m_PrefabInstance: {fileID: 8571761594304870438}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850258870}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91cb346f077d83d4f9e62b4e6ac1a7eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &850258879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850258870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58a9539f07b3614c8a71678f13cdf69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody2d: {fileID: 850258880}
+--- !u!50 &850258880 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+  m_PrefabInstance: {fileID: 8571761594304870438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1057781333
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,25 +645,7 @@ MonoBehaviour:
       m_Calls: []
   rotationCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -649,8 +655,8 @@ MonoBehaviour:
   - {fileID: 2029250519}
   - {fileID: 1996542785}
   - {fileID: 850258870}
-  playerController: {fileID: 0}
-  rotationSound: {fileID: 850258882}
+  playerController: {fileID: 850258876}
+  rotationSound: {fileID: 0}
 --- !u!1 &1725964039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,6 +1330,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_Mass
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 00147a573011af8449404990bc36c091, type: 2}
+    - target: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_LinearDrag
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261130306478367038, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261130306478367038, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: movementSpeed
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4566900565145589108, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_Name
       value: ------Player
@@ -1375,7 +1405,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4566900565145589108, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 850258879}
   m_SourcePrefab: {fileID: 100100000, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
 --- !u!1001 &8972300967566261159
 PrefabInstance:
