@@ -417,6 +417,8 @@ MonoBehaviour:
   rigidbody2d: {fileID: 850258880}
   <InputReader>k__BackingField: {fileID: 850258881}
   playerSpeed: 80
+  <isGrounded>k__BackingField: 0
+  <isWallWalking>k__BackingField: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -1038,7 +1040,7 @@ GameObject:
   - component: {fileID: 1976040009}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Walkable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1451,11 +1453,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7525604597024973286, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.17
+      value: 3.21
       objectReference: {fileID: 0}
     - target: {fileID: 7525604597024973286, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.54
       objectReference: {fileID: 0}
     - target: {fileID: 7525604597024973286, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_LocalPosition.z

@@ -18,6 +18,7 @@ public class MovingPlayerState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        stateMachine.CheckGroundPlayer();
         if(stateMachine.InputReader.MovementValue.x >0f || stateMachine.InputReader.MovementValue.x < 0f)
         {
             stateMachine.rigidbody2d.AddForce(new Vector2(stateMachine.InputReader.MovementValue.x, 0f)  * stateMachine.playerSpeed);

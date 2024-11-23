@@ -53,9 +53,10 @@ public class GameManager : MonoBehaviour
                 isRotating = false;
             }
         }
+        /*
         else if(playerController.isGrounded || playerController.isWallWalking)
         {
-            /*
+           
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 StartRotation(false);
@@ -64,8 +65,9 @@ public class GameManager : MonoBehaviour
             {
                 StartRotation(true);
             }
-            */
+            
         }
+        */
     }
 
     public void StartRotation(bool goesRight)

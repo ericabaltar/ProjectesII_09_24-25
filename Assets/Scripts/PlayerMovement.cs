@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Part")]
-    public bool isGrounded;
+    
     private float moveHorizontal;
     private float moveVertical;
     private Vector2 currentVelocity;

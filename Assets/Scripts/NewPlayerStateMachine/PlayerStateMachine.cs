@@ -10,8 +10,8 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public ControllerInputSystem InputReader { get; private set; }
 
     [field: SerializeField] public float playerSpeed = 100f;
-    public bool isGrounded { get; private set; } = true;
-    public bool isWallWalking { get; private set; } = false;
+    [field: SerializeField] public bool isGrounded { get; private set; } = true;
+    [field: SerializeField] public bool isWallWalking { get; private set; } = false;
     [Space(10)]
     [Header("Particles Part")]
     [Space(10)]
@@ -32,7 +32,8 @@ public class PlayerStateMachine : StateMachine
 
     public void RotateLeft()
     {
-        if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0f || rigidbody2d.velocity.magnitude > 0f))
+        
+        if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
         {
             GameManager.Instance.StartRotation(false);
         }
@@ -41,21 +42,49 @@ public class PlayerStateMachine : StateMachine
 
     public void RotateRight()
     {
-        if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.0f || rigidbody2d.velocity.magnitude > 0.0f))
+        
+        if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
         {
             GameManager.Instance.StartRotation(true);
         }
             
     }
 
+
+    public void CheckGroundPlayer()
+    {
+        
+        Vector2 boxSize = new Vector2(1f, 0.1f); // Adjust width and height
+        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 0.52f); // Offset
+
+     
+        Collider2D groundCollider = Physics2D.OverlapBox(boxCenter, boxSize, 0f);
+
+        isGrounded = groundCollider != null;
+
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        // Define the size and position of the box
+        Vector2 boxSize = new Vector2(1f, 0.1f);
+        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 0.5f);
+
+        // Set the Gizmos color
+        Gizmos.color = Color.red;
+
+        // Draw the detection box
+        Gizmos.DrawWireCube(boxCenter, boxSize);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        /*
         if (collision.transform.CompareTag("Untagged") || collision.transform.CompareTag("Walkable"))
         {
             isGrounded = true;
         }
-
+        */
         if (collision.transform.CompareTag("Enemy"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -64,10 +93,21 @@ public class PlayerStateMachine : StateMachine
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        /*
         if (collision.transform.CompareTag("Untagged") || collision.transform.CompareTag("Walkable"))
         {
+            Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(1f, 0.1f), 0f);
             isGrounded = false;
+            foreach (Collider2D col in colliders)
+            {
+                if (col.CompareTag("Untagged") || col.CompareTag("Walkable"))
+                {
+                    isGrounded = true;
+                    break;
+                }
+            }
         }
+        */
     }
 
 
@@ -89,5 +129,8 @@ public class PlayerStateMachine : StateMachine
 
         }
     }
+
+
+
 
 }
