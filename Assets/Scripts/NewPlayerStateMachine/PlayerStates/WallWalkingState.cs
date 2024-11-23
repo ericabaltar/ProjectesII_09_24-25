@@ -8,31 +8,30 @@ public class WallWalkingState : PlayerBaseState
 {
     public WallWalkingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
+        
     }
+    float resetGravity = 0f;
 
     public override void Enter()
     {
         stateMachine.InputReader.RotateLeftEvent += stateMachine.RotateLeft;
         stateMachine.InputReader.RotateRightEvent += stateMachine.RotateRight;
+        resetGravity = stateMachine.rigidbody2d.gravityScale;
+        stateMachine.rigidbody2d.gravityScale = 0f;
     }
 
    
     public override void Tick(float deltaTime)
     {
 
-        if (stateMachine.InputReader.MovementValue.y> 0f || stateMachine.InputReader.MovementValue.y < 0f)
-        {
-            stateMachine.rigidbody2d.AddForce(new Vector2(0f, stateMachine.InputReader.MovementValue.y) * stateMachine.playerSpeed);
-        }
-
         if (!stateMachine.isWallWalking)
         {
             stateMachine.SwitchState(new MovingPlayerState(stateMachine));
+            return;
         }
-        Debug.Log("IM INSIDE");
+        
 
         RaycastHit2D hit1 = Physics2D.Raycast(stateMachine.transform.position, -stateMachine.transform.right, 1.5f, stateMachine.layerMask);
-
 
         if (hit1.collider != null)
         {
@@ -63,15 +62,26 @@ public class WallWalkingState : PlayerBaseState
 
     }
 
+    public override void FixedTick()
+    {
+        stateMachine.rigidbody2d.velocity = (new Vector2(0f, stateMachine.InputReader.MovementValue.y) * stateMachine.playerSpeed * Time.fixedDeltaTime * 0.03f);
+
+        if (stateMachine.InputReader.MovementValue.x > 0f || stateMachine.InputReader.MovementValue.x < 0f)
+        {
+            stateMachine.rigidbody2d.AddForce(new Vector2(stateMachine.InputReader.MovementValue.x, 0f) * stateMachine.playerSpeed * Time.fixedDeltaTime);
+        }
+    }
+
     public override void Exit()
     {
         stateMachine.InputReader.RotateLeftEvent -= stateMachine.RotateLeft;
         stateMachine.InputReader.RotateRightEvent -= stateMachine.RotateRight;
-
+        stateMachine.rigidbody2d.gravityScale = resetGravity;
         stateMachine.particlesDown.Stop();
         stateMachine.particlesLeft.Stop();
         stateMachine.particlesRight.Stop();
         stateMachine.particlesUp.Stop();
     }
+
 
 }

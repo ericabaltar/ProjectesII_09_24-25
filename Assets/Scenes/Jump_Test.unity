@@ -391,71 +391,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4566900565145589108, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
   m_PrefabInstance: {fileID: 8571761594304870438}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &850258876 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2261130306478367038, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-  m_PrefabInstance: {fileID: 8571761594304870438}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850258870}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91cb346f077d83d4f9e62b4e6ac1a7eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &850258879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850258870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58a9539f07b3614c8a71678f13cdf69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidbody2d: {fileID: 850258880}
-  <InputReader>k__BackingField: {fileID: 850258881}
-  playerSpeed: 80
-  <isGrounded>k__BackingField: 0
-  <isWallWalking>k__BackingField: 0
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  particlesLeft: {fileID: 1351838700}
-  particlesRight: {fileID: 1000541503}
-  particlesUp: {fileID: 1514444485}
-  particlesDown: {fileID: 946198678}
---- !u!50 &850258880 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-  m_PrefabInstance: {fileID: 8571761594304870438}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &850258881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850258870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf990b7f7defcaa4eb425fe6a6304541, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &850258882 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3586818785476077658, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-  m_PrefabInstance: {fileID: 8571761594304870438}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &946198678 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6000968786687558268, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-  m_PrefabInstance: {fileID: 8571761594304870438}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1000541503 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2170858853662783952, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
   m_PrefabInstance: {fileID: 8571761594304870438}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1057781333
@@ -469,7 +407,6 @@ GameObject:
   - component: {fileID: 1057781334}
   - component: {fileID: 1057781336}
   - component: {fileID: 1057781335}
-  - component: {fileID: 1057781337}
   - component: {fileID: 1057781338}
   m_Layer: 3
   m_Name: Wall (1)
@@ -590,24 +527,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1057781337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057781333}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be1ded7269c7e4c669253c54520587ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isWalkable: 1
-  playerIsOnWall: 0
-  wallMoveSpeed: 30
-  audioSource: {fileID: 0}
-  attachSound: {fileID: 0}
-  detachSound: {fileID: 0}
 --- !u!61 &1057781338
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -653,16 +572,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.26, y: 1}
   m_EdgeRadius: 0
---- !u!198 &1351838700 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3774487284899768810, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-  m_PrefabInstance: {fileID: 8571761594304870438}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1514444485 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3643958013477291478, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-  m_PrefabInstance: {fileID: 8571761594304870438}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1596180325
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +649,7 @@ MonoBehaviour:
   - {fileID: 2029250519}
   - {fileID: 1996542785}
   - {fileID: 850258870}
-  playerController: {fileID: 850258876}
+  playerController: {fileID: 0}
   rotationSound: {fileID: 850258882}
 --- !u!1 &1725964039
 GameObject:
@@ -1415,34 +1324,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-      propertyPath: m_Mass
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 00147a573011af8449404990bc36c091, type: 2}
-    - target: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-      propertyPath: m_LinearDrag
-      value: 2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-      propertyPath: m_GravityScale
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261130306478367038, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261130306478367038, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-      propertyPath: movementSpeed
-      value: 40
-      objectReference: {fileID: 0}
     - target: {fileID: 4566900565145589108, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_Name
       value: ------Player
@@ -1494,13 +1375,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4566900565145589108, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 850258879}
-    - targetCorrespondingSourceObject: {fileID: 4566900565145589108, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 850258881}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
 --- !u!1001 &8972300967566261159
 PrefabInstance:

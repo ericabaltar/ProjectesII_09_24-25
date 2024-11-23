@@ -20,25 +20,32 @@ public class IdlePlayerState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        
         if(stateMachine.InputReader.MovementValue.x> 0f || stateMachine.InputReader.MovementValue.x < 0f)
         {
             stateMachine.SwitchState(new MovingPlayerState(stateMachine));
+            return;
         }
 
         if (stateMachine.isWallWalking)
         {
             stateMachine.SwitchState(new WallWalkingState(stateMachine));
+            return;
         }
 
     }
 
+
+    public override void FixedTick()
+    {
+        
+    }
 
     public override void Exit()
     {
         stateMachine.InputReader.RotateLeftEvent -= stateMachine.RotateLeft;
         stateMachine.InputReader.RotateRightEvent -= stateMachine.RotateRight;
     }
-
 
 
 }

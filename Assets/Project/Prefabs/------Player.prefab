@@ -14496,7 +14496,8 @@ GameObject:
   - component: {fileID: 8596845540295813161}
   - component: {fileID: 1142165313409666511}
   - component: {fileID: 3586818785476077658}
-  - component: {fileID: 2261130306478367038}
+  - component: {fileID: 4272889038219393403}
+  - component: {fileID: 6097434802618400618}
   m_Layer: 0
   m_Name: ------Player
   m_TagString: Player
@@ -14518,7 +14519,7 @@ Transform:
   m_Children:
   - {fileID: 3635913222610637449}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &8596845540295813161
 BoxCollider2D:
@@ -14577,10 +14578,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.6
-  m_LinearDrag: 0.44
+  m_Mass: 3.5
+  m_LinearDrag: 2.9
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 4
   m_Material: {fileID: 6200000, guid: 00147a573011af8449404990bc36c091, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -14688,7 +14689,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2261130306478367038
+--- !u!114 &4272889038219393403
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14697,11 +14698,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4566900565145589108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91cb346f077d83d4f9e62b4e6ac1a7eb, type: 3}
+  m_Script: {fileID: 11500000, guid: a58a9539f07b3614c8a71678f13cdf69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrounded: 0
-  movementSpeed: 11
+  rigidbody2d: {fileID: 1142165313409666511}
+  <InputReader>k__BackingField: {fileID: 6097434802618400618}
+  playerSpeed: 20000
+  <isGrounded>k__BackingField: 0
+  <isWallWalking>k__BackingField: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -14709,11 +14713,18 @@ MonoBehaviour:
   particlesRight: {fileID: 2170858853662783952}
   particlesUp: {fileID: 3643958013477291478}
   particlesDown: {fileID: 6000968786687558268}
-  sceneSound: {fileID: 3586818785476077658}
-  isWallWalking: 0
-  moveUiToCenterList:
-  - {fileID: 0}
-  - {fileID: 0}
+--- !u!114 &6097434802618400618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4566900565145589108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf990b7f7defcaa4eb425fe6a6304541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8125823780048917780
 GameObject:
   m_ObjectHideFlags: 0
