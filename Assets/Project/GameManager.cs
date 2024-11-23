@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     private float lastAngle = 0.0f;
 
     public List<GameObject> objectsToConsider; // Assign in the inspector
-    public PlayerController playerController;
     private Vector3 centerPoint;
     public AudioSource rotationSound;
 
@@ -57,12 +56,16 @@ public class GameManager : MonoBehaviour
 
     public void StartRotation(bool goesRight)
     {
-        isRotating = true;
-        rotatingRight = goesRight;
-        PlayRotationSound();
-        lastAngle = 0;
-        currentRotationTime = 0.0f;
-        ToggleRigidbodiesInScene(false);
+        if(!isRotating)
+        {
+            isRotating = true;
+            rotatingRight = goesRight;
+            PlayRotationSound();
+            lastAngle = 0;
+            currentRotationTime = 0.0f;
+            ToggleRigidbodiesInScene(false);
+        }
+        
     }
 
     void RotateObjectsInScene(float angle)
