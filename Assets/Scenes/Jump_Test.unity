@@ -655,7 +655,6 @@ MonoBehaviour:
   - {fileID: 2029250519}
   - {fileID: 1996542785}
   - {fileID: 850258870}
-  playerController: {fileID: 850258876}
   rotationSound: {fileID: 0}
 --- !u!1 &1725964039
 GameObject:
