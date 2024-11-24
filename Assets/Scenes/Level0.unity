@@ -506,7 +506,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -248687160, guid: 44931d5415c5ad24da98d9d53e22c99a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1740,6 +1740,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261130306478367038, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: movementSpeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2261130306478367038, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: moveUiToCenterList.Array.size
       value: 2
@@ -4587,7 +4595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5407705896241575882, guid: 4d0000f2054d3bb419d7b9c2fdd78202, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8650269211079661593, guid: 4d0000f2054d3bb419d7b9c2fdd78202, type: 3}
       propertyPath: m_RootOrder

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,5 +18,10 @@ public class StateMachine : MonoBehaviour
     private void Update()
     {
         currentState?.Tick(Time.deltaTime);
+    }
+
+    private void FixedUpdate()
+    {
+        currentState?.FixedTick();
     }
 }

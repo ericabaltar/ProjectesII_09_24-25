@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IdlePlayerState : PlayerBaseState
 {
@@ -10,22 +12,40 @@ public class IdlePlayerState : PlayerBaseState
 
     public override void Enter()
     {
-        Debug.Log("Entering Idle");
+        stateMachine.InputReader.RotateLeftEvent += stateMachine.RotateLeft;
+        stateMachine.InputReader.RotateRightEvent += stateMachine.RotateRight;
     }
+
 
 
     public override void Tick(float deltaTime)
     {
-        Debug.Log("Ticking Idle");
-        if(Input.GetKeyDown(KeyCode.Space))
+        
+        if(stateMachine.InputReader.MovementValue.x> 0f || stateMachine.InputReader.MovementValue.x < 0f)
         {
             stateMachine.SwitchState(new MovingPlayerState(stateMachine));
+            return;
         }
+
+        if (stateMachine.isWallWalking)
+        {
+            stateMachine.SwitchState(new WallWalkingState(stateMachine));
+            return;
+        }
+
     }
 
+
+    public override void FixedTick()
+    {
+        
+    }
 
     public override void Exit()
     {
-        Debug.Log("Leaving Idle");
+        stateMachine.InputReader.RotateLeftEvent -= stateMachine.RotateLeft;
+        stateMachine.InputReader.RotateRightEvent -= stateMachine.RotateRight;
     }
+
+
 }
