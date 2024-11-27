@@ -18,20 +18,22 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
         {
             anim.SetBool("walking",true);
             Debug.Log(anim.GetBool("walking"));
+            GetComponent<SpriteRenderer>().flipX = false;
         }
         else if (Input.GetKey(KeyCode.A))
         {
             anim.SetBool("walking",true);
             Debug.Log(anim.GetBool("walking"));
+            GetComponent<SpriteRenderer>().flipX = true;
         }
         else
             anim.SetBool("walking",false);
 
-        if (Input.GetKey(KeyCode.Q)) { 
-        
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            transform.Rotate(Vector3.forward * -90);
         }
-        if (Input.GetKey(KeyCode.E)) { 
-        
+        if (Input.GetKeyDown(KeyCode.E)) {
+            transform.Rotate(Vector3.forward * 90);
         }
     }
 }
