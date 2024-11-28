@@ -128,17 +128,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4566900565145589108, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
   m_PrefabInstance: {fileID: 825500039}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &126432039 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2261130306478367038, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-  m_PrefabInstance: {fileID: 825500039}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126432038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91cb346f077d83d4f9e62b4e6ac1a7eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &144226485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -255,6 +244,10 @@ PrefabInstance:
     - target: {fileID: 3543732089458709445, guid: 5381f5500dc41e6419ee2809dc4566ac, type: 3}
       propertyPath: m_Name
       value: RightSquare
+      objectReference: {fileID: 0}
+    - target: {fileID: 3543732089458709445, guid: 5381f5500dc41e6419ee2809dc4566ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -903,6 +896,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftSquare
       objectReference: {fileID: 0}
+    - target: {fileID: 1457989038331200842, guid: 7615ed64140b3494191d44df2424d7f2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1519699412349657247, guid: 7615ed64140b3494191d44df2424d7f2, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1218,7 +1215,6 @@ MonoBehaviour:
   objectsToConsider:
   - {fileID: 1298190606}
   - {fileID: 126432038}
-  playerController: {fileID: 126432039}
   rotationSound: {fileID: 1318662068}
 --- !u!4 &1318662067
 Transform:
