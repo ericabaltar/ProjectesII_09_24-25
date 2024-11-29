@@ -1469,6 +1469,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ccb85cf0f17d1640825f36977d93d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonTypes: 1
+  objectToEdit: {fileID: 0}
+  timer: 50
+  timerReset: 50
+  timeToMove: 40
 --- !u!1 &1869768692
 GameObject:
   m_ObjectHideFlags: 0

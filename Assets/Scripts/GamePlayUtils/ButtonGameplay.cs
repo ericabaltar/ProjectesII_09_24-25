@@ -4,15 +4,44 @@ using UnityEngine;
 
 public class ButtonGameplay : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    #region variables
+    public enum ButtonDoings
     {
-        
+        None,
+        Disappear,
+        Move,
+        Timer
     }
 
-    // Update is called once per frame
-    void Update()
+    public ButtonDoings buttonTypes;
+
+    public GameObject objectToEdit;
+
+    [SerializeField] float timer = 0f;
+    [SerializeField] float timerReset = 50f;
+    [SerializeField] float timeToMove = 40f;
+    #endregion
+
+
+    public void OnPressedButton()
     {
-        
+        switch(buttonTypes)
+        {
+            case ButtonDoings.None:
+                break; 
+            case ButtonDoings.Disappear:
+                objectToEdit.SetActive(false);
+                break;
+            case ButtonDoings.Move:
+                
+                break;
+            case ButtonDoings.Timer:
+                objectToEdit.SetActive(false);
+                break;
+            default:
+                break;
+        }
+
+
     }
 }
