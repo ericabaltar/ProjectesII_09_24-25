@@ -104,12 +104,7 @@ public class PlayerStateMachine : StateMachine
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        /*
-        if (collision.transform.CompareTag("Untagged") || collision.transform.CompareTag("Walkable"))
-        {
-            isGrounded = true;
-        }
-        */
+    
         if (collision.transform.CompareTag("Enemy"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -146,21 +141,7 @@ public class PlayerStateMachine : StateMachine
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        /*
-        if (collision.transform.CompareTag("Untagged") || collision.transform.CompareTag("Walkable"))
-        {
-            Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(1f, 0.1f), 0f);
-            isGrounded = false;
-            foreach (Collider2D col in colliders)
-            {
-                if (col.CompareTag("Untagged") || col.CompareTag("Walkable"))
-                {
-                    isGrounded = true;
-                    break;
-                }
-            }
-        }
-        */
+       
     }
 
 
