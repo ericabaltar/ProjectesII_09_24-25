@@ -23,6 +23,13 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public RotationZoneNeeded rotationZone { get; private set; } = RotationZoneNeeded.False;
 
     [Space(10)]
+    [Header("UI Transition")]
+    public List<MoveUiToCenter> moveUiToCenterList = new List<MoveUiToCenter>();
+    public AudioSource sceneSound;
+    Scene scene;
+
+    float time = 2f;
+    [Space(10)]
     [Header("Particles Part")]
     [Space(10)]
     public LayerMask layerMask;
@@ -107,6 +114,34 @@ public class PlayerStateMachine : StateMachine
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if (collision.transform.CompareTag("Door"))
+        {
+
+            if (sceneSound != null)
+            {
+
+                sceneSound.Play();
+                foreach (MoveUiToCenter ui in moveUiToCenterList)
+                {
+                    ui.MoveToCloseCurtains();
+                }
+
+            }
+            StartCoroutine(Wait(time));
+
+        }
+    
+
+        IEnumerator Wait(float time)
+        {
+
+            yield return new WaitForSeconds(time);
+            scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.buildIndex + 1);
+        }
+
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
