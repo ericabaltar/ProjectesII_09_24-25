@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Door
   - StaticText
+  - RotateZone
+  - Button
   layers:
   - Default
   - TransparentFX
