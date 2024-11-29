@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class walterscriptdeleteafterfriday : MonoBehaviour
 {
-    Animator anim;
-
+    private Animator anim;
+    private bool canRotate = true;
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
@@ -14,7 +14,7 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {        
         if (Input.GetKey(KeyCode.D))
         {
             anim.SetBool("walking",true);
@@ -29,10 +29,28 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
             anim.SetBool("walking",false);
 
         if (Input.GetKeyDown(KeyCode.Q)) {
-            transform.Rotate(Vector3.forward * -90);
+            if ((GameObject.Find("------Player").GetComponent<PlayerStateMachine>().isWallWalking ||
+                    GameObject.Find("------Player").GetComponent<PlayerStateMachine>().isGrounded) &&
+                    GameObject.Find("------Player").GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f &&
+                    canRotate) {
+
+                transform.Rotate(Vector3.forward * -90);
+                canRotate= false;
+                StartCoroutine(WaitForRotation());
+            }
+                
         }
         else if (Input.GetKeyDown(KeyCode.E)) {
-            transform.Rotate(Vector3.forward * 90);
+            if ((GameObject.Find("------Player").GetComponent<PlayerStateMachine>().isWallWalking ||
+                    GameObject.Find("------Player").GetComponent<PlayerStateMachine>().isGrounded) &&
+                    GameObject.Find("------Player").GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f &&
+                    canRotate) {
+
+                transform.Rotate(Vector3.forward * 90);
+                canRotate= false;
+                StartCoroutine(WaitForRotation());
+            }
+                
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha0))
@@ -47,5 +65,19 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
             SceneManager.LoadScene(5);
         else if (Input.GetKeyDown(KeyCode.Alpha5))
             SceneManager.LoadScene(6);
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+            SceneManager.LoadScene(7);
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+            SceneManager.LoadScene(8);
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+            SceneManager.LoadScene(9);
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
+            SceneManager.LoadScene(10);
+    }
+
+    IEnumerator WaitForRotation() {
+
+        yield return new WaitForSeconds(1.0f);
+        canRotate = true;
     }
 }
