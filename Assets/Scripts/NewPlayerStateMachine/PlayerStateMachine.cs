@@ -12,6 +12,16 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float playerSpeed = 100f;
     [field: SerializeField] public bool isGrounded { get; private set; } = true;
     [field: SerializeField] public bool isWallWalking { get; private set; } = false;
+    [field: SerializeField] public bool isInRotateZone { get; private set; } = false;
+
+    public enum RotationZoneNeeded
+    {
+        True,
+        False
+    }
+
+    [field: SerializeField] public RotationZoneNeeded rotationZone { get; private set; } = RotationZoneNeeded.False;
+
     [Space(10)]
     [Header("Particles Part")]
     [Space(10)]
@@ -32,21 +42,28 @@ public class PlayerStateMachine : StateMachine
 
     public void RotateLeft()
     {
-        
-        if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
+        if ((rotationZone == RotationZoneNeeded.False) || (rotationZone == RotationZoneNeeded.True && isInRotateZone))
         {
-            GameManager.Instance.StartRotation(false);
+
+            if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
+            {
+                GameManager.Instance.StartRotation(false);
+            }
         }
        
     }
 
     public void RotateRight()
     {
-        
-        if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
+        if((rotationZone == RotationZoneNeeded.False ) || (rotationZone == RotationZoneNeeded.True && isInRotateZone))
         {
-            GameManager.Instance.StartRotation(true);
+
+            if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
+            {
+                GameManager.Instance.StartRotation(true);
+            }
         }
+
             
     }
 
@@ -77,6 +94,7 @@ public class PlayerStateMachine : StateMachine
         // Draw the detection box
         Gizmos.DrawWireCube(boxCenter, boxSize);
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         /*
@@ -118,6 +136,12 @@ public class PlayerStateMachine : StateMachine
             isWallWalking = true;
 
         }
+
+        if(collision.CompareTag("RotateZone"))
+        {
+            isInRotateZone = true;
+        }
+
     }
 
 
@@ -127,6 +151,11 @@ public class PlayerStateMachine : StateMachine
         {
             isWallWalking = false;
 
+        }
+
+        if (collision.CompareTag("RotateZone"))
+        {
+            isInRotateZone = false;
         }
     }
 
