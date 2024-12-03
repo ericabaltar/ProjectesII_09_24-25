@@ -38,6 +38,11 @@ public class PlayerStateMachine : StateMachine
     public ParticleSystem particlesRight;
     public ParticleSystem particlesUp;
     public ParticleSystem particlesDown;
+    [Space(10)]
+    [Header("Death Part")]
+    [Space(10)]
+    public ParticleSystem particlesDeath;
+    float timeToReset = 2f;
 
     // Start is called before the first frame update
     void Start()
