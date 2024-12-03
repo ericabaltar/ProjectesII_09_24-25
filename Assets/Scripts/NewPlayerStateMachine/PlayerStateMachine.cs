@@ -23,6 +23,13 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public RotationZoneNeeded rotationZone { get; private set; } = RotationZoneNeeded.False;
 
     [Space(10)]
+    [Header("UI Transition")]
+    public List<MoveUiToCenter> moveUiToCenterList = new List<MoveUiToCenter>();
+    public AudioSource sceneSound;
+    Scene scene;
+
+    float time = 2f;
+    [Space(10)]
     [Header("Particles Part")]
     [Space(10)]
     public LayerMask layerMask;
@@ -31,6 +38,11 @@ public class PlayerStateMachine : StateMachine
     public ParticleSystem particlesRight;
     public ParticleSystem particlesUp;
     public ParticleSystem particlesDown;
+    [Space(10)]
+    [Header("Death Part")]
+    [Space(10)]
+    public ParticleSystem particlesDeath;
+    float timeToReset = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -97,35 +109,44 @@ public class PlayerStateMachine : StateMachine
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        /*
-        if (collision.transform.CompareTag("Untagged") || collision.transform.CompareTag("Walkable"))
-        {
-            isGrounded = true;
-        }
-        */
+    
         if (collision.transform.CompareTag("Enemy"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GoToDeathState(this);
         }
+
+        if (collision.transform.CompareTag("Door"))
+        {
+
+            if (sceneSound != null)
+            {
+
+                sceneSound.Play();
+                foreach (MoveUiToCenter ui in moveUiToCenterList)
+                {
+                    ui.MoveToCloseCurtains();
+                }
+
+            }
+            StartCoroutine(Wait(time));
+
+        }
+    
+
+        IEnumerator Wait(float time)
+        {
+
+            yield return new WaitForSeconds(time);
+            scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.buildIndex + 1);
+        }
+
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        /*
-        if (collision.transform.CompareTag("Untagged") || collision.transform.CompareTag("Walkable"))
-        {
-            Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(1f, 0.1f), 0f);
-            isGrounded = false;
-            foreach (Collider2D col in colliders)
-            {
-                if (col.CompareTag("Untagged") || col.CompareTag("Walkable"))
-                {
-                    isGrounded = true;
-                    break;
-                }
-            }
-        }
-        */
+       
     }
 
 
@@ -160,6 +181,14 @@ public class PlayerStateMachine : StateMachine
     }
 
 
+    public void GoToDeathState(PlayerStateMachine stateMachine)
+    {
+        SwitchState(new PlayerDeathState(stateMachine));
+    }
 
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 }
