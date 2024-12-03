@@ -7,6 +7,8 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
 {
     private Animator anim;
     private bool canRotate = true;
+    private bool canStretch = false;
+    private bool canSquish = false;
 
     private float initialStretchValue = 1.0f;
     private float maximumStretchValue = 1.0f;
@@ -35,6 +37,10 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
             anim.SetBool("walking",true);
             GetComponent<SpriteRenderer>().flipX = true;
         }
+        else if (Input.GetKey(KeyCode.F))
+        {
+            canSquish = true;
+        }
         else
             anim.SetBool("walking",false);
 
@@ -47,6 +53,7 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
                 transform.Rotate(Vector3.forward * -90);
                 canRotate= false;
                 StartCoroutine(WaitForRotation());
+                StartCoroutine(WaitForStretch());
             }
                 
         }
@@ -59,8 +66,28 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
                 transform.Rotate(Vector3.forward * 90);
                 canRotate= false;
                 StartCoroutine(WaitForRotation());
+                StartCoroutine(WaitForStretch());
             }
                 
+        }
+
+        if (canStretch == true)
+        {
+            if (transform.localScale.y < 2.0f)
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y + 0.01f, transform.localScale.z);
+            else {
+                canStretch = false;
+            }
+        }
+        else if (canSquish == true) {
+            if (transform.localScale.y >= 2.0f)
+                transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
+            else if (transform.localScale.y < 1.0f)
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y + 0.01f, transform.localScale.z);
+            else { 
+                transform.localScale = new Vector3(transform.localScale.x, 1.0f, transform.localScale.z);
+                canSquish = false;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha0))
@@ -74,5 +101,10 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
         canRotate = true;
+    }
+    IEnumerator WaitForStretch() {
+
+        yield return new WaitForSeconds(1.0f);
+        canStretch = true;
     }
 }
