@@ -1352,6 +1352,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0af020f94496dd0498452302d5887a65, type: 3}
+--- !u!198 &1625848875 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1873810856352343894, guid: 0af020f94496dd0498452302d5887a65, type: 3}
+  m_PrefabInstance: {fileID: 1625848874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1671436624
 GameObject:
   m_ObjectHideFlags: 0
@@ -2545,6 +2550,10 @@ PrefabInstance:
       propertyPath: m_UseAutoMass
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2170858853662783952, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2261130306478367038, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2553,13 +2562,29 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 3643958013477291478, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774487284899768810, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: sceneSound
       value: 
       objectReference: {fileID: 850258882}
+    - target: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: particlesDeath
+      value: 
+      objectReference: {fileID: 1625848875}
     - target: {fileID: 4566900565145589108, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_Name
       value: ------Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000968786687558268, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7525604597024973286, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_RootOrder

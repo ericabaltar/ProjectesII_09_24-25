@@ -112,7 +112,7 @@ public class PlayerStateMachine : StateMachine
     
         if (collision.transform.CompareTag("Enemy"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GoToDeathState(this);
         }
 
         if (collision.transform.CompareTag("Door"))
@@ -181,6 +181,14 @@ public class PlayerStateMachine : StateMachine
     }
 
 
+    public void GoToDeathState(PlayerStateMachine stateMachine)
+    {
+        SwitchState(new PlayerDeathState(stateMachine));
+    }
 
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 }
