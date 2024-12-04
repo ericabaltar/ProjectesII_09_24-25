@@ -43,7 +43,7 @@ public class PlayerStateMachine : StateMachine
     void Start()
     {
         SwitchState(new IdlePlayerState(this));
-        tr = GameObject.Find("Square").GetComponent<Transform>();
+        //tr = GameObject.Find("Square").GetComponent<Transform>();
     }
 
     private bool canRotate = true;
@@ -58,10 +58,7 @@ public class PlayerStateMachine : StateMachine
             {
                 GameManager.Instance.StartRotation(false);
 
-                tr.Rotate(Vector3.forward * -90);
-                canRotate = false;
-                StartCoroutine(WaitForRotation());
-                StartCoroutine(WaitForStretch());
+                
             }            
         }
        
@@ -76,10 +73,7 @@ public class PlayerStateMachine : StateMachine
             {
                 GameManager.Instance.StartRotation(true);
 
-                tr.Rotate(Vector3.forward * 90);
-                canRotate = false;
-                StartCoroutine(WaitForRotation());
-                StartCoroutine(WaitForStretch());
+                
             }
         }
 
@@ -188,24 +182,6 @@ public class PlayerStateMachine : StateMachine
     }
 
 
-    IEnumerator WaitForRotation()
-    {
-
-        yield return new WaitForSeconds(1.0f);
-        canRotate = true;
-    }
-    IEnumerator WaitForStretch()
-    {
-
-        yield return new WaitForSeconds(1.0f);
-        StartCoroutine(Stretch());
-    }
-
-    IEnumerator Stretch() { 
-        tr.localScale = new Vector3(tr.localScale.x, tr.localScale.y + 0.01f, tr.localScale.z);
-        yield return new WaitForSeconds(0.1f);
-        if (tr.localScale.y < 1.0f)
-            StartCoroutine(Stretch());
-    }
+    
 
 }
