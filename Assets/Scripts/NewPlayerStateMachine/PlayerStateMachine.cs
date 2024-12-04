@@ -13,6 +13,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public bool isGrounded { get; private set; } = true;
     [field: SerializeField] public bool isWallWalking { get; private set; } = false;
     [field: SerializeField] public bool isInRotateZone { get; private set; } = false;
+    public LayerMask groundedLayerMask;
 
     public enum RotationZoneNeeded
     {
@@ -84,10 +85,10 @@ public class PlayerStateMachine : StateMachine
     {
         
         Vector2 boxSize = new Vector2(1f, 0.1f); // Adjust width and height
-        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 0.52f); // Offset
+        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 1f); // Offset
 
      
-        Collider2D groundCollider = Physics2D.OverlapBox(boxCenter, boxSize, 0f);
+        Collider2D groundCollider = Physics2D.OverlapBox(boxCenter, boxSize, 0f,groundedLayerMask);
 
         isGrounded = groundCollider != null;
 
@@ -98,7 +99,7 @@ public class PlayerStateMachine : StateMachine
     {
         // Define the size and position of the box
         Vector2 boxSize = new Vector2(1f, 0.1f);
-        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 0.5f);
+        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 1);
 
         // Set the Gizmos color
         Gizmos.color = Color.red;
