@@ -13,6 +13,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public bool isGrounded { get; private set; } = true;
     [field: SerializeField] public bool isWallWalking { get; private set; } = false;
     [field: SerializeField] public bool isInRotateZone { get; private set; } = false;
+    public LayerMask groundedLayerMask;
 
     public enum RotationZoneNeeded
     {
@@ -38,6 +39,11 @@ public class PlayerStateMachine : StateMachine
     public ParticleSystem particlesRight;
     public ParticleSystem particlesUp;
     public ParticleSystem particlesDown;
+    [Space(10)]
+    [Header("Death Part")]
+    [Space(10)]
+    public ParticleSystem particlesDeath;
+    float timeToReset = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -79,10 +85,10 @@ public class PlayerStateMachine : StateMachine
     {
         
         Vector2 boxSize = new Vector2(1f, 0.1f); // Adjust width and height
-        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 0.52f); // Offset
+        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 1f); // Offset
 
      
-        Collider2D groundCollider = Physics2D.OverlapBox(boxCenter, boxSize, 0f);
+        Collider2D groundCollider = Physics2D.OverlapBox(boxCenter, boxSize, 0f,groundedLayerMask);
 
         isGrounded = groundCollider != null;
 
@@ -93,7 +99,7 @@ public class PlayerStateMachine : StateMachine
     {
         // Define the size and position of the box
         Vector2 boxSize = new Vector2(1f, 0.1f);
-        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 0.5f);
+        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 1);
 
         // Set the Gizmos color
         Gizmos.color = Color.red;
@@ -107,7 +113,7 @@ public class PlayerStateMachine : StateMachine
     
         if (collision.transform.CompareTag("Enemy"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GoToDeathState(this);
         }
 
         if (collision.transform.CompareTag("Door"))
@@ -176,6 +182,14 @@ public class PlayerStateMachine : StateMachine
     }
 
 
+    public void GoToDeathState(PlayerStateMachine stateMachine)
+    {
+        SwitchState(new PlayerDeathState(stateMachine));
+    }
 
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 }

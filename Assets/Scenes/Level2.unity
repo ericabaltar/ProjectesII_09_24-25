@@ -1513,7 +1513,7 @@ RectTransform:
   m_GameObject: {fileID: 902026234}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.87579745, y: 1.4271182, z: 1}
+  m_LocalScale: {x: 0.9199979, y: 1.4271182, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1762107061}
@@ -1521,7 +1521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4907913, y: 0.49818483}
   m_AnchorMax: {x: 0.50100005, y: 0.503756}
-  m_AnchoredPosition: {x: 11.000015, y: -3.9675155}
+  m_AnchoredPosition: {x: 11.2, y: -3.9675155}
   m_SizeDelta: {x: 12.112779, y: 2.5316253}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &902026236
@@ -1616,7 +1616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.67, y: -8.46}
+  m_AnchoredPosition: {x: -11.04, y: -8.46}
   m_SizeDelta: {x: 12.9731, y: 4.0605}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &971354901
@@ -1678,8 +1678,8 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_characterSpacing: 1
+  m_wordSpacing: 7
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -2166,7 +2166,7 @@ RectTransform:
   m_GameObject: {fileID: 1434029690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7991652, y: 1.9266096, z: 1}
+  m_LocalScale: {x: 0.978924, y: 1.7253821, z: 1.0889996}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1762107061}
@@ -2174,7 +2174,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4907913, y: 0.49818483}
   m_AnchorMax: {x: 0.50100005, y: 0.503756}
-  m_AnchoredPosition: {x: -11.869986, y: -8.21}
+  m_AnchoredPosition: {x: -12.890001, y: -8.21}
   m_SizeDelta: {x: 12.112779, y: 2.5316253}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1434029692
@@ -2324,8 +2324,8 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_characterSpacing: 1
+  m_wordSpacing: 7
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
