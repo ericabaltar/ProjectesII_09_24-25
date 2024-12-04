@@ -40,6 +40,12 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
         else if (Input.GetKey(KeyCode.F))
         {
             canSquish = true;
+            canStretch = false;
+            anim.SetBool("falling",true);
+        }
+        else if (Input.GetKey(KeyCode.G))
+        {            
+            anim.SetBool("landing", true);
         }
         else
             anim.SetBool("walking",false);
@@ -71,15 +77,9 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
                 
         }
 
-        if (canStretch == true)
-        {
-            if (transform.localScale.y < 2.0f)
-                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y + 0.01f, transform.localScale.z);
-            else {
-                canStretch = false;
-            }
-        }
-        else if (canSquish == true) {
+        if (canSquish == true) {
+            transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+
             if (transform.localScale.y >= 2.0f)
                 transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
             else if (transform.localScale.y < 1.0f)
@@ -101,10 +101,19 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
         canRotate = true;
+        canStretch = true;
     }
     IEnumerator WaitForStretch() {
 
         yield return new WaitForSeconds(1.0f);
-        canStretch = true;
+
+        do
+        {
+            yield return new WaitForSeconds(0.01f);
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y + 0.05f, transform.localScale.z);
+            transform.localPosition = new Vector3(transform.localPosition.x - 0.02f, transform.localPosition.y, transform.localPosition.z);
+        } while (transform.localScale.y < 5.0f && canStretch == true);
+
+        canStretch = false;
     }
 }
