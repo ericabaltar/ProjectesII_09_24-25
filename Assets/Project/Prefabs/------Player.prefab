@@ -14741,6 +14741,7 @@ GameObject:
   - component: {fileID: 3058506671941099024}
   - component: {fileID: 4520564529164264340}
   - component: {fileID: 2610321126794196277}
+  - component: {fileID: 802393320052430855}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -14755,7 +14756,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6256893077396108614}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14848,6 +14849,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74eff587ab25ca949be9d58703e2bb91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1818360609 &802393320052430855
+RotationConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256893077396108614}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 0}
+    weight: 1
 --- !u!1 &8125823780048917780
 GameObject:
   m_ObjectHideFlags: 0

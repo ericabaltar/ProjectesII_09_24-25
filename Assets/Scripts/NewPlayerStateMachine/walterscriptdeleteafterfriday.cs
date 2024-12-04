@@ -9,11 +9,12 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
     private bool canRotate = true;
     private bool canStretch = false;
     private bool canSquish = false;
-
+    PlayerStateMachine playerState;
     
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
+        playerState = gameObject.GetComponentInParent<PlayerStateMachine>();
     }
 
     // Update is called once per frame
@@ -48,7 +49,6 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
                     GameObject.Find("------Player").GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f &&
                     canRotate) {
 
-                //transform.Rotate(Vector3.forward * -90);
                 canRotate= false;
                 StartCoroutine(WaitForRotation());
                 StartCoroutine(WaitForStretch());
@@ -61,7 +61,6 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
                     GameObject.Find("------Player").GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f &&
                     canRotate) {
 
-                //transform.Rotate(Vector3.forward * 90);
                 canRotate= false;
                 StartCoroutine(WaitForRotation());
                 StartCoroutine(WaitForStretch());
@@ -76,8 +75,24 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha9))
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
             anim.SetBool("landing", true);
+            anim.SetBool("falling", false);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            anim.SetBool("landing", false);
+        }
 
+        Debug.Log("wall:" + playerState.isWallWalking + "          ground:" + playerState.isGrounded);
+        if (canSquish && !canStretch)
+        {
+            if (playerState.isWallWalking || playerState.isGrounded)
+            {
+                anim.SetBool("landing", true);
+                anim.SetBool("faling", false);
+            }
+        }
     }
 
     IEnumerator WaitForRotation() {
@@ -89,13 +104,7 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
     IEnumerator WaitForStretch() {
 
         yield return new WaitForSeconds(1.0f);
-
-        do
-        {
-            yield return new WaitForSeconds(0.01f);
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y + 0.05f, transform.localScale.z);
-            transform.localPosition = new Vector3(transform.localPosition.x - 0.02f, transform.localPosition.y, transform.localPosition.z);
-        } while (transform.localScale.y < 5.0f && canStretch == true);
+        anim.SetBool("falling", true);
 
         canStretch = false;
     }
