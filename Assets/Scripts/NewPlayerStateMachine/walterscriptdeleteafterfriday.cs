@@ -1,20 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
 
 public class walterscriptdeleteafterfriday : MonoBehaviour
 {
     private Animator anim;
     private bool canRotate = true;
-    private bool canStretch = false;
+    private bool canStretch = true;
     private bool canSquish = false;
     PlayerStateMachine playerState;
-    
+    SpriteRenderer mySprite;
     void Start()
     {
-        anim = gameObject.GetComponent<Animator>();
+        anim = gameObject.GetComponentInChildren<Animator>();
+        mySprite = gameObject.GetComponentInChildren<SpriteRenderer>();
         playerState = gameObject.GetComponentInParent<PlayerStateMachine>();
+
+        ConstraintSource source = new ConstraintSource();
+        source.sourceTransform = GameObject.Find("Main Camera").transform;
+        source.weight = 1.0f;
+        gameObject.GetComponent<RotationConstraint>().SetSource(0, source);
     }
 
     // Update is called once per frame
@@ -23,12 +30,12 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             anim.SetBool("walking",true);
-            GetComponent<SpriteRenderer>().flipX = false;
+            mySprite.flipX = false;
         }
         else if (Input.GetKey(KeyCode.A))
         {
             anim.SetBool("walking",true);
-            GetComponent<SpriteRenderer>().flipX = true;
+            mySprite.flipX = true;
         }
         else if (Input.GetKey(KeyCode.F))
         {
@@ -38,74 +45,57 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.G))
         {            
-            anim.SetBool("landing", true);
+            anim.SetBool("falling", false);
         }
         else
             anim.SetBool("walking",false);
 
         if (Input.GetKeyDown(KeyCode.Q)) {
-            if ((GameObject.Find("------Player").GetComponent<PlayerStateMachine>().isWallWalking ||
-                    GameObject.Find("------Player").GetComponent<PlayerStateMachine>().isGrounded) &&
-                    GameObject.Find("------Player").GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f &&
-                    canRotate) {
-
-                canRotate= false;
-                StartCoroutine(WaitForRotation());
-                StartCoroutine(WaitForStretch());
+            if (playerState.isWallWalking || playerState.isGrounded) {
+                if (canRotate == true)
+                {
+                    StartCoroutine(WaitForStretch());
+                }
             }
                 
         }
         else if (Input.GetKeyDown(KeyCode.E)) {
-            if ((GameObject.Find("------Player").GetComponent<PlayerStateMachine>().isWallWalking ||
-                    GameObject.Find("------Player").GetComponent<PlayerStateMachine>().isGrounded) &&
-                    GameObject.Find("------Player").GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f &&
-                    canRotate) {
+            if (playerState.isWallWalking || playerState.isGrounded) {
 
-                canRotate= false;
-                StartCoroutine(WaitForRotation());
-                StartCoroutine(WaitForStretch());
+                if (canRotate == true)
+                {
+                    StartCoroutine(WaitForStretch());
+                }
             }
                 
         }
 
-        
+        if (!playerState.isGrounded && !playerState.isWallWalking)
+        {
+            anim.SetBool("falling", true);
+        }
+        else
+            anim.SetBool("falling", false);
 
         if (Input.GetKeyDown(KeyCode.Alpha0))
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         else if (Input.GetKeyDown(KeyCode.Alpha9))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            anim.SetBool("landing", true);
-            anim.SetBool("falling", false);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            anim.SetBool("landing", false);
-        }
-
-        Debug.Log("wall:" + playerState.isWallWalking + "          ground:" + playerState.isGrounded);
-        if (canSquish && !canStretch)
-        {
-            if (playerState.isWallWalking || playerState.isGrounded)
-            {
-                anim.SetBool("landing", true);
-                anim.SetBool("faling", false);
-            }
-        }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);        
     }
 
-    IEnumerator WaitForRotation() {
-
-        yield return new WaitForSeconds(1.0f);
-        canRotate = true;
-        canStretch = true;
-    }
+    
     IEnumerator WaitForStretch() {
-
+        canRotate = true;
         yield return new WaitForSeconds(1.0f);
         anim.SetBool("falling", true);
 
         canStretch = false;
+    }
+
+    IEnumerator Land() {
+        anim.SetBool("faling", false);
+
+        yield return new WaitForSeconds(0.1f);
+
     }
 }
