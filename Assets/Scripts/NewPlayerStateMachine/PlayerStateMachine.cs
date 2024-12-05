@@ -49,10 +49,12 @@ public class PlayerStateMachine : StateMachine
     void Start()
     {
         SwitchState(new IdlePlayerState(this));
+        //tr = GameObject.Find("Square").GetComponent<Transform>();
     }
 
-
-
+    private bool canRotate = true;
+    private bool canStretch = false;
+    private Transform tr;
     public void RotateLeft()
     {
         if ((rotationZone == RotationZoneNeeded.False) || (rotationZone == RotationZoneNeeded.True && isInRotateZone))
@@ -61,7 +63,9 @@ public class PlayerStateMachine : StateMachine
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
             {
                 GameManager.Instance.StartRotation(false);
-            }
+
+                
+            }            
         }
        
     }
@@ -74,6 +78,8 @@ public class PlayerStateMachine : StateMachine
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
             {
                 GameManager.Instance.StartRotation(true);
+
+                
             }
         }
 

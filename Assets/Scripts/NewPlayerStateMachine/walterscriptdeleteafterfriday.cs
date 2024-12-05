@@ -7,9 +7,14 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
 {
     private Animator anim;
     private bool canRotate = true;
+    private bool canStretch = false;
+    private bool canSquish = false;
+    PlayerStateMachine playerState;
+    
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
+        playerState = gameObject.GetComponentInParent<PlayerStateMachine>();
     }
 
     // Update is called once per frame
@@ -25,6 +30,16 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
             anim.SetBool("walking",true);
             GetComponent<SpriteRenderer>().flipX = true;
         }
+        else if (Input.GetKey(KeyCode.F))
+        {
+            canSquish = true;
+            canStretch = false;
+            anim.SetBool("falling",true);
+        }
+        else if (Input.GetKey(KeyCode.G))
+        {            
+            anim.SetBool("landing", true);
+        }
         else
             anim.SetBool("walking",false);
 
@@ -34,9 +49,9 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
                     GameObject.Find("------Player").GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f &&
                     canRotate) {
 
-                transform.Rotate(Vector3.forward * -90);
                 canRotate= false;
                 StartCoroutine(WaitForRotation());
+                StartCoroutine(WaitForStretch());
             }
                 
         }
@@ -46,38 +61,51 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
                     GameObject.Find("------Player").GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f &&
                     canRotate) {
 
-                transform.Rotate(Vector3.forward * 90);
                 canRotate= false;
                 StartCoroutine(WaitForRotation());
+                StartCoroutine(WaitForStretch());
             }
                 
         }
 
+        
+
         if (Input.GetKeyDown(KeyCode.Alpha0))
-            SceneManager.LoadScene(1);
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
-            SceneManager.LoadScene(2);
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-            SceneManager.LoadScene(3);
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-            SceneManager.LoadScene(4);
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-            SceneManager.LoadScene(5);
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-            SceneManager.LoadScene(6);
-        else if (Input.GetKeyDown(KeyCode.Alpha6))
-            SceneManager.LoadScene(7);
-        else if (Input.GetKeyDown(KeyCode.Alpha7))
-            SceneManager.LoadScene(8);
-        else if (Input.GetKeyDown(KeyCode.Alpha8))
-            SceneManager.LoadScene(9);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         else if (Input.GetKeyDown(KeyCode.Alpha9))
-            SceneManager.LoadScene(10);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            anim.SetBool("landing", true);
+            anim.SetBool("falling", false);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            anim.SetBool("landing", false);
+        }
+
+        Debug.Log("wall:" + playerState.isWallWalking + "          ground:" + playerState.isGrounded);
+        if (canSquish && !canStretch)
+        {
+            if (playerState.isWallWalking || playerState.isGrounded)
+            {
+                anim.SetBool("landing", true);
+                anim.SetBool("faling", false);
+            }
+        }
     }
 
     IEnumerator WaitForRotation() {
 
         yield return new WaitForSeconds(1.0f);
         canRotate = true;
+        canStretch = true;
+    }
+    IEnumerator WaitForStretch() {
+
+        yield return new WaitForSeconds(1.0f);
+        anim.SetBool("falling", true);
+
+        canStretch = false;
     }
 }
