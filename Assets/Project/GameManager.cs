@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
                 rotationFinishEvent.Invoke();
                 isRotating = false;
                 GameObject go = GameObject.Find("------Player");
-                go.GetComponentInChildren<walterscriptdeleteafterfriday>().enabled = true;
+                //go.GetComponentInChildren<walterscriptdeleteafterfriday>().enabled = true;
+                go.GetComponentInChildren<PlayerAnimationAndSound>().enabled = true;
             }
         }
     }
