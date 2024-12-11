@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
 
-public class walterscriptdeleteafterfriday : MonoBehaviour
+public class PlayerAnimationAndSound : MonoBehaviour
 {
     private Animator anim;
     private bool canRotate = true;
@@ -26,48 +26,55 @@ public class walterscriptdeleteafterfriday : MonoBehaviour
         gameObject.GetComponent<RotationConstraint>().SetSource(0, source);
     }
 
-    // Update is called once per frame
+    
     void Update()
-    {        
+    {
+
+        //evento ejecutable cuando se mueva el jugador
         if (Input.GetKey(KeyCode.D))
         {
-            anim.SetBool("walking",true);
+            anim.SetBool("walking", true);
             mySprite.flipX = false;
-            if (!myAudioSource.isPlaying && playerState.isGrounded)
-                myAudioSource.Play();
+            /*if (!myAudioSource.isPlaying && playerState.isGrounded)
+                myAudioSource.Play();*/
         }
+        //evento ejecutable cuando se mueva el jugador
         else if (Input.GetKey(KeyCode.A))
         {
-            anim.SetBool("walking",true);
+            anim.SetBool("walking", true);
             mySprite.flipX = true;
-            if (!myAudioSource.isPlaying && playerState.isGrounded)
-                myAudioSource.Play();
+            /*if (!myAudioSource.isPlaying && playerState.isGrounded)
+                myAudioSource.Play();*/
         }
-        else { 
-            anim.SetBool("walking",false);
-            if (myAudioSource.isPlaying)
-                myAudioSource.loop = false;
+        //evento ejecutable cuando no se mueva el jugador
+        else
+        {
+            anim.SetBool("walking", false);
+            /*if (myAudioSource.isPlaying)
+                myAudioSource.loop = false;*/
         }
 
-
+        //evento animación cuando el jugador detecta no tocar suelo
         if (!playerState.isGrounded && !playerState.isWallWalking)
         {
             anim.SetBool("falling", true);
         }
-        else if (anim.GetBool("falling") && playerState.isGrounded) { 
+        //evento sonido cuando el jugador detecta aterrizar
+        else if (anim.GetBool("falling") && playerState.isGrounded)
+        {
             anim.SetBool("falling", false);
             myAudioSource.Play();
         }
-        else
+        // mantener animación en andar o quieto mientras no caiga
+        else 
             anim.SetBool("falling", false);
+        
 
 
+        //cambiar niveles para <-- o -->
         if (Input.GetKeyDown(KeyCode.Alpha0))
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         else if (Input.GetKeyDown(KeyCode.Alpha9))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);        
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
-
-    
-    
 }

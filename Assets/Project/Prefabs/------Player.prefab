@@ -14629,7 +14629,7 @@ Transform:
   - {fileID: 4054525617760998425}
   - {fileID: 3635913222610637449}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &8596845540295813161
 BoxCollider2D:
@@ -19680,7 +19680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3635913222610637449}
-  - component: {fileID: 870559336772061843}
+  - component: {fileID: 540797405441980943}
   - component: {fileID: 8049244354978178796}
   - component: {fileID: 6182335258388756590}
   m_Layer: 0
@@ -19707,7 +19707,7 @@ Transform:
   m_Father: {fileID: 7525604597024973286}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &870559336772061843
+--- !u!114 &540797405441980943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19716,7 +19716,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9209727107043150252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74eff587ab25ca949be9d58703e2bb91, type: 3}
+  m_Script: {fileID: 11500000, guid: 674bbc53a8af05b4197d313943ff4590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1818360609 &8049244354978178796
@@ -19750,10 +19750,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5a71c1bb44581a544bb7d6f029b04a79, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
