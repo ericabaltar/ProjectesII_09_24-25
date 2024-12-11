@@ -35,23 +35,23 @@ public class PlayerAnimationAndSound : MonoBehaviour
         {
             anim.SetBool("walking", true);
             mySprite.flipX = false;
-            if (!myAudioSource.isPlaying && playerState.isGrounded)
-                myAudioSource.Play();
+            /*if (!myAudioSource.isPlaying && playerState.isGrounded)
+                myAudioSource.Play();*/
         }
         //evento ejecutable cuando se mueva el jugador
         else if (Input.GetKey(KeyCode.A))
         {
             anim.SetBool("walking", true);
             mySprite.flipX = true;
-            if (!myAudioSource.isPlaying && playerState.isGrounded)
-                myAudioSource.Play();
+            /*if (!myAudioSource.isPlaying && playerState.isGrounded)
+                myAudioSource.Play();*/
         }
         //evento ejecutable cuando no se mueva el jugador
         else
         {
             anim.SetBool("walking", false);
-            if (myAudioSource.isPlaying)
-                myAudioSource.loop = false;
+            /*if (myAudioSource.isPlaying)
+                myAudioSource.loop = false;*/
         }
 
         //evento animación cuando el jugador detecta no tocar suelo
