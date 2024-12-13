@@ -630,7 +630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7560435003831304073, guid: ec6eafbcba7284b4dac3f76b2b8f1f8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.5
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 7560435003831304073, guid: ec6eafbcba7284b4dac3f76b2b8f1f8b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1463,7 +1463,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_LinearDrag
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2261130306478367038, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: movementSpeed
@@ -1482,7 +1482,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 852738418}
     - target: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: playerSpeed
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: <rotationZone>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: <isWallWalking>k__BackingField
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4566900565145589108, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
