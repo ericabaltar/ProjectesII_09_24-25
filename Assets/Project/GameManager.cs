@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent rotationFinishEvent;
 
-    public float[] PossibleRotations;
+    public float[] PossibleRotations = {90, 180,270,360 };
     private int targetRotation = 0; //index of PossibleRotations
 
     public const float RotationAngle = 90.0f; //Deg
@@ -106,6 +106,11 @@ public class GameManager : MonoBehaviour
         //Calculate the closest valid angle
         targetRotation = 0;
         float currentAngle = transform.rotation.eulerAngles.z;
+        if (float.IsNaN(currentAngle))
+        {
+            Debug.LogError("Current angle is NaN. Ensure transform.rotation is valid.");
+            return;
+        }
         remainingRotation = (360f + PossibleRotations[targetRotation]) - (360f + currentAngle);
         for(int i = 1; i < PossibleRotations.Length; i++) {
             float dist = (360f + PossibleRotations[i]) - (360f + currentAngle);
@@ -181,4 +186,13 @@ public class GameManager : MonoBehaviour
         else
             Debug.LogWarning("No se ha asignado un sonido.");
     }
+
+
+    public void SetRotationState(RotationState newState)
+    {
+        rotationState = newState;
+    }
+
+
+
 }

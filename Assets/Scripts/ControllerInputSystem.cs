@@ -39,15 +39,12 @@ public class ControllerInputSystem : MonoBehaviour, InputSystem.IPlayerActions
 
     public void OnRotateRight(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        if (!context.performed) { return; }
         
-        RotateRightEvent?.Invoke();
+        if (context.performed) { RotateRightEvent?.Invoke(); }
 
         if(context.canceled)
-        {
-            GameManager.Instance.StopRotation();
-        }
-
+        { GameManager.Instance.SetRotationState(GameManager.RotationState.ADJUSTING); }
+        
     }
 
 }
