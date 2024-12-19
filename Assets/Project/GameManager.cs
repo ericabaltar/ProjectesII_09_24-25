@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     public bool isRotating { get; private set; } = false;
     private bool rotatingRight = false;
 
+    [Header("Bool Choose Middle Point")]
+    [SerializeField] bool middlePoint = false;
+
     private void OnEnable()
     {
         if (Instance != null)
@@ -38,7 +41,14 @@ public class GameManager : MonoBehaviour
 
             float rot = rotationCurve.Evaluate(t) * (rotatingRight ? -1.0f : 1.0f);
             rot *= RotationAngle;
-
+            if(middlePoint)
+            {
+                CalculateCenter();
+            }
+            else
+            {
+                centerPoint = Vector3.zero;
+            }
             //update rotation
             float rotationAngle = rot - lastAngle;
             lastAngle = rot;

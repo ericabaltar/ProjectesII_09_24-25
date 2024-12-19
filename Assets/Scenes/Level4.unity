@@ -4042,7 +4042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3543732089458709445, guid: 5381f5500dc41e6419ee2809dc4566ac, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6165,7 +6165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968951985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -0.56, y: 1.23, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6270,7 +6270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1457989038331200842, guid: 7615ed64140b3494191d44df2424d7f2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1519699412349657247, guid: 7615ed64140b3494191d44df2424d7f2, type: 3}
       propertyPath: m_RootOrder
@@ -6393,6 +6393,7 @@ MonoBehaviour:
   - {fileID: 34053401}
   - {fileID: 858654943}
   rotationSound: {fileID: 2137593257}
+  middlePoint: 1
 --- !u!4 &2137593256
 Transform:
   m_ObjectHideFlags: 0
