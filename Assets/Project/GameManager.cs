@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private float lastAngle = 0.0f;
 
     public AnimationCurve rotationCurve;
-    private float rotationTime = 1.0f;
+    private float rotationTime = 0.0f;
     private float currentRotationTime = 0.0f;
     private float remainingRotation = 0.0f;
 
@@ -46,14 +46,11 @@ public class GameManager : MonoBehaviour
         float rotationAngle = lastAngle + Time.deltaTime;
         lastAngle = rotationAngle;
         RotateObjectsInScene(rotationAngle);
-        //If key is released stop rotation
-        //If degrees are fine stop rotation
     }
 
     private void AdjustingStateUpdate()
     {
-        //ERROR NAN HERE
-
+        
         currentRotationTime = Mathf.Min(currentRotationTime + Time.deltaTime, rotationTime);
         float t = currentRotationTime / rotationTime;
         float ti = 0;
@@ -107,7 +104,7 @@ public class GameManager : MonoBehaviour
             return;
 
         // Get the current angle and normalize it to [0, 360)
-        float currentAngle = NormalizeAngle(transform.rotation.eulerAngles.z);
+        float currentAngle = NormalizeAngle(objectsToConsider[0].transform.eulerAngles.z);
 
         // Initialize variables to track the closest angle
         targetRotation = 0;
@@ -126,8 +123,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        Debug.Log($"Closest Rotation: {PossibleRotations[targetRotation]}, Remaining Rotation: {remainingRotation}");
-
         // Update state to adjust rotation
         rotationState = RotationState.ADJUSTING;
 
@@ -139,7 +134,7 @@ public class GameManager : MonoBehaviour
 
     void RotateObjectsInScene(float angle)
     {
-        //Rigidbody2D rb;
+        
         foreach (GameObject obj in objectsToConsider)
         {
             if (obj != null && obj.tag != "StaticText")

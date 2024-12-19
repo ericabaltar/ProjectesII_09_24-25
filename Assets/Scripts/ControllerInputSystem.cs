@@ -43,7 +43,10 @@ public class ControllerInputSystem : MonoBehaviour, InputSystem.IPlayerActions
         if (context.performed) { RotateRightEvent?.Invoke(); }
 
         if(context.canceled)
-        { GameManager.Instance.SetRotationState(GameManager.RotationState.ADJUSTING); }
+        {
+            GameManager.Instance.StopRotation();
+          //GameManager.Instance.SetRotationState(GameManager.RotationState.ADJUSTING);
+        }
         
     }
 
