@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         rot *= remainingRotation;
 
         //update rotation
+
         float rotationAngle = rot - lastAngle;
         lastAngle = rot;
         RotateObjectsInScene(rotationAngle);
@@ -103,31 +104,43 @@ public class GameManager : MonoBehaviour
         if (rotationState != RotationState.ROTATING)
             return;
 
-        // Get the current angle and normalize it to [0, 360)
         float currentAngle = NormalizeAngle(objectsToConsider[0].transform.eulerAngles.z);
 
-        // Initialize variables to track the closest angle
+        
         targetRotation = 0;
-        remainingRotation = Mathf.Infinity; // Start with a large value
+        remainingRotation = Mathf.Infinity;
+        float closestAngle = currentAngle;
 
         // Find the closest valid rotation in PossibleRotations
         for (int i = 0; i < PossibleRotations.Length; i++)
         {
             float validAngle = NormalizeAngle(PossibleRotations[i]);
-            float dist = Mathf.Abs(NormalizeAngle(validAngle - currentAngle)); // Absolute difference
+            float dist = Mathf.Abs(NormalizeAngle(validAngle - currentAngle)); 
 
             if (dist < remainingRotation)
             {
                 targetRotation = i;
+                currentAngle = validAngle;
                 remainingRotation = dist;
             }
         }
 
-        // Update state to adjust rotation
+
+        foreach (GameObject obj in objectsToConsider)
+        {
+            if (obj != null)
+            {
+                Vector3 eulerRotation = obj.transform.eulerAngles;
+                eulerRotation.z = closestAngle; // Snap to closest valid angle
+                obj.transform.eulerAngles = eulerRotation;
+            }
+        }
+
+
         rotationState = RotationState.ADJUSTING;
 
-        // Calculate the time to adjust rotation
-        float breakingFactor = 1f; // Smooth ending factor
+       
+        float breakingFactor = 1f; 
         rotationTime = (remainingRotation * breakingFactor) / RotationSpeed;
         currentRotationTime = 0.0f;
     }
