@@ -7444,10 +7444,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ------Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5375149397527179732, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7525604597024973286, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -8946,6 +8942,7 @@ MonoBehaviour:
   - {fileID: 1298190606}
   - {fileID: 126432038}
   rotationSound: {fileID: 1318662068}
+  middlePoint: 0
 --- !u!4 &1318662067
 Transform:
   m_ObjectHideFlags: 0

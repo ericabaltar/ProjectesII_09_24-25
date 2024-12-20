@@ -14688,8 +14688,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 3
-  m_LinearDrag: 3
+  m_Mass: 2.7
+  m_LinearDrag: 2.4
   m_AngularDrag: 0.05
   m_GravityScale: 4
   m_Material: {fileID: 6200000, guid: 00147a573011af8449404990bc36c091, type: 2}
