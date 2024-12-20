@@ -43,8 +43,10 @@ public class GameManager : MonoBehaviour
 
     private void RotatingStateUpdate()
     {
-        float rotationAngle = lastAngle + Time.deltaTime;
-        lastAngle = rotationAngle;
+        float fixedAnglePerFrame = 90f;
+
+        float rotationAngle = fixedAnglePerFrame;
+        rotationAngle *= Time.deltaTime;
         RotateObjectsInScene(rotationAngle);
     }
 
@@ -53,8 +55,7 @@ public class GameManager : MonoBehaviour
         
         currentRotationTime = Mathf.Min(currentRotationTime + Time.deltaTime, rotationTime);
         float t = currentRotationTime / rotationTime;
-        float ti = 0;
-
+        
         float rot = rotationCurve.Evaluate(t) * (rotatingRight ? -1.0f : 1.0f);
         rot *= remainingRotation;
 
@@ -64,9 +65,9 @@ public class GameManager : MonoBehaviour
         lastAngle = rot;
         RotateObjectsInScene(rotationAngle);
 
-        if (t == 1.0f)
+        if (t >= 1.0f)
         {
-            StopRotation();
+            //StopRotation();
             //Rotation completed
             StartCoroutine(WaitFixedUpdateAndEnableRigidbodies());
             rotationFinishEvent.Invoke();
@@ -92,7 +93,6 @@ public class GameManager : MonoBehaviour
             return;
 
         rotationState = RotationState.ROTATING;
-        rotatingRight = goesRight;
         PlayRotationSound();
         lastAngle = 0;
         currentRotationTime = 0.0f;
@@ -109,37 +109,26 @@ public class GameManager : MonoBehaviour
         
         targetRotation = 0;
         remainingRotation = Mathf.Infinity;
-        float closestAngle = currentAngle;
 
         // Find the closest valid rotation in PossibleRotations
         for (int i = 0; i < PossibleRotations.Length; i++)
         {
-            float validAngle = NormalizeAngle(PossibleRotations[i]);
-            float dist = Mathf.Abs(NormalizeAngle(validAngle - currentAngle)); 
+            float validAngle = PossibleRotations[i];
+            float dist = Mathf.Abs((360 + validAngle) - (360 + currentAngle)); 
 
             if (dist < remainingRotation)
             {
+                rotatingRight = (validAngle) - (currentAngle) < 0;
                 targetRotation = i;
-                currentAngle = validAngle;
                 remainingRotation = dist;
-            }
-        }
-
-
-        foreach (GameObject obj in objectsToConsider)
-        {
-            if (obj != null)
-            {
-                Vector3 eulerRotation = obj.transform.eulerAngles;
-                eulerRotation.z = closestAngle; // Snap to closest valid angle
-                obj.transform.eulerAngles = eulerRotation;
             }
         }
 
 
         rotationState = RotationState.ADJUSTING;
 
-       
+        Debug.Log(currentAngle);
+        Debug.Log(PossibleRotations[targetRotation]);
         float breakingFactor = 1f; 
         rotationTime = (remainingRotation * breakingFactor) / RotationSpeed;
         currentRotationTime = 0.0f;

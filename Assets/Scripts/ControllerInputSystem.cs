@@ -32,9 +32,15 @@ public class ControllerInputSystem : MonoBehaviour, InputSystem.IPlayerActions
 
     public void OnRotateLeft(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        if(!context.performed) { return; }
+        if (context.performed) { RotateLeftEvent?.Invoke(); }
 
-        RotateLeftEvent?.Invoke();
+        if (context.canceled)
+        {
+            GameManager.Instance.StopRotation();
+            //GameManager.Instance.SetRotationState(GameManager.RotationState.ADJUSTING);
+        }
+
+        
     }
 
     public void OnRotateRight(UnityEngine.InputSystem.InputAction.CallbackContext context)
@@ -45,7 +51,7 @@ public class ControllerInputSystem : MonoBehaviour, InputSystem.IPlayerActions
         if(context.canceled)
         {
             GameManager.Instance.StopRotation();
-          //GameManager.Instance.SetRotationState(GameManager.RotationState.ADJUSTING);
+            //GameManager.Instance.SetRotationState(GameManager.RotationState.ADJUSTING);
         }
         
     }
