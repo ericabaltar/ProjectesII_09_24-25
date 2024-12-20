@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PlayerAnimationAndSound : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PlayerAnimationAndSound : MonoBehaviour
     PlayerStateMachine playerState;
     SpriteRenderer mySprite;
     AudioSource myAudioSource;
+    [field: SerializeField] public AudioClip landSound;
+    [field: SerializeField] public AudioClip stepSound;
     void Start()
     {
         anim = gameObject.GetComponentInChildren<Animator>();
@@ -29,29 +32,37 @@ public class PlayerAnimationAndSound : MonoBehaviour
     
     void Update()
     {
-
+                    
         //evento ejecutable cuando se mueva el jugador
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) )
         {
             anim.SetBool("walking", true);
             mySprite.flipX = false;
-            /*if (!myAudioSource.isPlaying && playerState.isGrounded)
-                myAudioSource.Play();*/
+
+            if (!myAudioSource.isPlaying && playerState.isGrounded)
+            {
+                myAudioSource.clip = stepSound;
+                myAudioSource.pitch = Random.Range(0.8f, 1.0f);
+                myAudioSource.volume = 0.2f;
+                myAudioSource.Play();
+            }            
         }
-        //evento ejecutable cuando se mueva el jugador
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A) )
         {
             anim.SetBool("walking", true);
             mySprite.flipX = true;
-            /*if (!myAudioSource.isPlaying && playerState.isGrounded)
-                myAudioSource.Play();*/
+
+            if (!myAudioSource.isPlaying && playerState.isGrounded)
+            {
+                myAudioSource.clip = stepSound;
+                myAudioSource.pitch = Random.Range(0.8f, 1.0f);
+                myAudioSource.volume = 0.2f;
+                myAudioSource.Play();
+            }
         }
-        //evento ejecutable cuando no se mueva el jugador
         else
         {
             anim.SetBool("walking", false);
-            /*if (myAudioSource.isPlaying)
-                myAudioSource.loop = false;*/
         }
 
         //evento animación cuando el jugador detecta no tocar suelo
@@ -63,6 +74,9 @@ public class PlayerAnimationAndSound : MonoBehaviour
         else if (anim.GetBool("falling") && playerState.isGrounded)
         {
             anim.SetBool("falling", false);
+            myAudioSource.clip = landSound;
+            myAudioSource.pitch = 1.0f;
+            myAudioSource.volume = 1.0f;
             myAudioSource.Play();
         }
         // mantener animación en andar o quieto mientras no caiga

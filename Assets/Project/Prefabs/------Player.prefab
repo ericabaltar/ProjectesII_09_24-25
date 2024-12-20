@@ -14557,7 +14557,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -19719,6 +19719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674bbc53a8af05b4197d313943ff4590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  landSound: {fileID: 8300000, guid: 5a71c1bb44581a544bb7d6f029b04a79, type: 3}
+  stepSound: {fileID: 8300000, guid: fc9942f16a58879468193f3512b74c06, type: 3}
 --- !u!1818360609 &8049244354978178796
 RotationConstraint:
   m_ObjectHideFlags: 0
