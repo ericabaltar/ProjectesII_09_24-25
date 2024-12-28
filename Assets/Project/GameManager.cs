@@ -86,14 +86,14 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
- if(middlePoint)
-            {
-                CalculateCenter();
-            }
-            else
-            {
-                centerPoint = Vector3.zero;
-            }
+        if(middlePoint)
+        {
+            CalculateCenter();
+        }
+        else
+        {
+            centerPoint = Vector3.zero;
+        }
 
         switch (rotationState)
         {
