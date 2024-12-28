@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> objectsToConsider; // Assign in the inspector
     private Vector3 centerPoint;
     public AudioSource rotationSound;
+    private float cumulativeRotation = 0.0f;
 
     public bool isRotating { get; private set; } = false;
     private bool rotatingRight = false;
@@ -44,10 +45,17 @@ public class GameManager : MonoBehaviour
     private void RotatingStateUpdate()
     {
         float fixedAnglePerFrame = 90f;
-
-        float rotationAngle = fixedAnglePerFrame;
+        
+        float rotationAngle = rotatingRight ? fixedAnglePerFrame : -fixedAnglePerFrame;
         rotationAngle *= Time.deltaTime;
         RotateObjectsInScene(rotationAngle);
+        cumulativeRotation += rotationAngle;
+        if (Mathf.Abs(cumulativeRotation) >= RotationAngle)
+        {
+            StopRotation(); // Automatically stop rotation
+        }
+
+
     }
 
     private void AdjustingStateUpdate()
@@ -67,8 +75,6 @@ public class GameManager : MonoBehaviour
 
         if (t >= 1.0f)
         {
-            //StopRotation();
-            //Rotation completed
             StartCoroutine(WaitFixedUpdateAndEnableRigidbodies());
             rotationFinishEvent.Invoke();
             rotationState = RotationState.IDLE;
@@ -94,8 +100,10 @@ public class GameManager : MonoBehaviour
 
         rotationState = RotationState.ROTATING;
         PlayRotationSound();
+        rotatingRight = goesRight;
         lastAngle = 0;
         currentRotationTime = 0.0f;
+        cumulativeRotation = 0.0f;
         ToggleRigidbodiesInScene(false);
     }
 
