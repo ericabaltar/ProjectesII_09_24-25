@@ -69,6 +69,8 @@ public class PlayerAnimationAndSound : MonoBehaviour
         if (!playerState.isGrounded && !playerState.isWallWalking)
         {
             anim.SetBool("falling", true);
+            anim.SetBool("climbing", false);
+            gameObject.GetComponent<RotationConstraint>().constraintActive = true;
         }
         //evento sonido cuando el jugador detecta aterrizar
         else if (anim.GetBool("falling") && playerState.isGrounded)
@@ -78,6 +80,13 @@ public class PlayerAnimationAndSound : MonoBehaviour
             myAudioSource.pitch = 1.0f;
             myAudioSource.volume = 1.0f;
             myAudioSource.Play();
+        }
+        //evento animación cuando el jugador detecta escalar
+        else if (playerState.isWallWalking && !playerState.isGrounded)
+        {
+            anim.SetBool("climbing", true);
+            anim.SetBool("falling", false);
+            gameObject.GetComponent<RotationConstraint>().constraintActive = false;
         }
         // mantener animación en andar o quieto mientras no caiga
         else 
