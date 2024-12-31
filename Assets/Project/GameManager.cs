@@ -2,22 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class GameManager : MonoBehaviour
 {
+    public enum RotationState { IDLE, ROTATING, ADJUSTING }
+
+    public RotationState rotationState { get; private set; } = RotationState.IDLE;
+
     public static GameManager Instance;
 
     public UnityEvent rotationFinishEvent;
 
-    public AnimationCurve rotationCurve;
-    public const float RotationAngle = 90.0f;
-    public float rotationTime = 2.0f;
-    private float currentRotationTime = 0.0f;
+    public float[] PossibleRotations = {90, 180,270,360 };
+    private int targetRotation = 0; //index of PossibleRotations
+
+    public const float RotationAngle = 90.0f; //Deg
+    public const float RotationSpeed = 90.0f; //Deg/s
     private float lastAngle = 0.0f;
+
+    public AnimationCurve rotationCurve;
+    private float rotationTime = 0.0f;
+    private float currentRotationTime = 0.0f;
+    private float remainingRotation = 0.0f;
 
     public List<GameObject> objectsToConsider; // Assign in the inspector
     private Vector3 centerPoint;
     public AudioSource rotationSound;
+    private float cumulativeRotation = 0.0f;
 
     public bool isRotating { get; private set; } = false;
     private bool rotatingRight = false;
@@ -32,58 +44,120 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
     }
+
+    private void RotatingStateUpdate()
+    {
+        float fixedAnglePerFrame = 90f;
+        
+        float rotationAngle = rotatingRight ? fixedAnglePerFrame : -fixedAnglePerFrame;
+        rotationAngle *= Time.deltaTime;
+        RotateObjectsInScene(rotationAngle);
+        cumulativeRotation += rotationAngle;
+        if (Mathf.Abs(cumulativeRotation) >= RotationAngle)
+        {
+            StopRotation(); // Automatically stop rotation
+        }
+
+
+    }
+           
+
+    private void AdjustingStateUpdate()
+    {
+        
+        currentRotationTime = Mathf.Min(currentRotationTime + Time.deltaTime, rotationTime);
+        float t = currentRotationTime / rotationTime;
+        
+        float rot = rotationCurve.Evaluate(t) * (rotatingRight ? -1.0f : 1.0f);
+        rot *= remainingRotation;
+
+        //update rotation
+
+        float rotationAngle = rot - lastAngle;
+        lastAngle = rot;
+        RotateObjectsInScene(rotationAngle);
+
+        if (t >= 1.0f)
+        {
+            StartCoroutine(WaitFixedUpdateAndEnableRigidbodies());
+            rotationFinishEvent.Invoke();
+            rotationState = RotationState.IDLE;
+        }
+    }
     void Update()
     {
-        if (isRotating)
-        { //Update rotation
-            currentRotationTime = Mathf.Min(currentRotationTime + Time.deltaTime, rotationTime);
-            float t = currentRotationTime / rotationTime;
+        if(middlePoint)
+        {
+            CalculateCenter();
+        }
+        else
+        {
+            centerPoint = Vector3.zero;
+        }
 
-            float rot = rotationCurve.Evaluate(t) * (rotatingRight ? -1.0f : 1.0f);
-            rot *= RotationAngle;
-            if(middlePoint)
-            {
-                CalculateCenter();
-            }
-            else
-            {
-                centerPoint = Vector3.zero;
-            }
-            //update rotation
-            float rotationAngle = rot - lastAngle;
-            lastAngle = rot;
-            RotateObjectsInScene(rotationAngle);
-
-            if (t == 1.0f)
-            {
-                //Rotation completed
-                StartCoroutine(WaitFixedUpdateAndEnableRigidbodies());
-                rotationFinishEvent.Invoke();
-                isRotating = false;
-                GameObject go = GameObject.Find("------Player");
-                //go.GetComponentInChildren<walterscriptdeleteafterfriday>().enabled = true;
-                go.GetComponentInChildren<PlayerAnimationAndSound>().enabled = true;
-            }
+        switch (rotationState)
+        {
+            case RotationState.ROTATING:
+                RotatingStateUpdate();
+                break;
+            case RotationState.ADJUSTING:
+                AdjustingStateUpdate();
+                break;
         }
     }
 
     public void StartRotation(bool goesRight)
     {
-        if(!isRotating)
-        {
-            isRotating = true;
-            rotatingRight = goesRight;
-            PlayRotationSound();
-            lastAngle = 0;
-            currentRotationTime = 0.0f;
-            ToggleRigidbodiesInScene(false);
-        }
+        if (rotationState != RotationState.IDLE)
+            return;
+
+        rotationState = RotationState.ROTATING;
+        PlayRotationSound();
+        rotatingRight = goesRight;
+        lastAngle = 0;
+        currentRotationTime = 0.0f;
+        cumulativeRotation = 0.0f;
+        ToggleRigidbodiesInScene(false);
+    }
+
+    public void StopRotation()
+    {
+        if (rotationState != RotationState.ROTATING)
+            return;
+
+        float currentAngle = NormalizeAngle(objectsToConsider[0].transform.eulerAngles.z);
+
         
+        targetRotation = 0;
+        remainingRotation = Mathf.Infinity;
+
+        // Find the closest valid rotation in PossibleRotations
+        for (int i = 0; i < PossibleRotations.Length; i++)
+        {
+            float validAngle = PossibleRotations[i];
+            float dist = Mathf.Abs((360 + validAngle) - (360 + currentAngle)); 
+
+            if (dist < remainingRotation)
+            {
+                rotatingRight = (validAngle) - (currentAngle) < 0;
+                targetRotation = i;
+                remainingRotation = dist;
+            }
+        }
+
+
+        rotationState = RotationState.ADJUSTING;
+
+        Debug.Log(currentAngle);
+        Debug.Log(PossibleRotations[targetRotation]);
+        float breakingFactor = 1f; 
+        rotationTime = (remainingRotation * breakingFactor) / RotationSpeed;
+        currentRotationTime = 0.0f;
     }
 
     void RotateObjectsInScene(float angle)
     {
-        //Rigidbody2D rb;
+        
         foreach (GameObject obj in objectsToConsider)
         {
             if (obj != null && obj.tag != "StaticText")
@@ -139,4 +213,17 @@ public class GameManager : MonoBehaviour
         else
             Debug.LogWarning("No se ha asignado un sonido.");
     }
+
+
+    public void SetRotationState(RotationState newState)
+    {
+        rotationState = newState;
+    }
+
+    private float NormalizeAngle(float angle)
+    {
+        return (angle % 360f + 360f) % 360f;
+    }
+
+
 }
