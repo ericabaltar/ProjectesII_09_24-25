@@ -794,7 +794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7560435003831304073, guid: ec6eafbcba7284b4dac3f76b2b8f1f8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.5
+      value: -15.5
       objectReference: {fileID: 0}
     - target: {fileID: 7560435003831304073, guid: ec6eafbcba7284b4dac3f76b2b8f1f8b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8691,6 +8691,11 @@ MonoBehaviour:
   rotationFinishEvent:
     m_PersistentCalls:
       m_Calls: []
+  PossibleRotations:
+  - 90
+  - 180
+  - 270
+  - 360
   rotationCurve:
     serializedVersion: 2
     m_Curve:
@@ -8715,7 +8720,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  rotationTime: 1
   objectsToConsider:
   - {fileID: 1298190606}
   - {fileID: 126432038}
