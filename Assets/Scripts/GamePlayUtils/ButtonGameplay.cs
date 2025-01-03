@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class ButtonGameplay : MonoBehaviour
 {
-
-    [SerializeField] private GameObject door;
+    [SerializeField] private GameObject door; 
+    [SerializeField] private SpriteRenderer buttonSpriteRenderer; 
+    [SerializeField] private Sprite pressedSprite; 
+    [SerializeField] private Sprite defaultSprite; 
 
     private int pressCount = 0;
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.CompareTag("Player") || other.CompareTag("Box"))
         {
             pressCount++;
@@ -24,7 +25,6 @@ public class ButtonGameplay : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-       
         if (other.CompareTag("Player") || other.CompareTag("Box"))
         {
             pressCount = Mathf.Max(0, pressCount - 1);
@@ -37,19 +37,27 @@ public class ButtonGameplay : MonoBehaviour
 
     private void OnButtonPressed()
     {
-        
         if (door != null)
         {
             door.SetActive(true);
+        }
+
+        if (buttonSpriteRenderer != null && pressedSprite != null)
+        {
+            buttonSpriteRenderer.sprite = pressedSprite;
         }
     }
 
     private void OnButtonReleased()
     {
-      
         if (door != null)
         {
             door.SetActive(false);
+        }
+
+        if (buttonSpriteRenderer != null && defaultSprite != null)
+        {
+            buttonSpriteRenderer.sprite = defaultSprite;
         }
     }
 }
