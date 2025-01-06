@@ -3172,6 +3172,14 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 1251442062}
+    - target: {fileID: 2310606114530688431, guid: bce82784af1734be8a12ebb4fd638bb7, type: 3}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 619d74ee6e48c4f5089aa9c1ce136b23, type: 3}
+    - target: {fileID: 2310606114530688431, guid: bce82784af1734be8a12ebb4fd638bb7, type: 3}
+      propertyPath: pressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2d028bfd41cb84918a8dd68d9f8abcae, type: 3}
     - target: {fileID: 3719404228500600320, guid: bce82784af1734be8a12ebb4fd638bb7, type: 3}
       propertyPath: m_RootOrder
       value: -1
