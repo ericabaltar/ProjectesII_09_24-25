@@ -65,8 +65,7 @@ public class PlayerStateMachine : StateMachine
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
             {
                 GameManager.Instance.StartRotation(false);
-                //GetComponentInChildren<walterscriptdeleteafterfriday>().enabled = false;
-                GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
+                //GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
 
             }
         }
@@ -81,8 +80,7 @@ public class PlayerStateMachine : StateMachine
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
             {
                 GameManager.Instance.StartRotation(true);
-                //GetComponentInChildren<walterscriptdeleteafterfriday>().enabled = false;
-                GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
+                //GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
 
             }
         }
@@ -125,7 +123,6 @@ public class PlayerStateMachine : StateMachine
         {
             GetComponentInChildren<RotationConstraint>().enabled = false;
             GetComponentInChildren<Animator>().enabled = false;
-            //GetComponentInChildren<walterscriptdeleteafterfriday>().enabled = false;
             GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
             GoToDeathState(this);
         }
