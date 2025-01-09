@@ -37,12 +37,14 @@ public class MovingPlayerState : PlayerBaseState
 
     public override void FixedTick()
     {
+        /*
         stateMachine.rigidbody2d.AddForce(new Vector2(stateMachine.InputReader.MovementValue.x, 0f) * stateMachine.playerSpeed * Time.fixedDeltaTime,ForceMode2D.Force);
 
         float maxSpeed = stateMachine.playerSpeed; // Define max speed
         stateMachine.rigidbody2d.velocity = new Vector2(
             Mathf.Clamp(stateMachine.rigidbody2d.velocity.x, -maxSpeed, maxSpeed),
             stateMachine.rigidbody2d.velocity.y); // Preserve vertical velocity
+        */
     }
 
     public override void Exit()

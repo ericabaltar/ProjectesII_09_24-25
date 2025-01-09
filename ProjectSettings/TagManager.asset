@@ -10,6 +10,7 @@ TagManager:
   - StaticText
   - RotateZone
   - Button
+  - Box
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3066158177
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: LastToRender
+    uniqueID: 2072592411
     locked: 0

@@ -4,44 +4,64 @@ using UnityEngine;
 
 public class ButtonGameplay : MonoBehaviour
 {
-    #region variables
-    public enum ButtonDoings
+    [SerializeField] private GameObject door; 
+    [SerializeField] private SpriteRenderer buttonSpriteRenderer; 
+    [SerializeField] private Sprite pressedSprite; 
+    [SerializeField] private Sprite defaultSprite; 
+
+    private int pressCount = 0;
+
+
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        None,
-        Disappear,
-        Move,
-        Timer
+        
+        if (other.CompareTag("Player") || other.CompareTag("Box"))
+        {
+            pressCount++;
+            if (pressCount == 1) 
+            {
+                OnButtonPressed();
+            }
+        }
     }
 
-    public ButtonDoings buttonTypes;
-
-    public GameObject objectToEdit;
-
-    [SerializeField] float timer = 0f;
-    [SerializeField] float timerReset = 50f;
-    [SerializeField] float timeToMove = 40f;
-    #endregion
-
-
-    public void OnPressedButton()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        switch(buttonTypes)
+        if (other.CompareTag("Player") || other.CompareTag("Box"))
         {
-            case ButtonDoings.None:
-                break; 
-            case ButtonDoings.Disappear:
-                objectToEdit.SetActive(false);
-                break;
-            case ButtonDoings.Move:
-                
-                break;
-            case ButtonDoings.Timer:
-                objectToEdit.SetActive(false);
-                break;
-            default:
-                break;
+            pressCount = Mathf.Max(0, pressCount - 1);
+            if (pressCount == 0) 
+            {
+                OnButtonReleased();
+            }
+        }
+    }
+
+    private void OnButtonPressed()
+    {
+        if (door != null)
+        {
+            door.SetActive(true);
         }
 
+        if (buttonSpriteRenderer != null && pressedSprite != null)
+        {
+            buttonSpriteRenderer.sprite = pressedSprite;
+        }
+    }
 
+    private void OnButtonReleased()
+    {
+        if (door != null)
+        {
+            door.SetActive(false);
+        }
+
+        if (buttonSpriteRenderer != null && defaultSprite != null)
+        {
+            buttonSpriteRenderer.sprite = defaultSprite;
+        }
     }
 }
+

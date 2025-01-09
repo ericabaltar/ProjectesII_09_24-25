@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
     public bool isRotating { get; private set; } = false;
     private bool rotatingRight = false;
 
+    [Header("Bool Choose Middle Point")]
+    [SerializeField] bool middlePoint = false;
+
     private void OnEnable()
     {
         if (Instance != null)
@@ -57,6 +60,7 @@ public class GameManager : MonoBehaviour
 
 
     }
+           
 
     private void AdjustingStateUpdate()
     {
@@ -82,6 +86,15 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        if(middlePoint)
+        {
+            CalculateCenter();
+        }
+        else
+        {
+            centerPoint = Vector3.zero;
+        }
+
         switch (rotationState)
         {
             case RotationState.ROTATING:

@@ -1,54 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 [CustomEditor(typeof(ButtonGameplay))]
 public class ButtonEditor : Editor
 {
-    #region SerializeProperty
-
-    SerializedProperty buttonType;
-    SerializedProperty objectToEdit;
-    SerializedProperty timer;
-    SerializedProperty timerReset;
-    SerializedProperty timeToMove;
-
-    #endregion
+    SerializedProperty door;
+    SerializedProperty buttonSpriteRenderer;
+    SerializedProperty pressedSprite;
+    SerializedProperty defaultSprite;
 
     private void OnEnable()
     {
-        buttonType = serializedObject.FindProperty("buttonTypes");
-        objectToEdit = serializedObject.FindProperty("objectToEdit");
-        timer = serializedObject.FindProperty("timer");
-        timerReset = serializedObject.FindProperty("timerReset");
-        timeToMove = serializedObject.FindProperty("timeToMove");
-
+        door = serializedObject.FindProperty("door");
+        buttonSpriteRenderer = serializedObject.FindProperty("buttonSpriteRenderer");
+        pressedSprite = serializedObject.FindProperty("pressedSprite");
+        defaultSprite = serializedObject.FindProperty("defaultSprite");
     }
+
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        EditorGUILayout.PropertyField(buttonType);
-        if(buttonType.enumValueIndex != 0)
-        {
-            EditorGUILayout.PropertyField(objectToEdit);
-        }
-        
-        if(buttonType.enumValueIndex == 2)
-        {
-            EditorGUILayout.PropertyField(timeToMove);
-        }
 
-        if (buttonType.enumValueIndex == 3 )
-        {
-            EditorGUILayout.PropertyField (timer);
-            EditorGUILayout.PropertyField (timerReset);
+        EditorGUILayout.PropertyField(door, new GUIContent("Door"));
+        EditorGUILayout.PropertyField(buttonSpriteRenderer, new GUIContent("Button Sprite Renderer"));
+        EditorGUILayout.PropertyField(pressedSprite, new GUIContent("Pressed Sprite"));
+        EditorGUILayout.PropertyField(defaultSprite, new GUIContent("Default Sprite"));
 
-        }
-
-
-        
         serializedObject.ApplyModifiedProperties();
     }
 }
+

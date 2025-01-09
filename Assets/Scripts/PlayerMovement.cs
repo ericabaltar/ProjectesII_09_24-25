@@ -52,32 +52,21 @@ public class PlayerController : MonoBehaviour
     {
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
-        
-
-        //Raycasts
-
-        if(isWallWalking )
-        {
-          
-            
-        }
-        else
-        {
-           
-        }
-
 
     }
 
     private void FixedUpdate()
     {
-        
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical).normalized;
+
+        characterRigidBody.velocity = movement * movementSpeed;
+        /*
             if (moveHorizontal != 0)
             {
                 characterRigidBody.AddForce(new Vector2(moveHorizontal,0.00f) * movementSpeed,ForceMode2D.Force);
                 //this.characterRigidBody.velocity = new Vector2(this.moveHorizontal * this.movementSpeed, this.currentVelocity.y);
             }
-        
+        */
     }
 
 
