@@ -11,8 +11,11 @@ public class ButtonGameplay : MonoBehaviour
 
     private int pressCount = 0;
 
-    private void OnTriggerEnter(Collider other)
+
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        
         if (other.CompareTag("Player") || other.CompareTag("Box"))
         {
             pressCount++;
@@ -23,7 +26,7 @@ public class ButtonGameplay : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Box"))
         {

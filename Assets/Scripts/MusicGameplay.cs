@@ -17,7 +17,8 @@ public class MusicGameplay : MonoBehaviour
         else
             Destroy(gameObject);
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
+        //MIRAD EN EL NIVEL SI YA EXISTE
 
         gameMusic.Play();
     }

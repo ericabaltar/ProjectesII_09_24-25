@@ -471,6 +471,27 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &440693913 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6777802409916629767, guid: bce82784af1734be8a12ebb4fd638bb7, type: 3}
+  m_PrefabInstance: {fileID: 2006751743}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &440693917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440693913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ccb85cf0f17d1640825f36977d93d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 1653398987}
+  buttonSpriteRenderer: {fileID: 0}
+  pressedSprite: {fileID: 21300000, guid: 2d028bfd41cb84918a8dd68d9f8abcae, type: 3}
+  defaultSprite: {fileID: 0}
 --- !u!1 &554334311
 GameObject:
   m_ObjectHideFlags: 0
@@ -4667,6 +4688,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box
       objectReference: {fileID: 0}
+    - target: {fileID: 3097029949400900592, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
+      propertyPath: m_Mass
+      value: 2.21
+      objectReference: {fileID: 0}
     - target: {fileID: 8700157265479846305, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4966,6 +4991,7 @@ MonoBehaviour:
   objectsToConsider:
   - {fileID: 1298190606}
   - {fileID: 126432038}
+  - {fileID: 1777765982}
   rotationSound: {fileID: 1318662068}
   middlePoint: 0
 --- !u!4 &1318662067
@@ -6173,6 +6199,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1777765982 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2112751111974241363, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
+  m_PrefabInstance: {fileID: 948711942}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1913815492
 GameObject:
   m_ObjectHideFlags: 0
@@ -6513,10 +6544,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Button
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2310606114530688431, guid: bce82784af1734be8a12ebb4fd638bb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6777802409916629767, guid: bce82784af1734be8a12ebb4fd638bb7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 440693917}
   m_SourcePrefab: {fileID: 100100000, guid: bce82784af1734be8a12ebb4fd638bb7, type: 3}
 --- !u!1001 &799334317354163817
 PrefabInstance:
