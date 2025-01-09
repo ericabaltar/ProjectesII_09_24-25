@@ -5014,6 +5014,7 @@ MonoBehaviour:
   - 180
   - 270
   - 360
+  - 0
   rotationCurve:
     serializedVersion: 2
     m_Curve:
