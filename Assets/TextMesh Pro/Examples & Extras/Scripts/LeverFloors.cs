@@ -15,6 +15,8 @@ public class LeverFloors : MonoBehaviour
     {
         if (playerTouch && Input.GetKeyDown(KeyCode.Space))
         {
+
+            Debug.Log("flip");
             for (int i = 0; i < platformHolder.gameObject.transform.childCount; i++)
             {
                 GameObject child = platformHolder.gameObject.transform.GetChild(i).gameObject;
