@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         float fixedAnglePerFrame = 90f;
         
-        float rotationAngle = rotatingRight ? fixedAnglePerFrame : -fixedAnglePerFrame;
+        float rotationAngle = rotatingRight ? -fixedAnglePerFrame : fixedAnglePerFrame;
         rotationAngle *= Time.deltaTime;
         RotateObjectsInScene(rotationAngle);
         cumulativeRotation += rotationAngle;

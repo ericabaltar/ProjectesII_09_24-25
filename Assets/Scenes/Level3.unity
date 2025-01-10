@@ -210,6 +210,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1495560125131605691, guid: aa694645e1eab1d499bb162a4d282575, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d85231e3da0f03d43a1febc4795fbd54, type: 3}
+    - target: {fileID: 1495560125131605691, guid: aa694645e1eab1d499bb162a4d282575, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5454545
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495560125131605691, guid: aa694645e1eab1d499bb162a4d282575, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495560125131605691, guid: aa694645e1eab1d499bb162a4d282575, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4394053176862425855, guid: aa694645e1eab1d499bb162a4d282575, type: 3}
       propertyPath: m_Name
       value: Background
