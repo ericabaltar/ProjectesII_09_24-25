@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerStateMachine : StateMachine
 {
@@ -28,6 +29,7 @@ public class PlayerStateMachine : StateMachine
     [Space(10)]
     [Header("UI Transition")]
     public List<MoveUiToCenter> moveUiToCenterList = new List<MoveUiToCenter>();
+    public TransitionFace transitionFace;
     public AudioSource sceneSound;
     Scene scene;
 
@@ -138,6 +140,8 @@ public class PlayerStateMachine : StateMachine
                 {
                     ui.MoveToCloseCurtains();
                 }
+
+                transitionFace.OnEndScene();
 
             }
             StartCoroutine(Wait(time));
