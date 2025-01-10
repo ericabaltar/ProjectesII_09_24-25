@@ -8772,6 +8772,7 @@ MonoBehaviour:
   - 180
   - 270
   - 360
+  - 0
   rotationCurve:
     serializedVersion: 2
     m_Curve:
@@ -12771,7 +12772,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1984300470
 GameObject:

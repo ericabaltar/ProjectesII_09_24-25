@@ -19,9 +19,9 @@ public class LeverFloors : MonoBehaviour
             flipped = !flipped;
 
             if (flipped)
-                gameObject.GetComponent<SpriteRenderer>().sprite = rightSp;
-            else
                 gameObject.GetComponent<SpriteRenderer>().sprite = leftSp;
+            else
+                gameObject.GetComponent<SpriteRenderer>().sprite = rightSp;
 
 
             for (int i = 0; i < platformHolder.gameObject.transform.childCount; i++)
