@@ -4688,10 +4688,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box
       objectReference: {fileID: 0}
-    - target: {fileID: 3097029949400900592, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
-      propertyPath: m_Mass
-      value: 2.21
-      objectReference: {fileID: 0}
     - target: {fileID: 8700157265479846305, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
       propertyPath: m_RootOrder
       value: 1
