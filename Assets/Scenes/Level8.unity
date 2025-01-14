@@ -1183,10 +1183,10 @@ RectTransform:
   m_Father: {fileID: 1908661502}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.4907913, y: 0.49818483}
-  m_AnchorMax: {x: 0.50100005, y: 0.503756}
-  m_AnchoredPosition: {x: -14.88, y: 4.31342}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.4784163, y: 0.5076174}
+  m_AnchorMax: {x: 0.48911434, y: 0.51371014}
+  m_AnchoredPosition: {x: 0.24788284, y: 0.018455029}
+  m_SizeDelta: {x: 0.29253054, y: -0.0764904}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &772339636
 SpriteRenderer:
@@ -4998,6 +4998,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box
       objectReference: {fileID: 0}
+    - target: {fileID: 3097029949400900592, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097029949400900592, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
+      propertyPath: m_AngularDrag
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022510032484941826, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8700157265479846305, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5573,10 +5585,10 @@ RectTransform:
   m_Father: {fileID: 1908661502}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.4907913, y: 0.49977505}
-  m_AnchorMax: {x: 0.50100005, y: 0.50525445}
-  m_AnchoredPosition: {x: -14.61, y: 3.52}
-  m_SizeDelta: {x: 187.46696, y: 47.470886}
+  m_AnchorMin: {x: 0.47880426, y: 0.5076174}
+  m_AnchorMax: {x: 0.48911434, y: 0.51371014}
+  m_AnchoredPosition: {x: -0.27051353, y: 0.06548834}
+  m_SizeDelta: {x: 187.0605, y: 47.57575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1502919673
 MonoBehaviour:
@@ -5598,7 +5610,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Blue buttons activate the exit when pressed.
+  m_text: You and blue boxes can press buttons
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d36a92b99e584b94fa21737d0835df0c, type: 2}
   m_sharedMaterial: {fileID: 9110075640661480612, guid: d36a92b99e584b94fa21737d0835df0c, type: 2}
@@ -5661,7 +5673,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 93.662346, y: 23.633766, z: 93.96017, w: 23.858713}
+  m_margin: {x: 93.93375, y: 24.00386, z: 93.343346, w: 23.858713}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
