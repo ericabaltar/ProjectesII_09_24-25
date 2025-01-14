@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerStateMachine : StateMachine
 {
@@ -28,6 +29,7 @@ public class PlayerStateMachine : StateMachine
     [Space(10)]
     [Header("UI Transition")]
     public List<MoveUiToCenter> moveUiToCenterList = new List<MoveUiToCenter>();
+    public TransitionFace transitionFace;
     public AudioSource sceneSound;
     Scene scene;
 
@@ -65,8 +67,7 @@ public class PlayerStateMachine : StateMachine
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
             {
                 GameManager.Instance.StartRotation(false);
-                //GetComponentInChildren<walterscriptdeleteafterfriday>().enabled = false;
-                GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
+                //GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
 
             }
         }
@@ -81,8 +82,7 @@ public class PlayerStateMachine : StateMachine
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
             {
                 GameManager.Instance.StartRotation(true);
-                //GetComponentInChildren<walterscriptdeleteafterfriday>().enabled = false;
-                GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
+                //GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
 
             }
         }
@@ -125,7 +125,6 @@ public class PlayerStateMachine : StateMachine
         {
             GetComponentInChildren<RotationConstraint>().enabled = false;
             GetComponentInChildren<Animator>().enabled = false;
-            //GetComponentInChildren<walterscriptdeleteafterfriday>().enabled = false;
             GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
             GoToDeathState(this);
         }
@@ -141,6 +140,8 @@ public class PlayerStateMachine : StateMachine
                 {
                     ui.MoveToCloseCurtains();
                 }
+
+                transitionFace.OnEndScene();
 
             }
             StartCoroutine(Wait(time));

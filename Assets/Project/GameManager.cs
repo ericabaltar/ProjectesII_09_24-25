@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent rotationFinishEvent;
 
-    public float[] PossibleRotations = {90, 180,270,360 };
+    public float[] PossibleRotations = {90, 180,270,360,0 };
     private int targetRotation = 0; //index of PossibleRotations
 
     public const float RotationAngle = 90.0f; //Deg
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         float fixedAnglePerFrame = 90f;
         
-        float rotationAngle = rotatingRight ? fixedAnglePerFrame : -fixedAnglePerFrame;
+        float rotationAngle = rotatingRight ? -fixedAnglePerFrame : fixedAnglePerFrame;
         rotationAngle *= Time.deltaTime;
         RotateObjectsInScene(rotationAngle);
         cumulativeRotation += rotationAngle;
