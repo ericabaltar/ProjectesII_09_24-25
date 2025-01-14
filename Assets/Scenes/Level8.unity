@@ -4998,14 +4998,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box
       objectReference: {fileID: 0}
-    - target: {fileID: 3097029949400900592, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
-      propertyPath: m_LinearDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3097029949400900592, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
-      propertyPath: m_AngularDrag
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 8022510032484941826, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
       propertyPath: m_Material
       value: 
@@ -5016,11 +5008,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8700157265479846305, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.27
+      value: 3.77
       objectReference: {fileID: 0}
     - target: {fileID: 8700157265479846305, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.16
+      value: -3.32
       objectReference: {fileID: 0}
     - target: {fileID: 8700157265479846305, guid: 2aa00a0404eaf304fac1d910f1663b93, type: 3}
       propertyPath: m_LocalPosition.z
