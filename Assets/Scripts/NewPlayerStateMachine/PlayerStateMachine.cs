@@ -43,6 +43,7 @@ public class PlayerStateMachine : StateMachine
     public ParticleSystem particlesRight;
     public ParticleSystem particlesUp;
     public ParticleSystem particlesDown;
+    public ParticleSystem particlesRunning;
     [Space(10)]
     [Header("Death Part")]
     [Space(10)]
@@ -94,8 +95,8 @@ public class PlayerStateMachine : StateMachine
     public void CheckGroundPlayer()
     {
         
-        Vector2 boxSize = new Vector2(1f, 0.1f); // Adjust width and height
-        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 1f); // Offset
+        Vector2 boxSize = new Vector2(1.32f, 0.1f); // Adjust width and height
+        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 0.91f); // Offset
 
      
         Collider2D groundCollider = Physics2D.OverlapBox(boxCenter, boxSize, 0f,groundedLayerMask);
@@ -107,14 +108,11 @@ public class PlayerStateMachine : StateMachine
 
     private void OnDrawGizmosSelected()
     {
-        // Define the size and position of the box
-        Vector2 boxSize = new Vector2(1f, 0.1f);
-        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 1);
+        Vector2 boxSize = new Vector2(1.32f, 0.1f);
+        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 0.91f);
 
-        // Set the Gizmos color
         Gizmos.color = Color.red;
 
-        // Draw the detection box
         Gizmos.DrawWireCube(boxCenter, boxSize);
     }
 
