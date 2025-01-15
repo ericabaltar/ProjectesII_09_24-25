@@ -17,6 +17,9 @@ public class PlayerDeathState : PlayerBaseState
         stateMachine.GetComponent<Collider2D>().enabled = false;
         int direction = Random.Range(0, 2);
         stateMachine.rigidbody2d.AddForce(new Vector2(direction == 0 ? pushToSide : -pushToSide, pushUp), ForceMode2D.Impulse);
+
+        stateMachine.sceneSound.PlayOneShot(stateMachine.ouchSound);
+        ;
     }
 
     public override void Tick(float deltaTime)

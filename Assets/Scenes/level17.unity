@@ -1925,6 +1925,10 @@ PrefabInstance:
       propertyPath: moveUiToCenterList.Array.data[1]
       value: 
       objectReference: {fileID: 852738418}
+    - target: {fileID: 2662612195821194221, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: transitionFace
       value: 
