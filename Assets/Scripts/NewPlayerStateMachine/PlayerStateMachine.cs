@@ -48,6 +48,7 @@ public class PlayerStateMachine : StateMachine
     [Header("Death Part")]
     [Space(10)]
     public ParticleSystem particlesDeath;
+    public AudioClip ouchSound;
     float timeToReset = 2f;
 
     // Start is called before the first frame update

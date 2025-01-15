@@ -17,15 +17,7 @@ public class RigidMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A)) {
-
-            rigidbody2.velocity = new Vector2(-velocity, rigidbody2.velocity.y);
-        }
-        else if (Input.GetKey(KeyCode.D)) {
-
-            rigidbody2.velocity = new Vector2(velocity, rigidbody2.velocity.y);
-        }
-        else
+        if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) 
             rigidbody2.velocity = new Vector2(0.0f, rigidbody2.velocity.y);
 
 
