@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerStateMachine : StateMachine
 {
@@ -13,6 +16,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public bool isGrounded { get; private set; } = true;
     [field: SerializeField] public bool isWallWalking { get; private set; } = false;
     [field: SerializeField] public bool isInRotateZone { get; private set; } = false;
+    public LayerMask groundedLayerMask;
 
     public enum RotationZoneNeeded
     {
@@ -23,6 +27,14 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public RotationZoneNeeded rotationZone { get; private set; } = RotationZoneNeeded.False;
 
     [Space(10)]
+    [Header("UI Transition")]
+    public List<MoveUiToCenter> moveUiToCenterList = new List<MoveUiToCenter>();
+    public TransitionFace transitionFace;
+    public AudioSource sceneSound;
+    Scene scene;
+
+    float time = 2f;
+    [Space(10)]
     [Header("Particles Part")]
     [Space(10)]
     public LayerMask layerMask;
@@ -31,15 +43,24 @@ public class PlayerStateMachine : StateMachine
     public ParticleSystem particlesRight;
     public ParticleSystem particlesUp;
     public ParticleSystem particlesDown;
+    public ParticleSystem particlesRunning;
+    [Space(10)]
+    [Header("Death Part")]
+    [Space(10)]
+    public ParticleSystem particlesDeath;
+    public AudioClip ouchSound;
+    float timeToReset = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
         SwitchState(new IdlePlayerState(this));
+        //tr = GameObject.Find("Square").GetComponent<Transform>();
     }
 
-
-
+    private bool canRotate = true;
+    private bool canStretch = false;
+    private Transform tr;
     public void RotateLeft()
     {
         if ((rotationZone == RotationZoneNeeded.False) || (rotationZone == RotationZoneNeeded.True && isInRotateZone))
@@ -48,6 +69,8 @@ public class PlayerStateMachine : StateMachine
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
             {
                 GameManager.Instance.StartRotation(false);
+                //GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
+
             }
         }
        
@@ -61,6 +84,8 @@ public class PlayerStateMachine : StateMachine
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
             {
                 GameManager.Instance.StartRotation(true);
+                //GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
+
             }
         }
 
@@ -71,11 +96,11 @@ public class PlayerStateMachine : StateMachine
     public void CheckGroundPlayer()
     {
         
-        Vector2 boxSize = new Vector2(1f, 0.1f); // Adjust width and height
-        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 0.52f); // Offset
+        Vector2 boxSize = new Vector2(1.32f, 0.1f); // Adjust width and height
+        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 0.91f); // Offset
 
      
-        Collider2D groundCollider = Physics2D.OverlapBox(boxCenter, boxSize, 0f);
+        Collider2D groundCollider = Physics2D.OverlapBox(boxCenter, boxSize, 0f,groundedLayerMask);
 
         isGrounded = groundCollider != null;
 
@@ -84,48 +109,59 @@ public class PlayerStateMachine : StateMachine
 
     private void OnDrawGizmosSelected()
     {
-        // Define the size and position of the box
-        Vector2 boxSize = new Vector2(1f, 0.1f);
-        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 0.5f);
+        Vector2 boxSize = new Vector2(1.32f, 0.1f);
+        Vector2 boxCenter = new Vector2(transform.position.x, transform.position.y - 0.91f);
 
-        // Set the Gizmos color
         Gizmos.color = Color.red;
 
-        // Draw the detection box
         Gizmos.DrawWireCube(boxCenter, boxSize);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        /*
-        if (collision.transform.CompareTag("Untagged") || collision.transform.CompareTag("Walkable"))
-        {
-            isGrounded = true;
-        }
-        */
+    
         if (collision.transform.CompareTag("Enemy"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GetComponentInChildren<RotationConstraint>().enabled = false;
+            GetComponentInChildren<Animator>().enabled = false;
+            GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
+            GoToDeathState(this);
         }
+
+        if (collision.transform.CompareTag("Door"))
+        {
+
+            if (sceneSound != null)
+            {
+
+                sceneSound.Play();
+                foreach (MoveUiToCenter ui in moveUiToCenterList)
+                {
+                    ui.MoveToCloseCurtains();
+                }
+
+                transitionFace.OnEndScene();
+
+            }
+            StartCoroutine(Wait(time));
+
+        }
+    
+
+        IEnumerator Wait(float time)
+        {
+
+            yield return new WaitForSeconds(time);
+            scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.buildIndex + 1);
+        }
+
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        /*
-        if (collision.transform.CompareTag("Untagged") || collision.transform.CompareTag("Walkable"))
-        {
-            Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(1f, 0.1f), 0f);
-            isGrounded = false;
-            foreach (Collider2D col in colliders)
-            {
-                if (col.CompareTag("Untagged") || col.CompareTag("Walkable"))
-                {
-                    isGrounded = true;
-                    break;
-                }
-            }
-        }
-        */
+       
     }
 
 
@@ -160,6 +196,14 @@ public class PlayerStateMachine : StateMachine
     }
 
 
+    public void GoToDeathState(PlayerStateMachine stateMachine)
+    {
+        SwitchState(new PlayerDeathState(stateMachine));
+    }
 
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 }
