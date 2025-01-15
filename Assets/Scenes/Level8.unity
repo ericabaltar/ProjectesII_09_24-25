@@ -5598,7 +5598,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You and blue boxes can press buttons
+  m_text: You and blue boxes can press buttons to activate doors.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d36a92b99e584b94fa21737d0835df0c, type: 2}
   m_sharedMaterial: {fileID: 9110075640661480612, guid: d36a92b99e584b94fa21737d0835df0c, type: 2}
