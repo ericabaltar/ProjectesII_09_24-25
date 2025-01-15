@@ -12,7 +12,7 @@ public class MovingPlayerState : PlayerBaseState
     {
         stateMachine.InputReader.RotateLeftEvent += stateMachine.RotateLeft;
         stateMachine.InputReader.RotateRightEvent += stateMachine.RotateRight;
-        stateMachine.particlesRunning.Play();
+        
     }
 
 
@@ -20,6 +20,15 @@ public class MovingPlayerState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         stateMachine.CheckGroundPlayer();
+
+        if(stateMachine.isGrounded)
+        {
+            stateMachine.particlesRunning.Play();
+        }
+        else
+        {
+            stateMachine.particlesRunning.Stop();
+        }
 
         Debug.Log("MOVING");
 
