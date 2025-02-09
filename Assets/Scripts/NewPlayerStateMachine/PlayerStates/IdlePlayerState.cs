@@ -22,7 +22,7 @@ public class IdlePlayerState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         stateMachine.CheckGroundPlayer();
-
+        stateMachine.StretchAndSquash();
         if (stateMachine.InputReader.MovementValue.x> 0f || stateMachine.InputReader.MovementValue.x < 0f)
         {
             stateMachine.SwitchState(new MovingPlayerState(stateMachine));

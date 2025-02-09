@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -16,6 +17,17 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public bool isGrounded { get; private set; } = true;
     [field: SerializeField] public bool isWallWalking { get; private set; } = false;
     [field: SerializeField] public bool isInRotateZone { get; private set; } = false;
+    //ANIMATIONS PLAYER
+
+    SpriteRenderer mySprite;
+    private Animator anim;
+    [field: SerializeField] public AudioClip landSound;
+    [field: SerializeField] public AudioClip stepSound;
+    AudioSource myAudioSource;
+
+
+    //END ANIMATIONS PLAYER
+
     public LayerMask groundedLayerMask;
 
     public enum RotationZoneNeeded
@@ -51,16 +63,21 @@ public class PlayerStateMachine : StateMachine
     public AudioClip ouchSound;
     float timeToReset = 2f;
 
+    private void Awake()
+    {
+        myAudioSource = GetComponentInChildren<AudioSource>();
+        mySprite = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponentInChildren<Animator>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         SwitchState(new IdlePlayerState(this));
-        //tr = GameObject.Find("Square").GetComponent<Transform>();
     }
 
     private bool canRotate = true;
     private bool canStretch = false;
-    private Transform tr;
     public void RotateLeft()
     {
         if ((rotationZone == RotationZoneNeeded.False) || (rotationZone == RotationZoneNeeded.True && isInRotateZone))
@@ -205,5 +222,70 @@ public class PlayerStateMachine : StateMachine
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void AnimateAndRotateAccording()
+    {
+        if (InputReader.MovementValue.x >0f)
+        {
+            anim.SetBool("walking", true);
+            mySprite.flipX = false;
+
+            if (!myAudioSource.isPlaying && isGrounded)
+            {
+                myAudioSource.clip = stepSound;
+                myAudioSource.pitch = Random.Range(0.8f, 1.0f);
+                myAudioSource.volume = 0.2f;
+                myAudioSource.Play();
+            }
+        }
+        else if (InputReader.MovementValue.x < 0f)
+        {
+            anim.SetBool("walking", true);
+            mySprite.flipX = true;
+
+            if (!myAudioSource.isPlaying && isGrounded)
+            {
+                myAudioSource.clip = stepSound;
+                myAudioSource.pitch = Random.Range(0.8f, 1.0f);
+                myAudioSource.volume = 0.2f;
+                myAudioSource.Play();
+            }
+        }
+        else
+        {
+            anim.SetBool("walking", false);
+        }
+    }
+
+    public void StretchAndSquash()
+    {
+        if (!isGrounded && !isWallWalking)
+        {
+            anim.SetBool("falling", true);
+            anim.SetBool("climbing", false);
+            gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = true;
+        }
+        //evento sonido cuando el jugador detecta aterrizar
+        else if (anim.GetBool("falling") && isGrounded)
+        {
+            anim.SetBool("falling", false);
+            myAudioSource.clip = landSound;
+            myAudioSource.pitch = 1.0f;
+            myAudioSource.volume = 1.0f;
+            myAudioSource.Play();
+        }
+        //evento animación cuando el jugador detecta escalar
+        else if (isWallWalking && !isGrounded)
+        {
+            anim.SetBool("climbing", true);
+            anim.SetBool("falling", false);
+            gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = false;
+        }
+        // mantener animación en andar o quieto mientras no caiga
+        else
+            anim.SetBool("falling", false);
+
+    }
+
 
 }

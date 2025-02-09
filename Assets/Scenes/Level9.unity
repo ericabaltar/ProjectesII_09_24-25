@@ -1589,6 +1589,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 540797405441980943, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1142165313409666511, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_LinearDrag
       value: 1
@@ -1609,6 +1613,14 @@ PrefabInstance:
       propertyPath: moveUiToCenterList.Array.data[1]
       value: 
       objectReference: {fileID: 852738418}
+    - target: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: landSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a71c1bb44581a544bb7d6f029b04a79, type: 3}
+    - target: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: stepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: fc9942f16a58879468193f3512b74c06, type: 3}
     - target: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: transitionFace
       value: 
@@ -1660,6 +1672,10 @@ PrefabInstance:
     - target: {fileID: 7525604597024973286, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049244354978178796, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_Weight
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3291824311299362937, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
