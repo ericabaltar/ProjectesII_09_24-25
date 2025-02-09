@@ -14900,6 +14900,8 @@ MonoBehaviour:
   <isGrounded>k__BackingField: 0
   <isWallWalking>k__BackingField: 0
   <isInRotateZone>k__BackingField: 0
+  landSound: {fileID: 8300000, guid: 5a71c1bb44581a544bb7d6f029b04a79, type: 3}
+  stepSound: {fileID: 8300000, guid: fc9942f16a58879468193f3512b74c06, type: 3}
   groundedLayerMask:
     serializedVersion: 2
     m_Bits: 63
