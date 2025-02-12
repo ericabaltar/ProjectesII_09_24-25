@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class WallWalkingState : PlayerBaseState
 {
+    [field: SerializeField] public ControllerInputSystem InputReader { get; private set; }
+
     public WallWalkingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
         
@@ -17,6 +20,8 @@ public class WallWalkingState : PlayerBaseState
         stateMachine.InputReader.RotateRightEvent += stateMachine.RotateRight;
         resetGravity = stateMachine.rigidbody2d.gravityScale;
         stateMachine.rigidbody2d.gravityScale = 0f;
+        stateMachine.HaltClimbingAnimation();
+        stateMachine.gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = false;
     }
 
    
@@ -59,6 +64,13 @@ public class WallWalkingState : PlayerBaseState
                 stateMachine.particlesDown.Play();
         }
 
+        if (stateMachine.InputReader.MovementValue.y != 0f || stateMachine.InputReader.MovementValue.x != 0f)
+        {
+            stateMachine.ResumeClimbingAnimation();
+        }
+        else {
+            stateMachine.HaltClimbingAnimation();
+        }
     }
 
     public override void FixedTick()
@@ -80,7 +92,10 @@ public class WallWalkingState : PlayerBaseState
         stateMachine.particlesLeft.Stop();
         stateMachine.particlesRight.Stop();
         stateMachine.particlesUp.Stop();
+        stateMachine.RestartAnimationSpeed();
+        stateMachine.gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = true;
     }
 
-
+    //que caiga durante un instante destirotea todo
+    //Variables de animación no están coordinadas con los estados
 }
