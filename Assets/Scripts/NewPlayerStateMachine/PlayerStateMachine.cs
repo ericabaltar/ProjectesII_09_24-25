@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -24,7 +25,6 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public AudioClip landSound;
     [field: SerializeField] public AudioClip stepSound;
     AudioSource myAudioSource;
-
 
     //END ANIMATIONS PLAYER
 
@@ -85,6 +85,7 @@ public class PlayerStateMachine : StateMachine
 
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
             {
+                GoToRotateState();
                 GameManager.Instance.StartRotation(false);
                 //GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
 
@@ -100,6 +101,7 @@ public class PlayerStateMachine : StateMachine
 
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
             {
+                GoToRotateState();
                 GameManager.Instance.StartRotation(true);
                 //GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
 
@@ -233,7 +235,7 @@ public class PlayerStateMachine : StateMachine
             if (!myAudioSource.isPlaying && isGrounded)
             {
                 myAudioSource.clip = stepSound;
-                myAudioSource.pitch = Random.Range(0.8f, 1.0f);
+                myAudioSource.pitch = UnityEngine.Random.Range(0.8f, 1.0f);
                 myAudioSource.volume = 0.2f;
                 myAudioSource.Play();
             }
@@ -246,7 +248,7 @@ public class PlayerStateMachine : StateMachine
             if (!myAudioSource.isPlaying && isGrounded)
             {
                 myAudioSource.clip = stepSound;
-                myAudioSource.pitch = Random.Range(0.8f, 1.0f);
+                myAudioSource.pitch = UnityEngine.Random.Range(0.8f, 1.0f);
                 myAudioSource.volume = 0.2f;
                 myAudioSource.Play();
             }
@@ -306,5 +308,10 @@ public class PlayerStateMachine : StateMachine
     {
 
         anim.speed = 1.0f;
+    }
+
+    public void GoToRotateState()
+    {
+        SwitchState(new RotatingPlayerState(this));
     }
 }
