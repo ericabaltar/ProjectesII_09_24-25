@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 
 public class PlayerStateMachine : StateMachine
 {
+    public Material glowMaterial;
 
     [field: SerializeField] public Rigidbody2D rigidbody2d;
     [field: SerializeField] public ControllerInputSystem InputReader { get; private set; }
@@ -187,23 +188,21 @@ public class PlayerStateMachine : StateMachine
         if (collision.CompareTag("Walkable"))
         {
             isWallWalking = true;
-
+            EnableEmission(collision.gameObject, glowMaterial);
         }
 
-        if(collision.CompareTag("RotateZone"))
+        if (collision.CompareTag("RotateZone"))
         {
             isInRotateZone = true;
         }
-
     }
-
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Walkable"))
         {
             isWallWalking = false;
-
+            DisableEmission(collision.gameObject);
         }
 
         if (collision.CompareTag("RotateZone"))
@@ -212,8 +211,31 @@ public class PlayerStateMachine : StateMachine
         }
     }
 
+    // Enable emission and assign glowMaterial
+    private void EnableEmission(GameObject obj, Material glowMat)
+    {
+        Renderer renderer = obj.GetComponent<Renderer>();
+        if (renderer != null && glowMat != null)
+        {
+            renderer.material = glowMat; // Assign the material
+            renderer.material.EnableKeyword("_EMISSION");
+        }
+    }
 
-    public void GoToDeathState(PlayerStateMachine stateMachine)
+    // Disable emission by reverting to the default material
+    private void DisableEmission(GameObject obj)
+    {
+        Renderer renderer = obj.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material.DisableKeyword("_EMISSION");
+            renderer.material.SetColor("_EmissionColor", Color.black); // Remove glow effect
+        }
+    }
+
+
+
+public void GoToDeathState(PlayerStateMachine stateMachine)
     {
         SwitchState(new PlayerDeathState(stateMachine));
     }
@@ -280,14 +302,14 @@ public class PlayerStateMachine : StateMachine
             myAudioSource.volume = 1.0f;
             myAudioSource.Play();
         }
-        //evento animación cuando el jugador detecta escalar
+        //evento animaci?n cuando el jugador detecta escalar
         else if (isWallWalking && !isGrounded)
         {
             anim.SetBool("climbing", true);
             anim.SetBool("falling", false);
             gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = false;
         }
-        // mantener animación en andar o quieto mientras no caiga
+        // mantener animaci?n en andar o quieto mientras no caiga
         else
             anim.SetBool("falling", false);
 

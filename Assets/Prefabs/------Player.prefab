@@ -14894,6 +14894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58a9539f07b3614c8a71678f13cdf69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glowMaterial: {fileID: 2100000, guid: c031af8e414404063b1dfe7d25058476, type: 2}
   rigidbody2d: {fileID: 1142165313409666511}
   <InputReader>k__BackingField: {fileID: 6097434802618400618}
   playerSpeed: 20000
