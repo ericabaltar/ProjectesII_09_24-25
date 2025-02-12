@@ -251,6 +251,12 @@ public class PlayerStateMachine : StateMachine
                 myAudioSource.Play();
             }
         }
+        else if (isWallWalking && !isGrounded)
+        {
+            anim.SetBool("climbing", true);
+            anim.SetBool("falling", false);
+            gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = false;
+        }
         else
         {
             anim.SetBool("walking", false);
@@ -287,5 +293,18 @@ public class PlayerStateMachine : StateMachine
 
     }
 
+    public void HaltClimbingAnimation() {
 
+        anim.speed = 0.0f;
+    }
+    public void ResumeClimbingAnimation()
+    {
+
+        anim.speed = 2.0f;
+    }
+    public void RestartAnimationSpeed()
+    {
+
+        anim.speed = 1.0f;
+    }
 }
