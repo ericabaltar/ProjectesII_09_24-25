@@ -12,7 +12,8 @@ public class MovingPlayerState : PlayerBaseState
     {
         stateMachine.InputReader.RotateLeftEvent += stateMachine.RotateLeft;
         stateMachine.InputReader.RotateRightEvent += stateMachine.RotateRight;
-        
+        //Debug.Log("Moving State");
+
     }
 
 

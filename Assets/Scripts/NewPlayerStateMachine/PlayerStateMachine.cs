@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,15 +17,15 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float playerSpeed = 100f;
     [field: SerializeField] public bool isGrounded { get; private set; } = true;
     [field: SerializeField] public bool isWallWalking { get; private set; } = false;
+    bool safety_isWallWalking = false;
     [field: SerializeField] public bool isInRotateZone { get; private set; } = false;
     //ANIMATIONS PLAYER
 
     SpriteRenderer mySprite;
-    private Animator anim;
+    public Animator anim;
     [field: SerializeField] public AudioClip landSound;
     [field: SerializeField] public AudioClip stepSound;
     AudioSource myAudioSource;
-
 
     //END ANIMATIONS PLAYER
 
@@ -85,6 +86,7 @@ public class PlayerStateMachine : StateMachine
 
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
             {
+                GoToRotateState();
                 GameManager.Instance.StartRotation(false);
                 //GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
 
@@ -100,6 +102,7 @@ public class PlayerStateMachine : StateMachine
 
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
             {
+                GoToRotateState();
                 GameManager.Instance.StartRotation(true);
                 //GetComponentInChildren<PlayerAnimationAndSound>().enabled = false;
 
@@ -187,7 +190,7 @@ public class PlayerStateMachine : StateMachine
         if (collision.CompareTag("Walkable"))
         {
             isWallWalking = true;
-
+            safety_isWallWalking = true;
         }
 
         if(collision.CompareTag("RotateZone"))
@@ -202,7 +205,7 @@ public class PlayerStateMachine : StateMachine
     {
         if (collision.CompareTag("Walkable"))
         {
-            isWallWalking = false;
+            safety_isWallWalking = false;
 
         }
 
@@ -233,7 +236,7 @@ public class PlayerStateMachine : StateMachine
             if (!myAudioSource.isPlaying && isGrounded)
             {
                 myAudioSource.clip = stepSound;
-                myAudioSource.pitch = Random.Range(0.8f, 1.0f);
+                myAudioSource.pitch = UnityEngine.Random.Range(0.8f, 1.0f);
                 myAudioSource.volume = 0.2f;
                 myAudioSource.Play();
             }
@@ -246,7 +249,7 @@ public class PlayerStateMachine : StateMachine
             if (!myAudioSource.isPlaying && isGrounded)
             {
                 myAudioSource.clip = stepSound;
-                myAudioSource.pitch = Random.Range(0.8f, 1.0f);
+                myAudioSource.pitch = UnityEngine.Random.Range(0.8f, 1.0f);
                 myAudioSource.volume = 0.2f;
                 myAudioSource.Play();
             }
@@ -255,7 +258,7 @@ public class PlayerStateMachine : StateMachine
         {
             anim.SetBool("climbing", true);
             anim.SetBool("falling", false);
-            gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = false;
+            //gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = false;
         }
         else
         {
@@ -268,8 +271,7 @@ public class PlayerStateMachine : StateMachine
         if (!isGrounded && !isWallWalking)
         {
             anim.SetBool("falling", true);
-            anim.SetBool("climbing", false);
-            gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = true;
+            anim.SetBool("climbing", false);            
         }
         //evento sonido cuando el jugador detecta aterrizar
         else if (anim.GetBool("falling") && isGrounded)
@@ -284,8 +286,7 @@ public class PlayerStateMachine : StateMachine
         else if (isWallWalking && !isGrounded)
         {
             anim.SetBool("climbing", true);
-            anim.SetBool("falling", false);
-            gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = false;
+            anim.SetBool("falling", false);            
         }
         // mantener animación en andar o quieto mientras no caiga
         else
@@ -306,5 +307,17 @@ public class PlayerStateMachine : StateMachine
     {
 
         anim.speed = 1.0f;
+    }
+
+    public void GoToRotateState()
+    {
+        SwitchState(new RotatingPlayerState(this));
+    }
+
+    public void SetWallWalking(bool b){
+        isWallWalking = b;
+    }
+    public bool GetSafety(){
+        return safety_isWallWalking;
     }
 }
