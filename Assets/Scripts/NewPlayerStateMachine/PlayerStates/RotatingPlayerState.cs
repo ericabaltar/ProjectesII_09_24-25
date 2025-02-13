@@ -11,16 +11,24 @@ public class RotatingPlayerState : PlayerBaseState
 
     public override void Enter()
     {
-        
+        Debug.Log("Rotating State");
+
     }
 
     public override void Tick(float deltaTime)
     {
-        stateMachine.GetComponentInChildren<RotationConstraint>().enabled = true;
-        if(!GameManager.Instance.isRotating)
+        if (!GameManager.Instance.isRotating && stateMachine.isWallWalking)
         {
-            stateMachine.SwitchState(new IdlePlayerState(stateMachine));
+            stateMachine.SwitchState(new WallWalkingState(stateMachine));
+
+            return;
         }
+        else if (stateMachine.isWallWalking == true) {
+            stateMachine.SwitchState(new WallWalkingState(stateMachine));
+            return;
+        }
+        else
+            stateMachine.SwitchState(new IdlePlayerState(stateMachine));
     }
 
 

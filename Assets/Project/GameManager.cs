@@ -148,8 +148,6 @@ public class GameManager : MonoBehaviour
 
         rotationState = RotationState.ADJUSTING;
 
-        Debug.Log(currentAngle);
-        Debug.Log(PossibleRotations[targetRotation]);
         float breakingFactor = 1f; 
         rotationTime = (remainingRotation * breakingFactor) / RotationSpeed;
         currentRotationTime = 0.0f;
