@@ -41,6 +41,7 @@ public class WallWalkingState : PlayerBaseState
         {
             if (!stateMachine.particlesLeft.isPlaying)
                 stateMachine.particlesLeft.Play();
+            hit1.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
         RaycastHit2D hit2 = Physics2D.Raycast(stateMachine.transform.position, stateMachine.transform.right, 1.5f, stateMachine.layerMask);
 
@@ -71,6 +72,9 @@ public class WallWalkingState : PlayerBaseState
         else {
             stateMachine.HaltClimbingAnimation();
         }
+
+        
+
     }
 
     public override void FixedTick()
