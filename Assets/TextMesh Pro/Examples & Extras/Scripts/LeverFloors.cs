@@ -50,7 +50,7 @@ public class LeverFloors : MonoBehaviour
                             child.GetComponent<SpriteRenderer>().color.r
                             , child.GetComponent<SpriteRenderer>().color.g
                             , child.GetComponent<SpriteRenderer>().color.b
-                            , 60.0f / 255.0f);
+                            , 20.0f / 255.0f);
 
                     child.GetComponent<BoxCollider2D>().enabled = false;
 
@@ -58,7 +58,7 @@ public class LeverFloors : MonoBehaviour
                             child.GetComponent<SpriteRenderer>().color.r
                             , child.GetComponent<SpriteRenderer>().color.g
                             , child.GetComponent<SpriteRenderer>().color.b
-                            , 60.0f / 255.0f);
+                            , 20.0f / 255.0f);
                 }
             }            
         }

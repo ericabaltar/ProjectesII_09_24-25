@@ -153,33 +153,10 @@ public class PlayerStateMachine : StateMachine
             GoToDeathState(this);
         }
 
-        if (collision.transform.CompareTag("Door"))
-        {
-
-            if (sceneSound != null)
-            {
-
-                sceneSound.Play();
-                foreach (MoveUiToCenter ui in moveUiToCenterList)
-                {
-                    ui.MoveToCloseCurtains();
-                }
-
-                transitionFace.OnEndScene();
-
-            }
-            StartCoroutine(Wait(time));
-
-        }
+        
     
 
-        IEnumerator Wait(float time)
-        {
-
-            yield return new WaitForSeconds(time);
-            scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.buildIndex + 1);
-        }
+        
 
 
     }
@@ -207,6 +184,31 @@ public class PlayerStateMachine : StateMachine
             isInRotateZone = true;
         }
 
+        if (collision.transform.CompareTag("Door"))
+        {
+
+            if (sceneSound != null)
+            {
+
+                sceneSound.Play();
+                foreach (MoveUiToCenter ui in moveUiToCenterList)
+                {
+                    ui.MoveToCloseCurtains();
+                }
+
+                transitionFace.OnEndScene();
+
+            }
+            StartCoroutine(Wait(time));
+
+            IEnumerator Wait(float time)
+            {
+
+                yield return new WaitForSeconds(time);
+                scene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(scene.buildIndex + 1);
+            }
+        }
     }
 
 
