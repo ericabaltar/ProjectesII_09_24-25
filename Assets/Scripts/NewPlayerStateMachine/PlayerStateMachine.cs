@@ -64,6 +64,9 @@ public class PlayerStateMachine : StateMachine
     public AudioClip ouchSound;
     float timeToReset = 2f;
 
+
+    RaycastHit2D groundCheck1;
+    RaycastHit2D groundCheck2;
     private void Awake()
     {
         myAudioSource = GetComponentInChildren<AudioSource>();
@@ -124,6 +127,8 @@ public class PlayerStateMachine : StateMachine
 
         isGrounded = groundCollider != null;
 
+        groundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x - 1.5f, transform.position.y), -transform.up, 1.5f, layerMask);
+        groundCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + 1.5f, transform.position.y), -transform.up, 1.5f, layerMask);
     }
 
 
@@ -189,8 +194,12 @@ public class PlayerStateMachine : StateMachine
     {
         if (collision.CompareTag("Walkable"))
         {
+            if (groundCheck1.collider != null || groundCheck2.collider != null)
+            {
+                
             isWallWalking = true;
             safety_isWallWalking = true;
+            }
         }
 
         if(collision.CompareTag("RotateZone"))
