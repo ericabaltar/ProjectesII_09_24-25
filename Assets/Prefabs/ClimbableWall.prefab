@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3818536081474132757}
   - component: {fileID: 3170479337241432535}
   - component: {fileID: 3455069327595693067}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ClimbableWall
   m_TagString: Walkable
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1472016922872409008}
   - component: {fileID: 6794915498397552222}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}

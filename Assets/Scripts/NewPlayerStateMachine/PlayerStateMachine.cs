@@ -64,6 +64,12 @@ public class PlayerStateMachine : StateMachine
     public AudioClip ouchSound;
     float timeToReset = 2f;
 
+    //SAVE RAYCAST WALL
+    public GameObject hit1;
+    public GameObject hit2;
+    public GameObject hit3;
+    public GameObject hit4;
+
     private void Awake()
     {
         myAudioSource = GetComponentInChildren<AudioSource>();

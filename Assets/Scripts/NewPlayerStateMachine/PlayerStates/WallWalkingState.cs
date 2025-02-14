@@ -28,42 +28,54 @@ public class WallWalkingState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
 
-        if (!stateMachine.isWallWalking)
-        {
-            stateMachine.SwitchState(new MovingPlayerState(stateMachine));
-            return;
-        }
-        
-
         RaycastHit2D hit1 = Physics2D.Raycast(stateMachine.transform.position, -stateMachine.transform.right, 1.5f, stateMachine.layerMask);
 
         if (hit1.collider != null)
         {
             if (!stateMachine.particlesLeft.isPlaying)
                 stateMachine.particlesLeft.Play();
-            hit1.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+           
+            stateMachine.hit1 = hit1.collider.gameObject.transform.GetChild(0).gameObject;
+            stateMachine.hit1.SetActive(true);
         }
+        
+
         RaycastHit2D hit2 = Physics2D.Raycast(stateMachine.transform.position, stateMachine.transform.right, 1.5f, stateMachine.layerMask);
 
         if (hit2.collider != null)
         {
             if (!stateMachine.particlesRight.isPlaying)
                 stateMachine.particlesRight.Play();
+            stateMachine.hit2 = hit2.collider.gameObject.transform.GetChild(0).gameObject;
+            stateMachine.hit2.SetActive(true);
         }
+        
+
         RaycastHit2D hit3 = Physics2D.Raycast(stateMachine.transform.position, stateMachine.transform.up, 1.5f, stateMachine.layerMask);
 
         if (hit3.collider != null)
         {
             if (!stateMachine.particlesUp.isPlaying)
                 stateMachine.particlesUp.Play();
+
+            stateMachine.hit3 = hit3.collider.gameObject.transform.GetChild(0).gameObject;
+            stateMachine.hit3.SetActive(true);
+            
         }
+        
+
+
         RaycastHit2D hit4 = Physics2D.Raycast(stateMachine.transform.position, -stateMachine.transform.up, 1.5f, stateMachine.layerMask);
 
         if (hit4.collider != null)
         {
             if (!stateMachine.particlesDown.isPlaying)
                 stateMachine.particlesDown.Play();
+
+            stateMachine.hit4 = hit4.collider.gameObject.transform.GetChild(0).gameObject;
+            stateMachine.hit4.SetActive(true);
         }
+       
 
         if (stateMachine.InputReader.MovementValue.y != 0f || stateMachine.InputReader.MovementValue.x != 0f)
         {
@@ -73,7 +85,11 @@ public class WallWalkingState : PlayerBaseState
             stateMachine.HaltClimbingAnimation();
         }
 
-        
+        if (!stateMachine.isWallWalking)
+        {
+            stateMachine.SwitchState(new MovingPlayerState(stateMachine));
+            return;
+        }
 
     }
 
@@ -98,8 +114,31 @@ public class WallWalkingState : PlayerBaseState
         stateMachine.particlesUp.Stop();
         stateMachine.RestartAnimationSpeed();
         stateMachine.gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = true;
+
+        if (stateMachine.hit1 != null)
+        {
+            Debug.Log("false");
+            stateMachine.hit1.SetActive(false);
+            stateMachine.hit1 = null;
+        }
+        else if (stateMachine.hit2 != null)
+        {
+            stateMachine.hit2.SetActive(false);
+            stateMachine.hit2 = null;
+        }
+        else if (stateMachine.hit3 != null)
+        {
+            stateMachine.hit3.SetActive(false);
+            stateMachine.hit3 = null;
+        }
+        else if (stateMachine.hit4 != null)
+        {
+            stateMachine.hit4.SetActive(false);
+            stateMachine.hit4 = null;
+        }
+
     }
 
     //que caiga durante un instante destirotea todo
-    //Variables de animaciÛn no est·n coordinadas con los estados
+    //Variables de animaci√≥n no est√°n coordinadas con los estados
 }
