@@ -3862,9 +3862,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClimbableWall
       objectReference: {fileID: 0}
-    - target: {fileID: 3818536081474132757, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+    - target: {fileID: 3167253601902914050, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6364457838127086095, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
       propertyPath: m_RootOrder
@@ -3909,6 +3909,10 @@ PrefabInstance:
     - target: {fileID: 6364457838127086095, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824639413056703566, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
