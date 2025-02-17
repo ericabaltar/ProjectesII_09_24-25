@@ -36,6 +36,17 @@ public class GameManager : MonoBehaviour
 
     [Header("Bool Choose Middle Point")]
     [SerializeField] bool middlePoint = false;
+    public enum TypeOfCenter { None,MiddlePoint, GameObject};
+    public TypeOfCenter typeOfCenter;
+    [SerializeField, HideInInspector] private GameObject centerGameObject;
+
+
+    public TypeOfCenter GetTypeOfCenter()
+    {
+        return typeOfCenter;
+    }
+
+
 
     private void OnEnable()
     {
@@ -84,15 +95,20 @@ public class GameManager : MonoBehaviour
             rotationState = RotationState.IDLE;
         }
     }
+
     void Update()
     {
-        if(middlePoint)
+        if(typeOfCenter == TypeOfCenter.MiddlePoint)
         {
             CalculateCenter();
         }
-        else
+        else if(typeOfCenter == TypeOfCenter.None)
         {
             centerPoint = Vector3.zero;
+        }
+        else if (typeOfCenter == TypeOfCenter.GameObject)
+        {
+            centerPoint = centerGameObject.transform.position;
         }
 
         switch (rotationState)
@@ -223,5 +239,5 @@ public class GameManager : MonoBehaviour
         return (angle % 360f + 360f) % 360f;
     }
 
-
+    
 }

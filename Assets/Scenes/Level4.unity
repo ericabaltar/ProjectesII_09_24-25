@@ -7401,6 +7401,8 @@ MonoBehaviour:
   - {fileID: 858654943}
   rotationSound: {fileID: 2137593257}
   middlePoint: 1
+  typeOfCenter: 1
+  centerGameObject: {fileID: 0}
 --- !u!4 &2137593256
 Transform:
   m_ObjectHideFlags: 0
