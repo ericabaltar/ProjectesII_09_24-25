@@ -71,6 +71,9 @@ public class PlayerStateMachine : StateMachine
     public GameObject hit3;
     public GameObject hit4;
 
+
+    RaycastHit2D groundCheck1;
+    RaycastHit2D groundCheck2;
     private void Awake()
     {
         myAudioSource = GetComponentInChildren<AudioSource>();
@@ -131,6 +134,8 @@ public class PlayerStateMachine : StateMachine
 
         isGrounded = groundCollider != null;
 
+        groundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x - 1.5f, transform.position.y), -transform.up, 1.5f, layerMask);
+        groundCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + 1.5f, transform.position.y), -transform.up, 1.5f, layerMask);
     }
 
 
@@ -155,33 +160,10 @@ public class PlayerStateMachine : StateMachine
             GoToDeathState(this);
         }
 
-        if (collision.transform.CompareTag("Door"))
-        {
-
-            if (sceneSound != null)
-            {
-
-                sceneSound.Play();
-                foreach (MoveUiToCenter ui in moveUiToCenterList)
-                {
-                    ui.MoveToCloseCurtains();
-                }
-
-                transitionFace.OnEndScene();
-
-            }
-            StartCoroutine(Wait(time));
-
-        }
+        
     
 
-        IEnumerator Wait(float time)
-        {
-
-            yield return new WaitForSeconds(time);
-            scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.buildIndex + 1);
-        }
+        
 
 
     }
@@ -196,14 +178,19 @@ public class PlayerStateMachine : StateMachine
     {
         if (collision.CompareTag("Walkable"))
         {
+            if (groundCheck1.collider != null || groundCheck2.collider != null)
+            {
+                
             isWallWalking = true;
             safety_isWallWalking = true;
+            }
         }
 
         if (collision.CompareTag("RotateZone"))
         {
             isInRotateZone = true;
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
