@@ -31,13 +31,27 @@ public class WallWalkingState : PlayerBaseState
         stateMachine.anim.SetBool("walking", false);
         stateMachine.anim.SetBool("climbing", true);
         //Debug.Log("CLIMB!!!!!!!!!!");
+
+        Vector2 boxSize = new Vector2(1.32f, 0.1f); // Adjust width and height
+        Vector2 boxCenterL = new Vector2(stateMachine.transform.position.x - 0.91f, stateMachine.transform.position.y); // Offset
+        Vector2 boxCenterR = new Vector2(stateMachine.transform.position.x + 0.91f, stateMachine.transform.position.y); // Offset
+
+        Collider2D hitLeft = Physics2D.OverlapBox(boxCenterL, boxSize, 0f, stateMachine.layerMask);
+        Collider2D hitRight = Physics2D.OverlapBox(boxCenterR, boxSize, 0f, stateMachine.layerMask);
+
+        if (hitLeft != null)
+            stateMachine.mySprite.flipX = true;
+        else if (hitRight != null)
+            stateMachine.mySprite.flipX = false;
+
+        stateMachine.particlesRunning.Stop();
     }
 
 
     public override void Tick(float deltaTime)
     {
 
-        RaycastHit2D hit1 = Physics2D.Raycast(stateMachine.transform.position, -stateMachine.transform.right, 1.5f, stateMachine.layerMask);
+        RaycastHit2D hit1 = Physics2D.Raycast(stateMachine.transform.position, -stateMachine.transform.right, wallRaycastDistance, stateMachine.layerMask);
 
         if (hit1.collider != null)
         {
@@ -49,7 +63,7 @@ public class WallWalkingState : PlayerBaseState
         }
         
 
-        RaycastHit2D hit2 = Physics2D.Raycast(stateMachine.transform.position, stateMachine.transform.right, 1.5f, stateMachine.layerMask);
+        RaycastHit2D hit2 = Physics2D.Raycast(stateMachine.transform.position, stateMachine.transform.right, wallRaycastDistance, stateMachine.layerMask);
 
         if (hit2.collider != null)
         {
@@ -60,7 +74,7 @@ public class WallWalkingState : PlayerBaseState
         }
         
 
-        RaycastHit2D hit3 = Physics2D.Raycast(stateMachine.transform.position, stateMachine.transform.up, 1.5f, stateMachine.layerMask);
+        RaycastHit2D hit3 = Physics2D.Raycast(stateMachine.transform.position, stateMachine.transform.up, wallRaycastDistance, stateMachine.layerMask);
 
         if (hit3.collider != null)
         {
@@ -74,8 +88,8 @@ public class WallWalkingState : PlayerBaseState
         
 
 
-        RaycastHit2D hit4 = Physics2D.Raycast(stateMachine.transform.position, -stateMachine.transform.up, 1.5f, stateMachine.layerMask);
-
+        RaycastHit2D hit4 = Physics2D.Raycast(stateMachine.transform.position, -stateMachine.transform.up, wallRaycastDistance, stateMachine.layerMask);
+        
         if (hit4.collider != null)
         {
             if (!stateMachine.particlesDown.isPlaying)
@@ -84,7 +98,9 @@ public class WallWalkingState : PlayerBaseState
             stateMachine.hit4 = hit4.collider.gameObject.transform.GetChild(0).gameObject;
             stateMachine.hit4.SetActive(true);
         }
-       
+
+
+
 
         if (stateMachine.InputReader.MovementValue.y != 0f || stateMachine.InputReader.MovementValue.x != 0f)
         {

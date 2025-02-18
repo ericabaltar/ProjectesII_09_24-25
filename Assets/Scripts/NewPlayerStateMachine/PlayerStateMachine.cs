@@ -22,7 +22,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public bool isInRotateZone { get; private set; } = false;
     //ANIMATIONS PLAYER
 
-    SpriteRenderer mySprite;
+    public SpriteRenderer mySprite;
     public Animator anim;
     [field: SerializeField] public AudioClip landSound;
     [field: SerializeField] public AudioClip stepSound;
@@ -199,7 +199,7 @@ public class PlayerStateMachine : StateMachine
         {
             safety_isWallWalking = false;
 
-            isWallWalking = false;
+            //isWallWalking = false;
         }
 
         if (collision.CompareTag("RotateZone"))
@@ -327,7 +327,7 @@ public void GoToDeathState(PlayerStateMachine stateMachine)
 
     public void GoToRotateState()
     {
-        SwitchState(new RotatingPlayerState(this));
+        //SwitchState(new RotatingPlayerState(this));
     }
 
     public void SetWallWalking(bool b){
