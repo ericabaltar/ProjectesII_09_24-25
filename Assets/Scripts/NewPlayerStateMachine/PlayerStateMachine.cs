@@ -191,6 +191,23 @@ public class PlayerStateMachine : StateMachine
             isInRotateZone = true;
         }
 
+
+        if (collision.transform.CompareTag("Door"))
+        {
+
+            if (sceneSound != null)
+            {
+
+                sceneSound.Play();
+                foreach (MoveUiToCenter ui in moveUiToCenterList)
+                {
+                    ui.MoveToCloseCurtains();
+                }
+
+            }
+            StartCoroutine(Wait(time));
+
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -335,5 +352,12 @@ public void GoToDeathState(PlayerStateMachine stateMachine)
     }
     public bool GetSafety(){
         return safety_isWallWalking;
+    }
+    IEnumerator Wait(float time)
+    {
+
+        yield return new WaitForSeconds(time);
+        scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.buildIndex + 1);
     }
 }
