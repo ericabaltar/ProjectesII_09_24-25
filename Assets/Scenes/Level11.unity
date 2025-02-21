@@ -11223,7 +11223,7 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &2031453278
+--- !u!1 &1846657806
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11231,42 +11231,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2031453281}
-  - component: {fileID: 2031453280}
-  - component: {fileID: 2031453279}
+  - component: {fileID: 1846657809}
+  - component: {fileID: 1846657808}
+  - component: {fileID: 1846657807}
   m_Layer: 0
-  m_Name: MusicHolder (1)
+  m_Name: MusicHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2031453279
+--- !u!114 &1846657807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2031453278}
+  m_GameObject: {fileID: 1846657806}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63495cc749393404597253fcac059c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMusic: {fileID: 2031453280}
---- !u!82 &2031453280
+  gameMusic: {fileID: 1846657808}
+--- !u!82 &1846657808
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2031453278}
+  m_GameObject: {fileID: 1846657806}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9f189d2188befeb4ebe70667fdb679ac, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11350,13 +11350,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &2031453281
+--- !u!4 &1846657809
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2031453278}
+  m_GameObject: {fileID: 1846657806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.61724263, y: 2.96, z: 0.08199824}
   m_LocalScale: {x: 1, y: 1, z: 1}
