@@ -27,16 +27,22 @@ public class GameManager : MonoBehaviour
     private float remainingRotation = 0.0f;
 
     public List<GameObject> objectsToConsider; // Assign in the inspector
+    public List<GameObject> objectsToConsiderWorld2; // Assign in the inspector
+    public List<GameObject> objectsToConsiderWorld3; // Assign in the inspector
+    public List<GameObject> objectsToConsiderWorld4; // Assign in the inspector
     private Vector3 centerPoint;
+    private Vector3 centerPoint2;
+    private Vector3 centerPoint3;
+    private Vector3 centerPoint4;
+
     public AudioSource rotationSound;
     private float cumulativeRotation = 0.0f;
 
     public bool isRotating { get; private set; } = false;
     private bool rotatingRight = false;
 
-    [Header("Bool Choose Middle Point")]
-    [SerializeField] bool middlePoint = false;
-    public enum TypeOfCenter { None,MiddlePoint, GameObject};
+    [field:Header("Bool Choose Middle Point")]
+    public enum TypeOfCenter { None,MiddlePoint, GameObject, Worlds};
     public TypeOfCenter typeOfCenter;
     [SerializeField, HideInInspector] private GameObject centerGameObject;
 
@@ -54,6 +60,15 @@ public class GameManager : MonoBehaviour
             return;
 
         Instance = this;
+
+        if (typeOfCenter == TypeOfCenter.Worlds)
+        {
+            // PASS IT FOR EVERY LIST
+            centerPoint = CalculateCenterOfList(objectsToConsider);
+            centerPoint2 = CalculateCenterOfList(objectsToConsiderWorld2);
+            centerPoint3 = CalculateCenterOfList(objectsToConsiderWorld3);
+            centerPoint4 = CalculateCenterOfList(objectsToConsiderWorld4);
+        }
     }
 
     private void RotatingStateUpdate()
@@ -110,6 +125,7 @@ public class GameManager : MonoBehaviour
         {
             centerPoint = centerGameObject.transform.position;
         }
+        
 
         switch (rotationState)
         {
@@ -185,12 +201,87 @@ public class GameManager : MonoBehaviour
                
             }
         }
+
+        foreach (GameObject obj in objectsToConsiderWorld2)
+        {
+            if (obj != null && obj.tag != "StaticText")
+            {
+                if (obj.TryGetComponent(out Rigidbody2D rb))
+                {
+                    rb.simulated = false;
+                }
+                // Rotate around the Y-axis
+                obj.transform.RotateAround(centerPoint2, Vector3.forward, angle);
+
+            }
+        }
+
+        foreach (GameObject obj in objectsToConsiderWorld3)
+        {
+            if (obj != null && obj.tag != "StaticText")
+            {
+                if (obj.TryGetComponent(out Rigidbody2D rb))
+                {
+                    rb.simulated = false;
+                }
+                // Rotate around the Y-axis
+                obj.transform.RotateAround(centerPoint3, Vector3.forward, angle);
+
+            }
+        }
+
+        foreach (GameObject obj in objectsToConsiderWorld4)
+        {
+            if (obj != null && obj.tag != "StaticText")
+            {
+                if (obj.TryGetComponent(out Rigidbody2D rb))
+                {
+                    rb.simulated = false;
+                }
+                // Rotate around the Y-axis
+                obj.transform.RotateAround(centerPoint4, Vector3.forward, angle);
+
+            }
+        }
     }
 
     void ToggleRigidbodiesInScene(bool active)
     {
         //Rigidbody2D rb;
         foreach (GameObject obj in objectsToConsider)
+        {
+            if (obj != null)
+            {
+                if (obj.TryGetComponent(out Rigidbody2D rb))
+                {
+                    rb.simulated = active;
+                }
+            }
+        }
+
+        foreach (GameObject obj in objectsToConsiderWorld2)
+        {
+            if (obj != null)
+            {
+                if (obj.TryGetComponent(out Rigidbody2D rb))
+                {
+                    rb.simulated = active;
+                }
+            }
+        }
+
+        foreach (GameObject obj in objectsToConsiderWorld3)
+        {
+            if (obj != null)
+            {
+                if (obj.TryGetComponent(out Rigidbody2D rb))
+                {
+                    rb.simulated = active;
+                }
+            }
+        }
+
+        foreach (GameObject obj in objectsToConsiderWorld4)
         {
             if (obj != null)
             {
@@ -210,8 +301,33 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        Vector3 sum = Vector3.zero;
         centerPoint = Camera.main.transform.position;
+    }
+
+    Vector3 CalculateCenterOfList(List<GameObject> worldList)
+    {
+        if (worldList == null || worldList.Count == 0)
+            return Vector3.zero;
+
+        Vector3 sum = Vector3.zero;
+
+        foreach (GameObject obj in worldList)
+        {
+            if (!obj.TryGetComponent(out Rigidbody2D rb))
+                sum += transform.InverseTransformPoint(obj.transform.position);
+        }
+
+        return sum / worldList.Count; // Promedio de posiciones
+        
+    }
+
+    void OnDrawGizmos()
+    {
+        if (objectsToConsider == null || objectsToConsider.Count == 0)
+            return;
+
+        Gizmos.color = Color.red; // Color del punto
+        Gizmos.DrawSphere(centerPoint, 0.2f); // Dibuja una esfera en el centro
     }
 
     IEnumerator WaitFixedUpdateAndEnableRigidbodies()

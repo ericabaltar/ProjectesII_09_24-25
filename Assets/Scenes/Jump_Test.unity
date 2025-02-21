@@ -397,8 +397,10 @@ MonoBehaviour:
   - {fileID: 2029250519}
   - {fileID: 1996542785}
   - {fileID: 850258870}
+  objectsToConsiderWorld2: []
+  objectsToConsiderWorld3: []
+  objectsToConsiderWorld4: []
   rotationSound: {fileID: 850258882}
-  middlePoint: 0
   typeOfCenter: 0
   centerGameObject: {fileID: 0}
 --- !u!4 &85049052
@@ -2562,11 +2564,13 @@ MonoBehaviour:
     m_RotationOrder: 4
   objectsToConsider:
   - {fileID: 2029250519}
-  - {fileID: 1996542785}
   - {fileID: 850258870}
+  objectsToConsiderWorld2:
+  - {fileID: 691013405}
+  objectsToConsiderWorld3: []
+  objectsToConsiderWorld4: []
   rotationSound: {fileID: 850258882}
-  middlePoint: 0
-  typeOfCenter: 0
+  typeOfCenter: 3
   centerGameObject: {fileID: 0}
 --- !u!1001 &1679265901
 PrefabInstance:
@@ -3615,7 +3619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1313686771933168351, guid: 24b7c18fe8a8db64ca07586d10c491e9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2611650200923216425, guid: 24b7c18fe8a8db64ca07586d10c491e9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3692,7 +3696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7525604597024973286, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.21
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 7525604597024973286, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_LocalPosition.y
