@@ -2257,6 +2257,10 @@ PrefabInstance:
       propertyPath: <rotationZone>k__BackingField
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: <outsideRotationZone>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4566900565145589108, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_Name
       value: ------Player
@@ -9038,6 +9042,8 @@ MonoBehaviour:
   - {fileID: 126432038}
   rotationSound: {fileID: 1318662068}
   middlePoint: 0
+  typeOfCenter: 0
+  centerGameObject: {fileID: 0}
 --- !u!4 &1318662067
 Transform:
   m_ObjectHideFlags: 0
