@@ -12,6 +12,8 @@ public class LeverFloors : MonoBehaviour
     public Sprite rightSp;
     public Sprite leftSp;
 
+    public Color col;
+
     private void Update()
     {   
         if (playerTouch && Input.GetKeyDown(KeyCode.Space))
@@ -29,35 +31,26 @@ public class LeverFloors : MonoBehaviour
                 GameObject child = platformHolder.gameObject.transform.GetChild(i).gameObject;
 
                 if (child.GetComponent<BoxCollider2D>().enabled == false)
-                {
-                    child.GetComponent<SpriteRenderer>().color = new Color(
-                            child.GetComponent<SpriteRenderer>().color.r
-                            , child.GetComponent<SpriteRenderer>().color.g
-                            , child.GetComponent<SpriteRenderer>().color.b
-                            , 1.0f);
+                {                    
 
                     child.GetComponent<BoxCollider2D>().enabled = true;
 
                     tiles.color = new Color(
-                            child.GetComponent<SpriteRenderer>().color.r
-                            , child.GetComponent<SpriteRenderer>().color.g
-                            , child.GetComponent<SpriteRenderer>().color.b
+                            col.r
+                            , col.g
+                            , col.b
                             , 1.0f);
                 }
                 else
                 {                    
-                    child.GetComponent<SpriteRenderer>().color = new Color(
-                            child.GetComponent<SpriteRenderer>().color.r
-                            , child.GetComponent<SpriteRenderer>().color.g
-                            , child.GetComponent<SpriteRenderer>().color.b
-                            , 20.0f / 255.0f);
+                    
 
                     child.GetComponent<BoxCollider2D>().enabled = false;
 
                     tiles.color = new Color(
-                            child.GetComponent<SpriteRenderer>().color.r
-                            , child.GetComponent<SpriteRenderer>().color.g
-                            , child.GetComponent<SpriteRenderer>().color.b
+                            col.r
+                            , col.g
+                            , col.b
                             , 20.0f / 255.0f);
                 }
             }            
