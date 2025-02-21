@@ -195,9 +195,10 @@ public class PlayerStateMachine : StateMachine
         if (collision.CompareTag("RotateZone"))
         {
             isInRotateZone = true;
-            if (outsideRotationZone == OutSideZoneNeeded.True)
+            if (outsideRotationZone == OutSideZoneNeeded.True && GameManager.Instance.rotationState == GameManager.RotationState.IDLE)
             {
-                GameManager.Instance.objectsToConsider.Add(gameObject);
+                if(!GameManager.Instance.objectsToConsider.Contains(gameObject))
+                    GameManager.Instance.objectsToConsider.Add(gameObject);
             }
         }
 
@@ -215,9 +216,10 @@ public class PlayerStateMachine : StateMachine
         if (collision.CompareTag("RotateZone"))
         {
             isInRotateZone = false;
-            if (outsideRotationZone == OutSideZoneNeeded.True)
+            if (outsideRotationZone == OutSideZoneNeeded.True && GameManager.Instance.rotationState == GameManager.RotationState.IDLE)
             {
-                GameManager.Instance.objectsToConsider.Remove(gameObject);
+                if (GameManager.Instance.objectsToConsider.Contains(gameObject))
+                    GameManager.Instance.objectsToConsider.Remove(gameObject);
             }
         }
     }
