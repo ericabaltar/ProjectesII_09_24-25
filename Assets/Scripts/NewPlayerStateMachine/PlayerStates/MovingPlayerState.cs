@@ -55,7 +55,8 @@ public class MovingPlayerState : PlayerBaseState
         
         if (stateMachine.InputReader.MovementValue.x != 0)
             stateMachine.rigidbody2d.velocity = new Vector2(stateMachine.InputReader.MovementValue.x * 12, stateMachine.rigidbody2d.velocity.y);
-            
+        else
+            stateMachine.rigidbody2d.velocity = new Vector2(0.0f, 0.0f);
     }
 
     public override void Exit()
@@ -63,6 +64,4 @@ public class MovingPlayerState : PlayerBaseState
         stateMachine.InputReader.RotateLeftEvent -= stateMachine.RotateLeft;
         stateMachine.InputReader.RotateRightEvent -= stateMachine.RotateRight;
     }
-
-
 }
