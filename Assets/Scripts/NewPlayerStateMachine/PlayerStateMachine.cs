@@ -20,6 +20,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public bool isWallWalking { get; private set; } = false;
     bool safety_isWallWalking = false;
     [field: SerializeField] public bool isInRotateZone { get; private set; } = false;
+    [field: SerializeField] public bool rotateOutsideZone { get; private set; } = false;
     //ANIMATIONS PLAYER
 
     public SpriteRenderer mySprite;
@@ -38,7 +39,14 @@ public class PlayerStateMachine : StateMachine
         False
     }
 
+    public enum OutSideZoneNeeded
+    {
+        True,
+        False
+    }
+
     [field: SerializeField] public RotationZoneNeeded rotationZone { get; private set; } = RotationZoneNeeded.False;
+    [field: SerializeField] public OutSideZoneNeeded outsideRotationZone { get; private set; } = OutSideZoneNeeded.False;
 
     [Space(10)]
     [Header("UI Transition")]
@@ -84,6 +92,10 @@ public class PlayerStateMachine : StateMachine
     // Start is called before the first frame update
     void Start()
     {
+        /*
+        if(outsideRotationZone == OutSideZoneNeeded.True)            
+            GameManager.Instance.objectsToConsider.Remove(gameObject);
+        */
         SwitchState(new IdlePlayerState(this));
     }
 
@@ -91,7 +103,7 @@ public class PlayerStateMachine : StateMachine
     private bool canStretch = false;
     public void RotateLeft()
     {
-        if ((rotationZone == RotationZoneNeeded.False) || (rotationZone == RotationZoneNeeded.True && isInRotateZone))
+        if ((rotationZone == RotationZoneNeeded.False) || (rotationZone == RotationZoneNeeded.True && isInRotateZone) || (outsideRotationZone == OutSideZoneNeeded.True))
         {
 
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
@@ -107,7 +119,7 @@ public class PlayerStateMachine : StateMachine
 
     public void RotateRight()
     {
-        if((rotationZone == RotationZoneNeeded.False ) || (rotationZone == RotationZoneNeeded.True && isInRotateZone))
+        if((rotationZone == RotationZoneNeeded.False ) || (rotationZone == RotationZoneNeeded.True && isInRotateZone) || (outsideRotationZone == OutSideZoneNeeded.True))
         {
 
             if ((isGrounded || isWallWalking) && (rigidbody2d.velocity.magnitude < 0.1f))
@@ -160,12 +172,6 @@ public class PlayerStateMachine : StateMachine
             GoToDeathState(this);
         }
 
-        
-    
-
-        
-
-
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -189,6 +195,11 @@ public class PlayerStateMachine : StateMachine
         if (collision.CompareTag("RotateZone"))
         {
             isInRotateZone = true;
+            if (outsideRotationZone == OutSideZoneNeeded.True && GameManager.Instance.rotationState == GameManager.RotationState.IDLE)
+            {
+                if(!GameManager.Instance.objectsToConsider.Contains(gameObject))
+                    GameManager.Instance.objectsToConsider.Add(gameObject);
+            }
         }
 
 
@@ -222,6 +233,11 @@ public class PlayerStateMachine : StateMachine
         if (collision.CompareTag("RotateZone"))
         {
             isInRotateZone = false;
+            if (outsideRotationZone == OutSideZoneNeeded.True && GameManager.Instance.rotationState == GameManager.RotationState.IDLE)
+            {
+                if (GameManager.Instance.objectsToConsider.Contains(gameObject))
+                    GameManager.Instance.objectsToConsider.Remove(gameObject);
+            }
         }
     }
 
