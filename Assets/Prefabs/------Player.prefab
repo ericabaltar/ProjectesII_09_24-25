@@ -14686,7 +14686,6 @@ GameObject:
   - component: {fileID: 3586818785476077658}
   - component: {fileID: 4272889038219393403}
   - component: {fileID: 6097434802618400618}
-  - component: {fileID: 2662612195821194221}
   m_Layer: 6
   m_Name: ------Player
   m_TagString: Player
@@ -14901,6 +14900,8 @@ MonoBehaviour:
   <isGrounded>k__BackingField: 0
   <isWallWalking>k__BackingField: 0
   <isInRotateZone>k__BackingField: 0
+  mySprite: {fileID: 0}
+  anim: {fileID: 0}
   landSound: {fileID: 8300000, guid: 5a71c1bb44581a544bb7d6f029b04a79, type: 3}
   stepSound: {fileID: 8300000, guid: fc9942f16a58879468193f3512b74c06, type: 3}
   groundedLayerMask:
@@ -14920,6 +14921,10 @@ MonoBehaviour:
   particlesRunning: {fileID: 8653276488655077602}
   particlesDeath: {fileID: 3442482616176106791}
   ouchSound: {fileID: 8300000, guid: 0026efaee8803b548993a85f997304fd, type: 3}
+  hit1: {fileID: 0}
+  hit2: {fileID: 0}
+  hit3: {fileID: 0}
+  hit4: {fileID: 0}
 --- !u!114 &6097434802618400618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14932,20 +14937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf990b7f7defcaa4eb425fe6a6304541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2662612195821194221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4566900565145589108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddaa241a53c3ec44ebbefaf8615c88fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 12
-  platforms: {fileID: 0}
 --- !u!1 &8125823780048917780
 GameObject:
   m_ObjectHideFlags: 0
