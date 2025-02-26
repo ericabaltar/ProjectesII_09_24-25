@@ -6,7 +6,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class WallWalkingState : PlayerBaseState
 {
-    float wallRaycastDistance = 1.3f;
+    float wallRaycastDistance = 0.6f;
 
     [field: SerializeField] public ControllerInputSystem InputReader { get; private set; }
 

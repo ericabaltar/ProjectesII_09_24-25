@@ -7091,7 +7091,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1f6a32e4cb62d9c4bb0856ce34c37b84, type: 3}
-  m_Color: {r: 0.14582503, g: 1, b: 0, a: 0.23529412}
+  m_Color: {r: 1, g: 0.050980393, b: 0.043137256, a: 0.23529412}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7929,7 +7929,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4a01c698e85124ecebf0209a771226bc, type: 3}
-  m_Color: {r: 0.5058824, g: 0.6509804, b: 0.98039216, a: 1}
+  m_Color: {r: 1, g: 0.050980393, b: 0.043137256, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8075,7 +8075,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b373f4d27dcd3654ea0be3c6adc32fbe, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f18708136bb7c8c49aca8664ff456289, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1
@@ -9518,7 +9518,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 0.5058824, g: 0.6509804, b: 0.98039216, a: 0.078431375}
+  m_Color: {r: 1, g: 0.050980393, b: 0.043137256, a: 0.078431375}
   m_Origin: {x: -10, y: -10, z: 0}
   m_Size: {x: 24, y: 20, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -10205,7 +10205,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4a01c698e85124ecebf0209a771226bc, type: 3}
-  m_Color: {r: 0.5058824, g: 0.6509804, b: 0.98039216, a: 1}
+  m_Color: {r: 1, g: 0.050980393, b: 0.043137256, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
