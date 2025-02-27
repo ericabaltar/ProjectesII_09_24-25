@@ -135,12 +135,18 @@ public class WallWalkingState : PlayerBaseState
 
     public override void FixedTick()
     {
-        stateMachine.rigidbody2d.velocity = (new Vector2(0f, stateMachine.InputReader.MovementValue.y) * stateMachine.playerSpeed * Time.fixedDeltaTime * 0.03f);
 
-        if (stateMachine.InputReader.MovementValue.x > 0f || stateMachine.InputReader.MovementValue.x < 0f)
-        {
-            stateMachine.rigidbody2d.AddForce(new Vector2(stateMachine.InputReader.MovementValue.x, 0f) * stateMachine.playerSpeed * Time.fixedDeltaTime);
+        if (stateMachine.InputReader.MovementValue.y > 0f || stateMachine.InputReader.MovementValue.y < 0f)
+        { 
+            stateMachine.rigidbody2d.velocity = (new Vector2(0f, stateMachine.InputReader.MovementValue.y) * Time.fixedDeltaTime * 100);
         }
+
+        else if (stateMachine.InputReader.MovementValue.x > 0f || stateMachine.InputReader.MovementValue.x < 0f)
+        {
+            stateMachine.rigidbody2d.velocity = (new Vector2(stateMachine.InputReader.MovementValue.x, 0f) * Time.fixedDeltaTime * 100);
+        }
+        else
+            stateMachine.rigidbody2d.velocity = (new Vector2(0f, 0.0f));
     }
 
     public override void Exit()
