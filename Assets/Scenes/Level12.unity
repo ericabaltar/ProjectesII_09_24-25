@@ -767,7 +767,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1363cc87d1e53bf43b00272d5fb00cb7, type: 3}
+  m_Sprite: {fileID: -48020885, guid: 999f9850b44cdfd43b5b5e81ce2aa651, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10475,8 +10475,12 @@ MonoBehaviour:
   objectsToConsider:
   - {fileID: 34053401}
   - {fileID: 858654943}
+  objectsToConsiderWorld2: []
+  objectsToConsiderWorld3: []
+  objectsToConsiderWorld4: []
   rotationSound: {fileID: 2137593257}
-  middlePoint: 0
+  typeOfCenter: 0
+  centerGameObject: {fileID: 0}
 --- !u!4 &2137593256
 Transform:
   m_ObjectHideFlags: 0
