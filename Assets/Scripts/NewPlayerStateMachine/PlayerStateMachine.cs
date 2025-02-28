@@ -215,7 +215,7 @@ public class PlayerStateMachine : StateMachine
                     ui.MoveToCloseCurtains();
                 }
 
-                SwitchState(new EnteringDoorState(new PlayerStateMachine()));
+                SwitchState(new EnteringDoorState(this));
 
             }
             StartCoroutine(Wait(time));
@@ -279,11 +279,6 @@ public void GoToDeathState(PlayerStateMachine stateMachine)
 
     public void AnimateAndRotateAccording()
     {
-        if (currentState == new EnteringDoorState(new PlayerStateMachine()))
-        {
-            anim.SetBool("walking", false);
-            return;
-        }
 
         if (InputReader.MovementValue.x >0f)
         {
