@@ -365,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8650269211079661593, guid: 4d0000f2054d3bb419d7b9c2fdd78202, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.09
+      value: 7.15
       objectReference: {fileID: 0}
     - target: {fileID: 8650269211079661593, guid: 4d0000f2054d3bb419d7b9c2fdd78202, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2805,7 +2805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2016090403388238384, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.0319998
+      value: -2.54
       objectReference: {fileID: 0}
     - target: {fileID: 2016090403388238384, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12130,7 +12130,7 @@ MonoBehaviour:
     m_Knots:
     - Position:
         x: -4.13
-        y: -2.56
+        y: -1.47
         z: 0
       TangentIn:
         x: 0
@@ -12148,22 +12148,22 @@ MonoBehaviour:
           w: 1
     - Position:
         x: 7.53
-        y: -2.5
+        y: -1.4
         z: 0
       TangentIn:
         x: -0
         y: -0
-        z: -1.1660154
+        z: -1.166021
       TangentOut:
         x: 0
         y: 0
-        z: 1.1660154
+        z: 1.166021
       Rotation:
         value:
-          x: -0.0018192943
-          y: 0.7071044
-          z: 0.0018192943
-          w: 0.7071044
+          x: -0.002122506
+          y: 0.70710355
+          z: 0.002122506
+          w: 0.70710355
     m_MetaData:
     - Mode: 1
       Tension: 0.5
@@ -12310,7 +12310,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558233347}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
