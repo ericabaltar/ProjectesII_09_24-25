@@ -17,12 +17,18 @@ public class PlayerDeathState : PlayerBaseState
         stateMachine.GetComponent<Collider2D>().enabled = false;
         int direction = Random.Range(0, 2);
         stateMachine.rigidbody2d.AddForce(new Vector2(direction == 0 ? pushToSide : -pushToSide, pushUp), ForceMode2D.Impulse);
+
+        stateMachine.sceneSound.PlayOneShot(stateMachine.ouchSound);
+        stateMachine.rigidbody2d.constraints = RigidbodyConstraints2D.None;
+        stateMachine.rigidbody2d.angularVelocity = 340.0f;
+        stateMachine.rigidbody2d.angularDrag = 0.1f;
+        stateMachine.rigidbody2d.drag = 0.1f;
+        stateMachine.particlesRunning.Stop();
     }
 
     public override void Tick(float deltaTime)
     {
         timeToRestart -= Time.deltaTime;
-        stateMachine.transform.Rotate(Vector3.forward, 340f * deltaTime);
         if(timeToRestart <= 0f) 
         {
             stateMachine.RestartLevel();

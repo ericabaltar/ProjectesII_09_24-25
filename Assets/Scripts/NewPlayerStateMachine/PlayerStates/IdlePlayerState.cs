@@ -14,6 +14,9 @@ public class IdlePlayerState : PlayerBaseState
     {
         stateMachine.InputReader.RotateLeftEvent += stateMachine.RotateLeft;
         stateMachine.InputReader.RotateRightEvent += stateMachine.RotateRight;
+        
+        stateMachine.particlesRunning.Stop();
+        //Debug.Log("Idle State");
     }
 
 
@@ -21,7 +24,7 @@ public class IdlePlayerState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         stateMachine.CheckGroundPlayer();
-
+        stateMachine.StretchAndSquash();
         if (stateMachine.InputReader.MovementValue.x> 0f || stateMachine.InputReader.MovementValue.x < 0f)
         {
             stateMachine.SwitchState(new MovingPlayerState(stateMachine));
@@ -46,6 +49,7 @@ public class IdlePlayerState : PlayerBaseState
     {
         stateMachine.InputReader.RotateLeftEvent -= stateMachine.RotateLeft;
         stateMachine.InputReader.RotateRightEvent -= stateMachine.RotateRight;
+        
     }
 
 

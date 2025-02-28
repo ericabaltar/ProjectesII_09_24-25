@@ -24,7 +24,9 @@ public class MusicGameplay : MonoBehaviour
     }
     private void OnLevelWasLoaded()
     {
-        if (SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "SettingsMenu")
+        if (SceneManager.GetActiveScene().name == "MainMenu" ||
+                SceneManager.GetActiveScene().name == "SettingsMenu" || 
+                SceneManager.GetActiveScene().name == "SceneSelector")
         {
             Destroy(gameObject);
         }
