@@ -24,6 +24,10 @@ public class LeverFloors : MonoBehaviour
     private float progress = 0f; // 0 (start) to 1 (end)
     private bool movingForward = false; // True = down, False = up
 
+    [Range(0f, 1f)]
+    public float t; // Normalized position along the spline
+
+
     private void Update()
     {   
         switch(useOfLeaver)
@@ -122,6 +126,7 @@ public class LeverFloors : MonoBehaviour
 
     void UpdateMovingPlatform()
     {
+        
 
         if (playerTouch && Input.GetKeyDown(KeyCode.Space))
         {
