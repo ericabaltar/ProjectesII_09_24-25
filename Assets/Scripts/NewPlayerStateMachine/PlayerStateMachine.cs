@@ -29,6 +29,12 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public AudioClip stepSound;
     AudioSource myAudioSource;
 
+    //DOOOR ENTER 
+    [NonSerialized] public Transform door;
+    
+    //DOOR FINISH
+
+
     //END ANIMATIONS PLAYER
 
     public LayerMask groundedLayerMask;
@@ -214,7 +220,7 @@ public class PlayerStateMachine : StateMachine
                 {
                     ui.MoveToCloseCurtains();
                 }
-
+                door = collision.transform;
                 SwitchState(new EnteringDoorState(this));
 
             }
