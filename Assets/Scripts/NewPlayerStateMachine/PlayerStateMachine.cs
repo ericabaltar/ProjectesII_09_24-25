@@ -216,7 +216,7 @@ public class PlayerStateMachine : StateMachine
                 }
 
                 SwitchState(new EnteringDoorState(this));
-
+                gameObject.GetComponent<TransitionFace>().ShrinkCircle();
             }
             StartCoroutine(Wait(time));
 
