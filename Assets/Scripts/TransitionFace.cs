@@ -44,13 +44,7 @@ public class TransitionFace : MonoBehaviour
         OnTransitionDone?.Invoke();
     }
 
-    public void OnStartScene()
-    {
-        //transform.DOScale(0, 2f);
-        
-    }
-
-    public void OnEndScene()
+    public void ShrinkCircle()
     {
         //transform.DOScale(50, 2f);
         StartCoroutine(TransitionLeaveCoroutine());
