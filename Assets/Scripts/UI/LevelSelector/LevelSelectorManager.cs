@@ -30,7 +30,7 @@ public class LevelSelectorManager : MonoBehaviour
             TMP_Text buttonText = newButton.GetComponentInChildren<TMP_Text>();
             if (buttonText != null)
             {
-                buttonText.text = sceneName;
+                buttonText.text = i.ToString();
             }
             else
             {
