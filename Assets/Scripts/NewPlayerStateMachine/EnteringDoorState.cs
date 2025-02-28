@@ -5,13 +5,15 @@ using UnityEngine;
 public class EnteringDoorState : PlayerBaseState
 {
 
+    [field: SerializeField] public ControllerInputSystem InputReader { get; private set; }
+
     public EnteringDoorState(PlayerStateMachine stateMachine) : base(stateMachine) { 
     
     }
 
     public override void Enter()
     {
-        
+        stateMachine.anim.SetBool("walking", false);
     }
 
 
