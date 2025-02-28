@@ -24,9 +24,9 @@ public class LeverFloors : MonoBehaviour
     private float progress = 0f; // 0 (start) to 1 (end)
     private bool movingForward = false; // True = down, False = up
 
-    [Range(0f, 1f)]
-    public float t; // Normalized position along the spline
-
+   
+    
+    private int movementDirection = 1;
 
     private void Update()
     {   
@@ -149,22 +149,35 @@ public class LeverFloors : MonoBehaviour
 
         // Get the first spline
         Spline spline = splineContainer.Splines[0];
+        
 
         // Move along the spline
-        if (movingForward && progress < 1f)
+        if (movingForward)
         {
-            progress += speed * Time.deltaTime / spline.GetLength();
-        }
-        else if (!movingForward && progress > 0f)
-        {
-            progress -= speed * Time.deltaTime / spline.GetLength();
+            // Update progress based on direction
+            progress += movementDirection * speed * Time.deltaTime / spline.GetLength();
+
+            // Reverse direction at spline ends
+            if (progress >= 1f)
+            {
+                progress = 1f;
+                movementDirection = -1;
+            }
+            else if (progress <= 0f)
+            {
+                progress = 0f;
+                movementDirection = 1;
+            }
         }
 
         // Clamp progress between 0 and 1
         progress = Mathf.Clamp01(progress);
 
+        Vector3 worldPosition = splineContainer.transform.TransformPoint(
+        spline.EvaluatePosition(progress));
+
         // Set the cube position along the spline
-        transform.position = spline.EvaluatePosition(progress);
+        transform.position = worldPosition;
 
 
     }
