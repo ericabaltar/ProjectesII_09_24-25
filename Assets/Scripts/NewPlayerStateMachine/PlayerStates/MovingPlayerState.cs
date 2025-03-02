@@ -32,7 +32,7 @@ public class MovingPlayerState : PlayerBaseState
             stateMachine.particlesRunning.Stop();
         }
 
-        Debug.Log("MOVING");
+        //Debug.Log("MOVING");
         stateMachine.AnimateAndRotateAccording();
         stateMachine.StretchAndSquash();
 
