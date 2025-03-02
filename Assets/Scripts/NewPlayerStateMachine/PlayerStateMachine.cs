@@ -10,6 +10,8 @@ using UnityEngine.UIElements;
 
 public class PlayerStateMachine : StateMachine
 {
+    private float separationOfFloorChecker = 1.3f;
+
     public Material glowMaterial;
 
     [field: SerializeField] public Rigidbody2D rigidbody2d;
@@ -150,10 +152,12 @@ public class PlayerStateMachine : StateMachine
      
         Collider2D groundCollider = Physics2D.OverlapBox(boxCenter, boxSize, 0f,groundedLayerMask);
 
-        isGrounded = groundCollider != null;
+        isGrounded = groundCollider != null && (groundCollider.CompareTag("Walkable") 
+                                                || groundCollider.CompareTag("Untagged") 
+                                                || groundCollider.CompareTag("Box"));
 
-        groundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x - 1.5f, transform.position.y), -transform.up, 1.5f, layerMask);
-        groundCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + 1.5f, transform.position.y), -transform.up, 1.5f, layerMask);
+        groundCheck1 = Physics2D.Raycast(new Vector2(transform.position.x - separationOfFloorChecker, transform.position.y), -transform.up, 1.5f, layerMask);
+        groundCheck2 = Physics2D.Raycast(new Vector2(transform.position.x + separationOfFloorChecker, transform.position.y), -transform.up, 1.5f, layerMask);
     }
 
 
