@@ -13,10 +13,12 @@ public class EnteringDoorState : PlayerBaseState
     
     }
     Vector3 transformMover;
-    private float lerpProgress = 2f;
+    private float lerpProgress = 1.2f;
+    bool isComplete = false;
     public override void Enter()
     {
         stateMachine.rigidbody2d.velocity = Vector3.zero;
+        stateMachine.rigidbody2d.gravityScale = 0;
         stateMachine.GetComponentInChildren<RotationConstraint>().enabled = false;
         stateMachine.anim.SetBool("walking", false);
        
@@ -27,17 +29,24 @@ public class EnteringDoorState : PlayerBaseState
         stateMachine.rigidbody2d.angularDrag = 0.1f;
         stateMachine.rigidbody2d.drag = 0.1f;
         transformMover = stateMachine.transform.position;
-        stateMachine.transform.DOMove(stateMachine.door.position, lerpProgress).SetEase(Ease.InSine);
-        //stateMachine.rigidbody2d.
+        stateMachine.transform.DOMove(stateMachine.door.position, lerpProgress)
+            .SetEase(Ease.InSine).OnComplete(() => {
+                isComplete = true;
+            });
+        
+        
     }
 
     public override void Tick(float deltaTime)
     {
+        Debug.Log(isComplete);
        
-        if (lerpProgress < 1f) // Ensure it stops at the door
+        if(isComplete)
         {
-            lerpProgress += deltaTime; // Increase progress
-            
+            Color newColor = stateMachine.mySprite.color;
+            newColor.a = 0f;
+            stateMachine.mySprite.DOColor(newColor,lerpProgress);
+            isComplete = false;
         }
 
         
