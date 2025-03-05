@@ -1647,6 +1647,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6794915498397552222, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
+      propertyPath: m_Intensity
+      value: 2.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794915498397552222, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794915498397552222, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
+      propertyPath: m_ShapeLightFalloffSize
+      value: 0.09
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
