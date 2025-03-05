@@ -21,6 +21,7 @@ public class EnteringDoorState : PlayerBaseState
         stateMachine.rigidbody2d.gravityScale = 0;
         stateMachine.GetComponentInChildren<RotationConstraint>().enabled = false;
         stateMachine.anim.SetBool("walking", false);
+        stateMachine.anim.SetTrigger("enteringDoor");
        
         stateMachine.GetComponent<Collider2D>().enabled = false;
         stateMachine.rigidbody2d.constraints = RigidbodyConstraints2D.None;
