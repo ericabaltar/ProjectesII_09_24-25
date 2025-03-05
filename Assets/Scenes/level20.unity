@@ -5046,6 +5046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClimbableWall
       objectReference: {fileID: 0}
+    - target: {fileID: 3455069327595693067, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
+      propertyPath: m_Size.x
+      value: 1.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3818536081474132757, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
       propertyPath: m_Enabled
       value: 1
