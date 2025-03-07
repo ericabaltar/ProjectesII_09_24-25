@@ -36,13 +36,18 @@ public class GameManager : MonoBehaviour
     private Vector3 centerPoint3;
     private Vector3 centerPoint4;
 
+    Bounds bounds1;
+    Bounds bounds2;
+    Bounds bounds3;
+    Bounds bounds4;
+
     public AudioSource rotationSound;
     private float cumulativeRotation = 0.0f;
 
     public bool isRotating { get; private set; } = false;
     private bool rotatingRight = false;
     
-    [field:Header("Bool Choose Middle Point")]
+    
     public enum TypeOfCenter { None,MiddlePoint, GameObject, Worlds};
     public TypeOfCenter typeOfCenter;
     [SerializeField, HideInInspector] private GameObject centerGameObject;
@@ -317,7 +322,7 @@ public class GameManager : MonoBehaviour
         foreach (GameObject obj in worldList)
         {
             if (!obj.TryGetComponent(out Rigidbody2D rb))
-                sum += transform.InverseTransformPoint(obj.transform.position);
+                sum += obj.transform.position;
         }
 
         return sum / worldList.Count; // Promedio de posiciones
@@ -331,6 +336,9 @@ public class GameManager : MonoBehaviour
 
         Gizmos.color = Color.red; // Color del punto
         Gizmos.DrawSphere(centerPoint, 0.2f); // Dibuja una esfera en el centro
+        Gizmos.DrawSphere(centerPoint2, 0.2f); // Dibuja una esfera en el centro
+        Gizmos.DrawSphere(centerPoint3, 0.2f); // Dibuja una esfera en el centro
+        Gizmos.DrawSphere(centerPoint4, 0.2f); // Dibuja una esfera en el centro
     }
 
     IEnumerator WaitFixedUpdateAndEnableRigidbodies()
