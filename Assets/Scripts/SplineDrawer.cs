@@ -33,7 +33,6 @@ public class SplineDrawer : MonoBehaviour
     {
         
         UpdateLineRenderer();
-        //UpdateSpline();
         
     }
 

@@ -14686,6 +14686,7 @@ GameObject:
   - component: {fileID: 3586818785476077658}
   - component: {fileID: 4272889038219393403}
   - component: {fileID: 6097434802618400618}
+  - component: {fileID: 1624392138065345204}
   m_Layer: 6
   m_Name: ------Player
   m_TagString: Player
@@ -14757,7 +14758,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1.32, y: 1.38}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.05
 --- !u!50 &1142165313409666511
 Rigidbody2D:
   serializedVersion: 4
@@ -14900,6 +14901,7 @@ MonoBehaviour:
   <isGrounded>k__BackingField: 0
   <isWallWalking>k__BackingField: 0
   <isInRotateZone>k__BackingField: 0
+  <rotateOutsideZone>k__BackingField: 0
   mySprite: {fileID: 0}
   anim: {fileID: 0}
   landSound: {fileID: 8300000, guid: 5a71c1bb44581a544bb7d6f029b04a79, type: 3}
@@ -14908,6 +14910,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 63
   <rotationZone>k__BackingField: 1
+  <outsideRotationZone>k__BackingField: 1
   moveUiToCenterList: []
   transitionFace: {fileID: 0}
   sceneSound: {fileID: 3586818785476077658}
@@ -14937,6 +14940,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf990b7f7defcaa4eb425fe6a6304541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1624392138065345204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4566900565145589108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1eb9c44028e01459b2d8642a54855a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sreenTransitionMaterial: {fileID: -876546973899608171, guid: 80ce09f67050cdb4eb79af98b8b6184d, type: 3}
+  transitionTime: 1
+  OnTransitionDone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8125823780048917780
 GameObject:
   m_ObjectHideFlags: 0
