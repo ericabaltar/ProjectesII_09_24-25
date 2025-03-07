@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
+
 using UnityEngine;
 
 public class PersistentPrefabSpawner : MonoBehaviour
@@ -12,6 +15,7 @@ public class PersistentPrefabSpawner : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(selectedPrefabPath))
         {
+#if UNITY_EDITOR
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(selectedPrefabPath);
             if (prefab != null)
             {
@@ -21,6 +25,9 @@ public class PersistentPrefabSpawner : MonoBehaviour
             {
                 Debug.LogError("Prefab not found at: " + selectedPrefabPath);
             }
+#else
+            Debug.LogError("AssetDatabase cannot be used in a build!");
+#endif
         }
         else
         {
