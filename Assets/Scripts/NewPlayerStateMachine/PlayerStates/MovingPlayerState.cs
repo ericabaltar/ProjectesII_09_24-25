@@ -55,7 +55,7 @@ public class MovingPlayerState : PlayerBaseState
         if (stateMachine.InputReader.MovementValue.x != 0)
             stateMachine.rigidbody2d.velocity = new Vector2(stateMachine.InputReader.MovementValue.x * 12, stateMachine.rigidbody2d.velocity.y);
         else
-            stateMachine.rigidbody2d.velocity = new Vector2(0.0f, 0.0f);
+            stateMachine.rigidbody2d.velocity = new Vector2(0.0f, stateMachine.rigidbody2d.velocity.y);
     }
 
     public override void Exit()
