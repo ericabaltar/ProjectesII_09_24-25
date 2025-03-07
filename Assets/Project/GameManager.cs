@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,12 +41,14 @@ public class GameManager : MonoBehaviour
 
     public bool isRotating { get; private set; } = false;
     private bool rotatingRight = false;
-
+    
     [field:Header("Bool Choose Middle Point")]
     public enum TypeOfCenter { None,MiddlePoint, GameObject, Worlds};
     public TypeOfCenter typeOfCenter;
     [SerializeField, HideInInspector] private GameObject centerGameObject;
 
+    [Header("Game Pause")]
+    [NonSerialized]bool isGamePaused = false;
 
     public TypeOfCenter GetTypeOfCenter()
     {
@@ -355,5 +358,14 @@ public class GameManager : MonoBehaviour
         return (angle % 360f + 360f) % 360f;
     }
 
+
+    public bool GetGamePause()
+    {
+        return isGamePaused;
+    }
     
+    public void SetGamePause(bool newPaused)
+    {
+        isGamePaused = newPaused;
+    }
 }

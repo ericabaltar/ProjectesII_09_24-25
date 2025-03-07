@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
-
+using UnityEngine.SceneManagement;
 
 public class SettingsMenu : MonoBehaviour
 {
@@ -15,9 +15,12 @@ public class SettingsMenu : MonoBehaviour
 
     [SerializeField] TMP_Dropdown resolutionDropdown;
 
+    GameObject pauseObject;
+
     
     private void Start()
     {
+        pauseObject = transform.GetChild(0).gameObject;
         resolutions = Screen.resolutions;
 
         resolutionDropdown.ClearOptions();
@@ -56,5 +59,43 @@ public class SettingsMenu : MonoBehaviour
         Screen.fullScreen = isFullScreen;
     }
 
+    public void OnResume()
+    {
+        GameManager.Instance.SetGamePause(false);
+        gameObject.SetActive(false);
+        
+    }
+    public void OnOptions()
+    {
+        pauseObject.SetActive(true);
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if(i != 0)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+
+            
+        }
+    }
+
+    public void OnMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void OnBack()
+    {
+        pauseObject.SetActive(false);
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (i != 0)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+            }
+
+
+        }
+    }
 
 }
