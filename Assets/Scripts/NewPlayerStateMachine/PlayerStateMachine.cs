@@ -40,19 +40,24 @@ public class PlayerStateMachine : StateMachine
 
 
     //END ANIMATIONS PLAYER
+    //WOTOFOK IS GOING ON
+    //Stack<> anims;
 
     public LayerMask groundedLayerMask;
 
     public enum RotationZoneNeeded
     {
         True,
-        False
+        False,
+        Worlds,
+
     }
 
     public enum OutSideZoneNeeded
     {
         True,
-        False
+        False,
+        NoRotationZone
     }
 
     [field: SerializeField] public RotationZoneNeeded rotationZone { get; private set; } = RotationZoneNeeded.False;
@@ -60,8 +65,8 @@ public class PlayerStateMachine : StateMachine
 
     [Space(10)]
     [Header("UI Transition")]
-    public List<MoveUiToCenter> moveUiToCenterList = new List<MoveUiToCenter>();
-    public TransitionFace transitionFace;
+    
+    
     public AudioSource sceneSound;
     Scene scene;
 
@@ -102,10 +107,7 @@ public class PlayerStateMachine : StateMachine
     // Start is called before the first frame update
     void Start()
     {
-        /*
-        if(outsideRotationZone == OutSideZoneNeeded.True)            
-            GameManager.Instance.objectsToConsider.Remove(gameObject);
-        */
+        
         SwitchState(new IdlePlayerState(this));
     }
 
@@ -214,6 +216,16 @@ public class PlayerStateMachine : StateMachine
             }
         }
 
+        if(collision.CompareTag("NoRotateZone"))
+        {
+            isInRotateZone = false;
+            if (outsideRotationZone == OutSideZoneNeeded.NoRotationZone && GameManager.Instance.rotationState == GameManager.RotationState.IDLE)
+            {
+                if (GameManager.Instance.objectsToConsider.Contains(gameObject))
+                    GameManager.Instance.objectsToConsider.Remove(gameObject);
+            }
+        }
+
 
         if (collision.transform.CompareTag("Door"))
         {
@@ -222,10 +234,7 @@ public class PlayerStateMachine : StateMachine
             {
 
                 sceneSound.Play();
-                foreach (MoveUiToCenter ui in moveUiToCenterList)
-                {
-                    ui.MoveToCloseCurtains();
-                }
+               
                 door = collision.transform;
                 SwitchState(new EnteringDoorState(this));
                 gameObject.GetComponent<TransitionFace>().ShrinkCircle();
@@ -251,6 +260,17 @@ public class PlayerStateMachine : StateMachine
             {
                 if (GameManager.Instance.objectsToConsider.Contains(gameObject))
                     GameManager.Instance.objectsToConsider.Remove(gameObject);
+            }
+        }
+
+
+        if (collision.CompareTag("NoRotateZone"))
+        {
+            isInRotateZone = true;
+            if (outsideRotationZone == OutSideZoneNeeded.NoRotationZone && GameManager.Instance.rotationState == GameManager.RotationState.IDLE)
+            {
+                if (!GameManager.Instance.objectsToConsider.Contains(gameObject))
+                    GameManager.Instance.objectsToConsider.Add(gameObject);
             }
         }
     }
@@ -392,4 +412,6 @@ public void GoToDeathState(PlayerStateMachine stateMachine)
         scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.buildIndex + 1);
     }
+
+
 }

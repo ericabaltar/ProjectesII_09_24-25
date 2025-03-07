@@ -1810,6 +1810,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ------Door
       objectReference: {fileID: 0}
+    - target: {fileID: 2173894879914811934, guid: 24b7c18fe8a8db64ca07586d10c491e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2611650200923216425, guid: 24b7c18fe8a8db64ca07586d10c491e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.97
@@ -1825,6 +1829,10 @@ PrefabInstance:
     - target: {fileID: 3910783070356063550, guid: 24b7c18fe8a8db64ca07586d10c491e9, type: 3}
       propertyPath: m_LocalPosition.y
       value: -6.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5056877888898256219, guid: 24b7c18fe8a8db64ca07586d10c491e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8829628465454721146, guid: 24b7c18fe8a8db64ca07586d10c491e9, type: 3}
       propertyPath: m_RootOrder
@@ -2154,6 +2162,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 488379704}
+    - target: {fileID: 251350879621339192, guid: bce82784af1734be8a12ebb4fd638bb7, type: 3}
+      propertyPath: buttonSpriteRenderer
+      value: 
+      objectReference: {fileID: 1149049725}
     - target: {fileID: 1752706233813526690, guid: bce82784af1734be8a12ebb4fd638bb7, type: 3}
       propertyPath: m_Name
       value: Button
@@ -2219,6 +2231,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bce82784af1734be8a12ebb4fd638bb7, type: 3}
+--- !u!212 &1149049725 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4588588319271419207, guid: bce82784af1734be8a12ebb4fd638bb7, type: 3}
+  m_PrefabInstance: {fileID: 1149049724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1156059321 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8469717532465725089, guid: 947d5344184ce4248b36661914fd03fc, type: 3}

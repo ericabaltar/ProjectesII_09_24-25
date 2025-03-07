@@ -4107,17 +4107,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 850258882}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
+      propertyPath: objectsToConsider.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsider.Array.data[0]
       value: 
       objectReference: {fileID: 2029250519}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsider.Array.data[1]
       value: 
-      objectReference: {fileID: 850258870}
+      objectReference: {fileID: 861759777}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsider.Array.data[2]
       value: 
-      objectReference: {fileID: 861759777}
+      objectReference: {fileID: 850258870}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsiderWorld2.Array.data[0]
       value: 
@@ -4274,8 +4278,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: <rotationZone>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: <isWallWalking>k__BackingField
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: <outsideRotationZone>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4566900565145589108, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_Name
