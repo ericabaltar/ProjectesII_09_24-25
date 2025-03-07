@@ -10246,7 +10246,7 @@ MonoBehaviour:
   tiles: {fileID: 105313684}
   rightSp: {fileID: 21300000, guid: 4a01c698e85124ecebf0209a771226bc, type: 3}
   leftSp: {fileID: 21300000, guid: 3c714be12a86a4196bddb309e37037ef, type: 3}
-  col: {r: 0.5058824, g: 0.6509804, b: 0.98039216, a: 1}
+  col: {r: 1, g: 0, b: 0.019607844, a: 1}
   useOfLeaver: 0
   splineContainer: {fileID: 0}
   speed: 2
@@ -10337,7 +10337,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4a01c698e85124ecebf0209a771226bc, type: 3}
-  m_Color: {r: 0.5058824, g: 0.6509804, b: 0.98039216, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.019583702, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -20241,6 +20241,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1298190607}
     m_Modifications:
+    - target: {fileID: 1140238471588807641, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140238471588807641, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: m_Color.g
+      value: 0.0000000019868216
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140238471588807641, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2016090403388238384, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -20284,6 +20296,18 @@ PrefabInstance:
     - target: {fileID: 2016090403388238384, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: col.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: col.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: col.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: tiles
