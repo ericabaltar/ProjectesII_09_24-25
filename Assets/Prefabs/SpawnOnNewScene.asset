@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcafe0ba7add6934fa9496b77f79e246, type: 3}
+  m_Name: SpawnOnNewScene
+  m_EditorClassIdentifier: 
+  prefabs:
+  - name: Restart
+    prefabPath: Assets\Prefabs\Restart.prefab
+  - name: GameManager
+    prefabPath: Assets\Prefabs\GameManager.prefab
+  - name: End Door
+    prefabPath: Assets\Prefabs\------Door.prefab
+  - name: Starting Door
+    prefabPath: Assets\Prefabs\StartingPoint.prefab
+  - name: Pause Menu
+    prefabPath: Assets\Prefabs\MenuPause.prefab
+  - name: Player
+    prefabPath: Assets\Prefabs\------Player.prefab
+  - name: Lever
+    prefabPath: Assets\Prefabs\lever.prefab
+  - name: Wall
+    prefabPath: Assets\Prefabs\Wall.prefab
+  - name: ClimbableWall
+    prefabPath: Assets\Prefabs\ClimbableWall.prefab
+  - name: Box
+    prefabPath: Assets\Prefabs\Box.prefab
