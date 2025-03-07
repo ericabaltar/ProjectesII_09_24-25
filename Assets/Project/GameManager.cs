@@ -73,6 +73,8 @@ public class GameManager : MonoBehaviour
         {
             // PASS IT FOR EVERY LIST
             centerPoint = CalculateCenterOfList(objectsToConsider);
+            bounds1.center = centerPoint;
+            
             centerPoint2 = CalculateCenterOfList(objectsToConsiderWorld2);
             centerPoint3 = CalculateCenterOfList(objectsToConsiderWorld3);
             centerPoint4 = CalculateCenterOfList(objectsToConsiderWorld4);
