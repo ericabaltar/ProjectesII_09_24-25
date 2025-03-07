@@ -31,6 +31,8 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public AudioClip stepSound;
     AudioSource myAudioSource;
 
+    public ParticleSystem ps;
+
     //DOOOR ENTER 
     [NonSerialized] public Transform door;
     
@@ -343,6 +345,7 @@ public void GoToDeathState(PlayerStateMachine stateMachine)
             myAudioSource.pitch = 1.0f;
             myAudioSource.volume = 1.0f;
             myAudioSource.Play();
+            ps.Emit(5);
         }
         //evento animaci?n cuando el jugador detecta escalar
         else if (isWallWalking && !isGrounded)
