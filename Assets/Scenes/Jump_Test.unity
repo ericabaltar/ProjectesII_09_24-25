@@ -1871,11 +1871,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &850258870 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4566900565145589108, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
-  m_PrefabInstance: {fileID: 8571761594304870438}
-  m_PrefabAsset: {fileID: 0}
 --- !u!82 &850258882 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3586818785476077658, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
@@ -4117,11 +4112,23 @@ PrefabInstance:
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsider.Array.data[1]
       value: 
-      objectReference: {fileID: 861759777}
+      objectReference: {fileID: 2029250519}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsider.Array.data[2]
       value: 
-      objectReference: {fileID: 850258870}
+      objectReference: {fileID: 2029250519}
+    - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
+      propertyPath: objectsToConsider.Array.data[3]
+      value: 
+      objectReference: {fileID: 2029250519}
+    - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
+      propertyPath: objectsToConsider.Array.data[4]
+      value: 
+      objectReference: {fileID: 2029250519}
+    - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
+      propertyPath: objectsToConsider.Array.data[5]
+      value: 
+      objectReference: {fileID: 1725964039}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsiderWorld2.Array.data[0]
       value: 
