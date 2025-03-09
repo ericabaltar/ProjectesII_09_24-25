@@ -11,7 +11,7 @@ public class SplineDrawer : MonoBehaviour
     private Spline spline;
     private Transform parent;
     bool hasBeenDone = false;
-    // Start is called before the first frame update
+    
     void Awake()
     {
         

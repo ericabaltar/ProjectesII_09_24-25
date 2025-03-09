@@ -36,10 +36,7 @@ public class GameManager : MonoBehaviour
     private Vector3 centerPoint3;
     private Vector3 centerPoint4;
 
-    Bounds bounds1;
-    Bounds bounds2;
-    Bounds bounds3;
-    Bounds bounds4;
+    public GameObject zoneCollider1, zoneCollider2, zoneCollider3, zoneCollider4;
 
     public AudioSource rotationSound;
     private float cumulativeRotation = 0.0f;
@@ -73,9 +70,16 @@ public class GameManager : MonoBehaviour
         {
             // PASS IT FOR EVERY LIST
             centerPoint = CalculateCenterOfList(objectsToConsider);
+            
+            
             centerPoint2 = CalculateCenterOfList(objectsToConsiderWorld2);
             centerPoint3 = CalculateCenterOfList(objectsToConsiderWorld3);
             centerPoint4 = CalculateCenterOfList(objectsToConsiderWorld4);
+
+           
+            CreateZoneColliders();
+            UpdateZoneColliders();
+            
         }
     }
 
@@ -376,4 +380,97 @@ public class GameManager : MonoBehaviour
     {
         isGamePaused = newPaused;
     }
+
+
+    ///ZONE COLLIDERS
+    ///
+    private void CreateZoneColliders()
+    {
+        zoneCollider1 = new GameObject("ZoneCollider1");
+        zoneCollider2 = new GameObject("ZoneCollider2");
+        zoneCollider3 = new GameObject("ZoneCollider3");
+        zoneCollider4 = new GameObject("ZoneCollider4");
+
+        SetupZoneCollider(zoneCollider1);
+        SetupZoneCollider(zoneCollider2);
+        SetupZoneCollider(zoneCollider3);
+        SetupZoneCollider(zoneCollider4);
+    }
+
+    private void SetupZoneCollider(GameObject zoneCollider)
+    {
+        zoneCollider.transform.parent = transform;
+        var col = zoneCollider.AddComponent<BoxCollider2D>();
+        col.isTrigger = true;
+        zoneCollider.AddComponent<ZoneTrigger>();
+
+    }
+
+    public void UpdateZoneColliders()
+    {
+        AdjustColliderToObjects(zoneCollider1, objectsToConsider);
+        AdjustColliderToObjects(zoneCollider2, objectsToConsiderWorld2);
+        AdjustColliderToObjects(zoneCollider3, objectsToConsiderWorld3);
+        AdjustColliderToObjects(zoneCollider4, objectsToConsiderWorld4);
+    }
+
+    private void AdjustColliderToObjects(GameObject zoneCollider, List<GameObject> objects)
+    {
+        if (objects == null || objects.Count == 0)
+            return;
+
+        BoxCollider2D col = zoneCollider.GetComponent<BoxCollider2D>();
+
+        Vector3 min = objects[0].transform.position;
+        Vector3 max = min;
+
+        foreach (GameObject obj in objects)
+        {
+            if (obj == null) continue;
+            Vector3 pos = obj.transform.position;
+            min = Vector3.Min(min, pos);
+            max = Vector3.Max(max, pos);
+        }
+
+        Vector3 center = (min + max) / 2f;
+        Vector3 size = max - min;
+
+        zoneCollider.transform.position = center;
+        col.offset = Vector2.zero;
+        col.size = size;
+    }
+
+    public void OnPlayerEnterZone(GameObject player, GameObject zoneCollider)
+    {
+        if (zoneCollider == zoneCollider1) objectsToConsider.Add(player);
+        else if (zoneCollider == zoneCollider2) objectsToConsiderWorld2.Add(player);
+        else if (zoneCollider == zoneCollider3) objectsToConsiderWorld3.Add(player);
+        else if (zoneCollider == zoneCollider4) objectsToConsiderWorld4.Add(player);
+    }
+
+    public void OnPlayerExitZone(GameObject player, GameObject zoneCollider)
+    {
+        if (zoneCollider == zoneCollider1) objectsToConsider.Remove(player);
+        else if (zoneCollider == zoneCollider2) objectsToConsiderWorld2.Remove(player);
+        else if (zoneCollider == zoneCollider3) objectsToConsiderWorld3.Remove(player);
+        else if (zoneCollider == zoneCollider4) objectsToConsiderWorld4.Remove(player);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            OnPlayerEnterZone(other.gameObject, gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            OnPlayerExitZone(other.gameObject, gameObject);
+        }
+    }
+
+
 }
