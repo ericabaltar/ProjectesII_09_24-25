@@ -97,11 +97,14 @@ public class LeverFloors : MonoBehaviour
 
                     child.GetComponent<BoxCollider2D>().enabled = true;
 
-                    tiles.color = new Color(
-                            col.r
-                            , col.g
-                            , col.b
-                            , 1.0f);
+                    if (tiles != null)
+                    {
+                        tiles.color = new Color(
+                                col.r
+                                , col.g
+                                , col.b
+                                , 1.0f);
+                    }
 
                     PlayWallAppear();
                 }
@@ -111,11 +114,14 @@ public class LeverFloors : MonoBehaviour
 
                     child.GetComponent<BoxCollider2D>().enabled = false;
 
-                    tiles.color = new Color(
-                            col.r
-                            , col.g
-                            , col.b
-                            , 20.0f / 255.0f);
+                    if (tiles != null)
+                    {
+                        tiles.color = new Color(
+                                col.r
+                                , col.g
+                                , col.b
+                                , 20.0f / 255.0f);
+                    }
 
                     PlayWallDissappear();
                 }

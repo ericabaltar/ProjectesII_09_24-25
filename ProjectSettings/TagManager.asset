@@ -11,6 +11,7 @@ TagManager:
   - RotateZone
   - Button
   - Box
+  - NoRotateZone
   layers:
   - Default
   - TransparentFX
