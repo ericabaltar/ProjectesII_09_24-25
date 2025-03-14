@@ -4103,24 +4103,24 @@ PrefabInstance:
       objectReference: {fileID: 850258882}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsider.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsider.Array.data[0]
       value: 
-      objectReference: {fileID: 2029250519}
+      objectReference: {fileID: 2075915704}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsider.Array.data[1]
       value: 
-      objectReference: {fileID: 2029250519}
+      objectReference: {fileID: 1976040006}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsider.Array.data[2]
       value: 
-      objectReference: {fileID: 2029250519}
+      objectReference: {fileID: 1057781333}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsider.Array.data[3]
       value: 
-      objectReference: {fileID: 2029250519}
+      objectReference: {fileID: 1725964039}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsider.Array.data[4]
       value: 
@@ -4130,9 +4130,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1725964039}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
+      propertyPath: objectsToConsiderWorld2.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsiderWorld2.Array.data[0]
       value: 
-      objectReference: {fileID: 691013405}
+      objectReference: {fileID: 1514744913}
+    - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
+      propertyPath: objectsToConsiderWorld2.Array.data[1]
+      value: 
+      objectReference: {fileID: 1944634846}
+    - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
+      propertyPath: objectsToConsiderWorld2.Array.data[2]
+      value: 
+      objectReference: {fileID: 318722236}
+    - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
+      propertyPath: objectsToConsiderWorld2.Array.data[3]
+      value: 
+      objectReference: {fileID: 163809012}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
