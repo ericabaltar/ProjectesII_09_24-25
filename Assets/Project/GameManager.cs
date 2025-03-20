@@ -455,20 +455,28 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerEnterZone(GameObject player, GameObject zoneCollider)
     {
+        
         if (zoneCollider == zoneCollider1) objectsToConsider.Add(player);
         else if (zoneCollider == zoneCollider2) objectsToConsiderWorld2.Add(player);
         else if (zoneCollider == zoneCollider3) objectsToConsiderWorld3.Add(player);
         else if (zoneCollider == zoneCollider4) objectsToConsiderWorld4.Add(player);
+        
+      
     }
 
     public void OnPlayerExitZone(GameObject player, GameObject zoneCollider)
     {
         player.GetComponent<Rigidbody2D>().simulated = true;
+        if (rotationState != RotationState.IDLE)
+        {
+            if (zoneCollider == zoneCollider1) objectsToConsider.Remove(player);
+            else if (zoneCollider == zoneCollider2) objectsToConsiderWorld2.Remove(player);
+            else if (zoneCollider == zoneCollider3) objectsToConsiderWorld3.Remove(player);
+            else if (zoneCollider == zoneCollider4) objectsToConsiderWorld4.Remove(player);
+        }
 
-        if (zoneCollider == zoneCollider1) objectsToConsider.Remove(player);
-        else if (zoneCollider == zoneCollider2) objectsToConsiderWorld2.Remove(player);
-        else if (zoneCollider == zoneCollider3) objectsToConsiderWorld3.Remove(player);
-        else if (zoneCollider == zoneCollider4) objectsToConsiderWorld4.Remove(player);
+
+           
     }
 
 
