@@ -45,8 +45,8 @@ public class GameManager : MonoBehaviour
 
     public bool isRotating { get; private set; } = false;
     private bool rotatingRight = false;
-    
-    
+    public float fixedAnglePerFrame = 90f;
+
     public enum TypeOfCenter { None,MiddlePoint, GameObject, Worlds};
     public TypeOfCenter typeOfCenter;
     [SerializeField, HideInInspector] private GameObject centerGameObject;
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
     
     private void RotatingStateUpdate()
     {
-        float fixedAnglePerFrame = 90f;
+        
         
         float rotationAngle = rotatingRight ? -fixedAnglePerFrame : fixedAnglePerFrame;
         rotationAngle *= Time.deltaTime;

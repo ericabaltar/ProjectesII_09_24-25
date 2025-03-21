@@ -4187,6 +4187,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 850258882}
     - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
+      propertyPath: fixedAnglePerFrame
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417870967491629017, guid: 7a2c77dca3152f4449fb6c7edcd1f210, type: 3}
       propertyPath: objectsToConsider.Array.size
       value: 5
       objectReference: {fileID: 0}
