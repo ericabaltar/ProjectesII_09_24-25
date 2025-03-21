@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 228421499}
   - component: {fileID: 228421498}
   - component: {fileID: 228421501}
+  - component: {fileID: 228421502}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -493,6 +494,19 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &228421502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228421497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96dd83550f0e29e41abb3ee3a521e7ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps: {fileID: 1989391776}
 --- !u!4 &256982089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4206077903893729993, guid: 3e3bf36ca20cc8940a87ccd7d96e47cf, type: 3}
@@ -4824,6 +4838,10 @@ MonoBehaviour:
   objectsToConsiderWorld2: []
   objectsToConsiderWorld3: []
   objectsToConsiderWorld4: []
+  zoneCollider1: {fileID: 0}
+  zoneCollider2: {fileID: 0}
+  zoneCollider3: {fileID: 0}
+  zoneCollider4: {fileID: 0}
   rotationSound: {fileID: 1318662068}
   typeOfCenter: 0
   centerGameObject: {fileID: 0}
@@ -5970,6 +5988,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4566900565145589108, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
   m_PrefabInstance: {fileID: 817641270}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1989391776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4272889038219393403, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+  m_PrefabInstance: {fileID: 817641270}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989391773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58a9539f07b3614c8a71678f13cdf69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2014604419
 PrefabInstance:
   m_ObjectHideFlags: 0
