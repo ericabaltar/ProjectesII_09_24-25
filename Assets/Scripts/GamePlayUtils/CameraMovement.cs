@@ -11,6 +11,7 @@ public class CameraMovement : MonoBehaviour
     Vector3 playerDistance;
 
     public PlayerStateMachine ps;
+    [SerializeField] public float force;
 
     void Start()
     {
@@ -23,6 +24,6 @@ public class CameraMovement : MonoBehaviour
     {
         playerDistance = ps.GetComponent<Transform>().position - playerStartPos;
 
-        transform.position = cameraStartPos + (playerDistance / 10);
+        transform.position = cameraStartPos + (playerDistance / 10.0f) * force;
     }
 }
