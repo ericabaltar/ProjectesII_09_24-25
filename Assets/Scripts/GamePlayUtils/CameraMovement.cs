@@ -22,6 +22,9 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
+        if (ps.IsDead()) 
+            return;
+
         playerDistance = ps.GetComponent<Transform>().position - playerStartPos;
 
         transform.position = cameraStartPos + (playerDistance / 10.0f) * force;

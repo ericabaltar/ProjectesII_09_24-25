@@ -97,6 +97,8 @@ public class PlayerStateMachine : StateMachine
 
     RaycastHit2D groundCheck1;
     RaycastHit2D groundCheck2;
+
+    private bool isDead = false;
     private void Awake()
     {
         myAudioSource = GetComponentInChildren<AudioSource>();
@@ -301,6 +303,7 @@ public class PlayerStateMachine : StateMachine
 
 public void GoToDeathState(PlayerStateMachine stateMachine)
     {
+        isDead = true;
         SwitchState(new PlayerDeathState(stateMachine));
     }
 
@@ -413,5 +416,7 @@ public void GoToDeathState(PlayerStateMachine stateMachine)
         SceneManager.LoadScene(scene.buildIndex + 1);
     }
 
-
+    public bool IsDead() {
+        return isDead;
+    }
 }
