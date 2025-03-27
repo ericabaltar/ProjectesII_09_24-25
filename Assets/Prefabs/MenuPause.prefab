@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 2194467788061659020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4608294, y: 0.4608294, z: 0.4608294}
+  m_LocalScale: {x: 0.32835937, y: 0.4608294, z: 0.4608294}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5951021775775904047}
@@ -108,7 +108,7 @@ Transform:
   - {fileID: 3774590741478000359}
   - {fileID: 4397634082000873126}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4493026549364994399
 MonoBehaviour:
@@ -217,7 +217,7 @@ RectTransform:
   m_GameObject: {fileID: 6824472552724562655}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.46082944, y: 0.46082944, z: 0.46082944}
+  m_LocalScale: {x: 0.3340921, y: 0.46082944, z: 0.46082944}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1344495456799187661}
@@ -369,7 +369,7 @@ RectTransform:
   m_GameObject: {fileID: 7834648230920368586}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.46082944, y: 0.46082944, z: 0.46082944}
+  m_LocalScale: {x: 0.3270996, y: 0.44997, z: 0.46082944}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6282709774739901798}
@@ -378,7 +378,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.28082275, y: 0.629303}
-  m_SizeDelta: {x: 536.0808, y: 95.4526}
+  m_SizeDelta: {x: 536.0808, y: 95.45261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5167659261773379429
 CanvasRenderer:
@@ -864,7 +864,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171896639906306077, guid: 288d73409bebf864085dadb0fe3f13e8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171896640077729187, guid: 288d73409bebf864085dadb0fe3f13e8, type: 3}
+      propertyPath: m_Value
+      value: 0.392
       objectReference: {fileID: 0}
     - target: {fileID: 4171896640077729187, guid: 288d73409bebf864085dadb0fe3f13e8, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
