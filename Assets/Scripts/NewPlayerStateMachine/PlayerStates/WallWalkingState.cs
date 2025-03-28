@@ -22,7 +22,8 @@ public class WallWalkingState : PlayerBaseState
         stateMachine.InputReader.RotateRightEvent += stateMachine.RotateRight;
         resetGravity = stateMachine.rigidbody2d.gravityScale;
         stateMachine.rigidbody2d.gravityScale = 0f;
-        //stateMachine.gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = false;
+        stateMachine.HaltClimbingAnimation();
+        stateMachine.gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = false;
 
         //Debug.Log("Wall Walking State");
 
@@ -38,10 +39,10 @@ public class WallWalkingState : PlayerBaseState
         Collider2D hitLeft = Physics2D.OverlapBox(boxCenterL, boxSize, 0f, stateMachine.layerMask);
         Collider2D hitRight = Physics2D.OverlapBox(boxCenterR, boxSize, 0f, stateMachine.layerMask);
 
-        if (hitLeft != null && !stateMachine.isGrounded)
-            stateMachine.spriteholder.transform.Rotate(0f, 0f, -90.0f);
-        else if (hitRight != null && !stateMachine.isGrounded)
-            stateMachine.spriteholder.transform.Rotate(0f, 0f, 90.0f); 
+        if (hitLeft != null)
+            stateMachine.mySprite.flipX = true;
+        else if (hitRight != null)
+            stateMachine.mySprite.flipX = false;
 
         stateMachine.particlesRunning.Stop();
     }
@@ -106,7 +107,13 @@ public class WallWalkingState : PlayerBaseState
 
 
 
-        
+        if (stateMachine.InputReader.MovementValue.y != 0f || stateMachine.InputReader.MovementValue.x != 0f)
+        {
+            stateMachine.ResumeClimbingAnimation();
+        }
+        else {
+            stateMachine.HaltClimbingAnimation();
+        }
 
         if (!stateMachine.isWallWalking)
         {
@@ -134,40 +141,21 @@ public class WallWalkingState : PlayerBaseState
     public override void FixedTick()
     {
 
-        if (stateMachine.InputReader.MovementValue.y > 0f || stateMachine.InputReader.MovementValue.y < 0f) {
+        if (stateMachine.InputReader.MovementValue.y > 0f || stateMachine.InputReader.MovementValue.y < 0f)
+        { 
             stateMachine.rigidbody2d.velocity = (new Vector2(0f, stateMachine.InputReader.MovementValue.y) * Time.fixedDeltaTime * 100);
-            stateMachine.anim.SetBool("walking", true);
-
-            if (stateMachine.gameObject.transform.rotation.z == 1.0f 
-                    || stateMachine.gameObject.transform.rotation.z == -1.0f)
-            {
-                if (stateMachine.InputReader.MovementValue.y > 0.0f)
-                    stateMachine.mySprite.flipX = false;
-                else if (stateMachine.InputReader.MovementValue.y < 0.0f)
-                    stateMachine.mySprite.flipX = true;
-            }
-            else
-                stateMachine.mySprite.flipX = (stateMachine.InputReader.MovementValue.y > 0.0f) ? true : false;
         }
-        else if (stateMachine.InputReader.MovementValue.x > 0f || stateMachine.InputReader.MovementValue.x < 0f) {
+
+        else if (stateMachine.InputReader.MovementValue.x > 0f || stateMachine.InputReader.MovementValue.x < 0f)
+        {
             stateMachine.rigidbody2d.velocity = (new Vector2(stateMachine.InputReader.MovementValue.x, 0f) * Time.fixedDeltaTime * 100);
-            stateMachine.anim.SetBool("walking", true);
-
-            if (stateMachine.gameObject.transform.rotation.z > 0)
-            {
-                stateMachine.mySprite.flipX = (stateMachine.InputReader.MovementValue.x > 0.0f) ? false : true;
-            }else 
-                stateMachine.mySprite.flipX = (stateMachine.InputReader.MovementValue.x > 0.0f) ? true : false;
         }
-        else {
+        else
             stateMachine.rigidbody2d.velocity = (new Vector2(0f, 0.0f));
-            stateMachine.anim.SetBool("walking", false);
-        }
     }
 
     public override void Exit()
     {
-
         stateMachine.InputReader.RotateLeftEvent -= stateMachine.RotateLeft;
         stateMachine.InputReader.RotateRightEvent -= stateMachine.RotateRight;
         stateMachine.rigidbody2d.gravityScale = resetGravity;
@@ -175,8 +163,9 @@ public class WallWalkingState : PlayerBaseState
         stateMachine.particlesLeft.Stop();
         stateMachine.particlesRight.Stop();
         stateMachine.particlesUp.Stop();
+        stateMachine.RestartAnimationSpeed();
         stateMachine.gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = true;
-        Debug.Log("Exit wall state!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
         if (stateMachine.hit1 != null)
         {
             Debug.Log("false");

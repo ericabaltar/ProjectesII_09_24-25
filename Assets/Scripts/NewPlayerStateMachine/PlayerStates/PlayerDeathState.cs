@@ -18,7 +18,7 @@ public class PlayerDeathState : PlayerBaseState
         int direction = Random.Range(0, 2);
         stateMachine.rigidbody2d.AddForce(new Vector2(direction == 0 ? pushToSide : -pushToSide, pushUp), ForceMode2D.Impulse);
 
-        stateMachine.sceneSound.PlayOneShot(stateMachine.ouchSound, 10.0f);
+        stateMachine.sceneSound.PlayOneShot(stateMachine.ouchSound);
         stateMachine.rigidbody2d.constraints = RigidbodyConstraints2D.None;
         stateMachine.rigidbody2d.angularVelocity = 340.0f;
         stateMachine.rigidbody2d.angularDrag = 0.1f;
