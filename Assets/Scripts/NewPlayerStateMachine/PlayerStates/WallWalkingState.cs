@@ -38,11 +38,14 @@ public class WallWalkingState : PlayerBaseState
         Collider2D hitLeft = Physics2D.OverlapBox(boxCenterL, boxSize, 0f, stateMachine.layerMask);
         Collider2D hitRight = Physics2D.OverlapBox(boxCenterR, boxSize, 0f, stateMachine.layerMask);
 
-        if (hitLeft != null && !stateMachine.isGrounded)
-            stateMachine.spriteholder.transform.Rotate(0f, 0f, -90.0f);
-        else if (hitRight != null && !stateMachine.isGrounded)
-            stateMachine.spriteholder.transform.Rotate(0f, 0f, 90.0f); 
 
+        //if (stateMachine.spriteholder.transform.localRotation.z == 0.0f) { 
+
+            if (hitLeft != null)
+                stateMachine.spriteholder.transform.Rotate(0f, 0f, -90.0f);
+            else if (hitRight != null)
+                stateMachine.spriteholder.transform.Rotate(0f, 0f, 90.0f); 
+        //}
         stateMachine.particlesRunning.Stop();
     }
 
