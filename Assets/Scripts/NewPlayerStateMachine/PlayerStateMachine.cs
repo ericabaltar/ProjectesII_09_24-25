@@ -84,6 +84,7 @@ public class PlayerStateMachine : StateMachine
     [Space(10)]
     [Header("Death Part")]
     [Space(10)]
+    public GameObject spriteholder;
     public ParticleSystem particlesDeath;
     public AudioClip ouchSound;
     float timeToReset = 2f;
@@ -206,6 +207,7 @@ public class PlayerStateMachine : StateMachine
             isWallWalking = true;
             safety_isWallWalking = true;
             }
+            gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = false;
         }
 
         if (collision.CompareTag("RotateZone"))
@@ -253,6 +255,8 @@ public class PlayerStateMachine : StateMachine
             safety_isWallWalking = false;
 
             //isWallWalking = false;
+            if (InputReader.MovementValue.x != 0f)
+                gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = true;
         }
 
         if (collision.CompareTag("RotateZone"))
