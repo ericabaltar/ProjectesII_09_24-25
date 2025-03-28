@@ -15,11 +15,7 @@ public class MusicGameplay : MonoBehaviour
         if (instance == null)
             instance = this;
         else
-        {
             Destroy(gameObject);
-            return;
-        }
-            
 
         DontDestroyOnLoad(gameObject);
         //MIRAD EN EL NIVEL SI YA EXISTE
