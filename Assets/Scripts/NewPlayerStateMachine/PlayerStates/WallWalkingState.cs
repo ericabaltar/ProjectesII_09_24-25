@@ -38,10 +38,19 @@ public class WallWalkingState : PlayerBaseState
         Collider2D hitLeft = Physics2D.OverlapBox(boxCenterL, boxSize, 0f, stateMachine.layerMask);
         Collider2D hitRight = Physics2D.OverlapBox(boxCenterR, boxSize, 0f, stateMachine.layerMask);
 
-        if (hitLeft != null && !stateMachine.isGrounded)
-            stateMachine.spriteholder.transform.Rotate(0f, 0f, -90.0f);
-        else if (hitRight != null && !stateMachine.isGrounded)
-            stateMachine.spriteholder.transform.Rotate(0f, 0f, 90.0f); 
+        if (hitLeft != null)
+        {
+            Debug.Log("Left");
+            stateMachine.spriteholder.transform.localRotation = Quaternion.Euler(0f, 0f, -90.0f) * stateMachine.transform.rotation;
+            stateMachine.spriteholder.transform.localScale *= new Vector2(stateMachine.transform.rotation.eulerAngles.z < 10.0f ? 1.0f : - 1.0f, 1.0f);
+        }
+        else if (hitRight != null)
+        {
+            Debug.Log("Right");
+            stateMachine.spriteholder.transform.localRotation = Quaternion.Euler(0f, 0f, 90.0f) * stateMachine.transform.rotation;
+            stateMachine.spriteholder.transform.localScale *= new Vector2(stateMachine.transform.rotation.eulerAngles.z > 10.0f ? 1.0f : - 1.0f, 1.0f);
+        }
+
 
         stateMachine.particlesRunning.Stop();
     }
@@ -198,6 +207,9 @@ public class WallWalkingState : PlayerBaseState
             stateMachine.hit4.SetActive(false);
             stateMachine.hit4 = null;
         }
+        stateMachine.spriteholder.transform.localScale = new Vector2(Mathf.Abs(stateMachine.spriteholder.transform.localScale.x),
+            Mathf.Abs(stateMachine.spriteholder.transform.localScale.y));
+        stateMachine.spriteholder.transform.localRotation = stateMachine.transform.rotation;
 
     }
 
