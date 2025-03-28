@@ -125,13 +125,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Start()
     {
-        if(typeOfCenter == TypeOfCenter.MiddlePoint)
+        if (typeOfCenter == TypeOfCenter.MiddlePoint)
         {
             CalculateCenter();
         }
-        else if(typeOfCenter == TypeOfCenter.None)
+        else if (typeOfCenter == TypeOfCenter.None)
         {
             centerPoint = Vector3.zero;
         }
@@ -139,7 +139,10 @@ public class GameManager : MonoBehaviour
         {
             centerPoint = centerGameObject.transform.position;
         }
-        
+    }
+
+    void Update()
+    {
 
         switch (rotationState)
         {

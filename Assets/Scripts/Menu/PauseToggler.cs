@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class PauseToggler : MonoBehaviour
 {
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
+    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             GameManager.Instance.SetGamePause(!GameManager.Instance.GetGamePause());
-            if(GameManager.Instance.GetGamePause() )
-            {
-                Time.timeScale = 0.0000f;
-            }
-            else
-            {
-                Time.timeScale = 1.0f;
-            }
             transform.GetChild(0).gameObject.SetActive(!transform.GetChild(0).gameObject.activeSelf);
             
         }
