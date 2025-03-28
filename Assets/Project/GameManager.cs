@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using static UnityEngine.Rendering.DebugUI.Table;
 
 public class GameManager : MonoBehaviour
 {
+   
     public enum RotationState { IDLE, ROTATING, ADJUSTING }
 
     public RotationState rotationState { get; private set; } = RotationState.IDLE;
@@ -36,18 +38,15 @@ public class GameManager : MonoBehaviour
     private Vector3 centerPoint3;
     private Vector3 centerPoint4;
 
-    Bounds bounds1;
-    Bounds bounds2;
-    Bounds bounds3;
-    Bounds bounds4;
+    public GameObject zoneCollider1, zoneCollider2, zoneCollider3, zoneCollider4;
 
     public AudioSource rotationSound;
     private float cumulativeRotation = 0.0f;
 
     public bool isRotating { get; private set; } = false;
     private bool rotatingRight = false;
-    
-    
+    public float fixedAnglePerFrame = 90f;
+
     public enum TypeOfCenter { None,MiddlePoint, GameObject, Worlds};
     public TypeOfCenter typeOfCenter;
     [SerializeField, HideInInspector] private GameObject centerGameObject;
@@ -73,15 +72,22 @@ public class GameManager : MonoBehaviour
         {
             // PASS IT FOR EVERY LIST
             centerPoint = CalculateCenterOfList(objectsToConsider);
+            
+            
             centerPoint2 = CalculateCenterOfList(objectsToConsiderWorld2);
             centerPoint3 = CalculateCenterOfList(objectsToConsiderWorld3);
             centerPoint4 = CalculateCenterOfList(objectsToConsiderWorld4);
+
+           
+            CreateZoneColliders();
+            UpdateZoneColliders();
+            
         }
     }
-
+    
     private void RotatingStateUpdate()
     {
-        float fixedAnglePerFrame = 90f;
+        
         
         float rotationAngle = rotatingRight ? -fixedAnglePerFrame : fixedAnglePerFrame;
         rotationAngle *= Time.deltaTime;
@@ -251,6 +257,14 @@ public class GameManager : MonoBehaviour
 
             }
         }
+
+        if(GetTypeOfCenter() == TypeOfCenter.Worlds)
+        {
+            zoneCollider1.transform.RotateAround(centerPoint, Vector3.forward, angle);
+            zoneCollider2.transform.RotateAround(centerPoint2, Vector3.forward, angle);
+            zoneCollider3.transform.RotateAround(centerPoint3, Vector3.forward, angle);
+            zoneCollider4.transform.RotateAround(centerPoint4, Vector3.forward, angle);
+        }
     }
 
     void ToggleRigidbodiesInScene(bool active)
@@ -376,4 +390,104 @@ public class GameManager : MonoBehaviour
     {
         isGamePaused = newPaused;
     }
+
+
+    ///ZONE COLLIDERS
+    ///
+    private void CreateZoneColliders()
+    {
+        zoneCollider1 = new GameObject("ZoneCollider1");
+        zoneCollider2 = new GameObject("ZoneCollider2");
+        zoneCollider3 = new GameObject("ZoneCollider3");
+        zoneCollider4 = new GameObject("ZoneCollider4");
+
+        SetupZoneCollider(zoneCollider1);
+        SetupZoneCollider(zoneCollider2);
+        SetupZoneCollider(zoneCollider3);
+        SetupZoneCollider(zoneCollider4);
+    }
+
+    private void SetupZoneCollider(GameObject zoneCollider)
+    {
+        zoneCollider.transform.parent = transform;
+        var col = zoneCollider.AddComponent<BoxCollider2D>();
+        col.isTrigger = true;
+        zoneCollider.AddComponent<ZoneTrigger>();
+
+    }
+
+    public void UpdateZoneColliders()
+    {
+        AdjustColliderToObjects(zoneCollider1, objectsToConsider);
+        AdjustColliderToObjects(zoneCollider2, objectsToConsiderWorld2);
+        AdjustColliderToObjects(zoneCollider3, objectsToConsiderWorld3);
+        AdjustColliderToObjects(zoneCollider4, objectsToConsiderWorld4);
+    }
+
+    private void AdjustColliderToObjects(GameObject zoneCollider, List<GameObject> objects)
+    {
+        if (objects == null || objects.Count == 0)
+            return;
+        Bounds bounds = new Bounds();
+        BoxCollider2D col = zoneCollider.GetComponent<BoxCollider2D>();
+
+        //zoneCollider.tag = "RotateZone";
+
+        foreach (GameObject obj in objects)
+        {
+            Renderer renderer = obj.GetComponent<Renderer>();
+            Collider2D collider = obj.GetComponent<Collider2D>();
+
+            if (obj.GetComponent<PlayerStateMachine>() != null) continue;
+
+            if (renderer)
+                bounds.Encapsulate(renderer.bounds);
+            else if (collider)
+                bounds.Encapsulate(collider.bounds);
+        }
+
+        //zoneCollider.transform.position = center;
+        col.offset = Vector2.zero;
+        col.transform.position = bounds.center;
+        col.size = bounds.size;
+        
+    }
+
+    public void OnPlayerEnterZone(GameObject player, GameObject zoneCollider)
+    {
+        if(!objectsToConsider.Contains(player) && !objectsToConsiderWorld2.Contains(player) && !objectsToConsiderWorld3.Contains(player) && !objectsToConsiderWorld4.Contains(player))
+        { 
+
+            if (zoneCollider == zoneCollider1) objectsToConsider.Add(player);
+            else if (zoneCollider == zoneCollider2) objectsToConsiderWorld2.Add(player);
+            else if (zoneCollider == zoneCollider3) objectsToConsiderWorld3.Add(player);
+            else if (zoneCollider == zoneCollider4) objectsToConsiderWorld4.Add(player);
+        }
+
+
+    }
+
+    public void OnPlayerExitZone(GameObject player, GameObject zoneCollider)
+    {
+        
+
+        if (objectsToConsider.Contains(player) || objectsToConsiderWorld2.Contains(player) || objectsToConsiderWorld3.Contains(player) || objectsToConsiderWorld4.Contains(player))
+        {
+            player.GetComponent<Rigidbody2D>().simulated = true;
+
+            if (rotationState == RotationState.IDLE)
+            {
+            if (zoneCollider == zoneCollider1) objectsToConsider.Remove(player);
+            else if (zoneCollider == zoneCollider2) objectsToConsiderWorld2.Remove(player);
+            else if (zoneCollider == zoneCollider3) objectsToConsiderWorld3.Remove(player);
+            else if (zoneCollider == zoneCollider4) objectsToConsiderWorld4.Remove(player);
+            }
+        }
+
+
+    }
+
+
+
+
 }

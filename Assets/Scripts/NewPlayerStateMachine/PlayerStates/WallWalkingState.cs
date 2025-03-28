@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
-using static UnityEngine.RuleTile.TilingRuleOutput;
+using UnityEngine.UIElements;
 
 public class WallWalkingState : PlayerBaseState
 {
@@ -57,9 +57,14 @@ public class WallWalkingState : PlayerBaseState
         {
             if (!stateMachine.particlesLeft.isPlaying)
                 stateMachine.particlesLeft.Play();
-           
-            stateMachine.hit1 = hit1.collider.gameObject.transform.GetChild(0).gameObject;
-            stateMachine.hit1.SetActive(true);
+
+            Transform hitTransform = hit1.collider.gameObject.transform;
+
+            if (hitTransform.childCount > 0)  // Prevents out-of-bounds error
+            {
+                stateMachine.hit1 = hit1.collider.gameObject.transform.GetChild(0).gameObject;
+                stateMachine.hit1.SetActive(true);
+            }
         }
         
 

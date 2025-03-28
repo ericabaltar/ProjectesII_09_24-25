@@ -40,7 +40,7 @@ public class EnteringDoorState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        Debug.Log(isComplete);
+        
        
         if(isComplete)
         {

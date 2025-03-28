@@ -10088,7 +10088,12 @@ MonoBehaviour:
   objectsToConsiderWorld2: []
   objectsToConsiderWorld3: []
   objectsToConsiderWorld4: []
+  zoneCollider1: {fileID: 0}
+  zoneCollider2: {fileID: 0}
+  zoneCollider3: {fileID: 0}
+  zoneCollider4: {fileID: 0}
   rotationSound: {fileID: 1318662068}
+  fixedAnglePerFrame: 360
   typeOfCenter: 0
   centerGameObject: {fileID: 0}
 --- !u!4 &1318662067
