@@ -1476,6 +1476,10 @@ PrefabInstance:
       value: ------Player
       objectReference: {fileID: 0}
     - target: {fileID: 5375149397527179732, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2134929957, guid: b18ad58a6cfcb4047a1a5e74700a7771, type: 3}
+    - target: {fileID: 5375149397527179732, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
@@ -1524,8 +1528,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8596845540295813161, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8383156
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596845540295813161, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2581873
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596845540295813161, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596845540295813161, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0031722188
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596845540295813161, guid: b7158f01c78013748ae50919a6ab02bd, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0941329
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
