@@ -378,7 +378,12 @@ public void GoToDeathState(PlayerStateMachine stateMachine)
         else if (isWallWalking && !isGrounded)
         {
             anim.SetBool("climbing", true);
-            anim.SetBool("falling", false);            
+            anim.SetBool("falling", false);
+
+            myAudioSource.clip = landSound;
+            myAudioSource.pitch = 1.0f;
+            myAudioSource.volume = 1.0f;
+            myAudioSource.Play();
         }
         // mantener animaci?n en andar o quieto mientras no caiga
         else
