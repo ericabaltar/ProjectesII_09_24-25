@@ -242,8 +242,8 @@ MonoBehaviour:
   - {x: 0.65999985, y: 0.69000006, z: 0}
   - {x: 0.65999985, y: -0.69000006, z: 0}
   m_ShapePathHash: 0
-  m_Mesh: {fileID: 2078407906}
-  m_InstanceId: 38274
+  m_Mesh: {fileID: 2014262965}
+  m_InstanceId: 63728
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.65999985, y: 0.69000006, z: 0}
@@ -1721,8 +1721,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.33564997, y: -6.76705, z: 0}
-    m_Extent: {x: 5.06535, y: 9.49255, z: 0}
+    m_Center: {x: -0.3366499, y: -6.75995, z: 0}
+    m_Extent: {x: 5.07485, y: 9.49565, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.21
@@ -2384,14 +2384,6 @@ PrefabInstance:
     - target: {fileID: 2648179373129768038, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
       propertyPath: m_Name
       value: MenuPause
-      objectReference: {fileID: 0}
-    - target: {fileID: 3774590740726225809, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3774590740794049973, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7688537041952907688, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
       propertyPath: m_RootOrder
@@ -6487,7 +6479,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &2078407906
+--- !u!43 &2014262965
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

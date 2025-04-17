@@ -573,7 +573,6 @@ GameObject:
   - component: {fileID: 228421499}
   - component: {fileID: 228421498}
   - component: {fileID: 228421501}
-  - component: {fileID: 228421502}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2394,7 +2393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7556393742042524375, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20.244995
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2757,6 +2756,10 @@ MonoBehaviour:
   objectsToConsiderWorld2: []
   objectsToConsiderWorld3: []
   objectsToConsiderWorld4: []
+  zoneCollider1: {fileID: 0}
+  zoneCollider2: {fileID: 0}
+  zoneCollider3: {fileID: 0}
+  zoneCollider4: {fileID: 0}
   rotationSound: {fileID: 1318662068}
   typeOfCenter: 0
   centerGameObject: {fileID: 0}
