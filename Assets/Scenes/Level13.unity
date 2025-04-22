@@ -174,7 +174,7 @@ MonoBehaviour:
   tiles: {fileID: 229840553}
   rightSp: {fileID: -602843133, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
   leftSp: {fileID: -1044560993, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
-  col: {r: 1, g: 0.050980397, b: 0.043137256, a: 1}
+  col: {r: 0.043137256, g: 1, b: 0.6431373, a: 1}
   useOfLeaver: 0
   splineContainer: {fileID: 0}
   speed: 2
@@ -265,7 +265,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -602843133, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
-  m_Color: {r: 1, g: 0.05111616, b: 0.042452812, a: 1}
+  m_Color: {r: 0.043137256, g: 1, b: 0.6431373, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1032,7 +1032,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 0.050980393, b: 0.043137256, a: 1}
+  m_Color: {r: 0.043137252, g: 1, b: 0.64215815, a: 1}
   m_Origin: {x: -11, y: -11, z: 0}
   m_Size: {x: 21, y: 21, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
