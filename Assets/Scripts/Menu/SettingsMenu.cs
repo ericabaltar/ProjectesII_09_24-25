@@ -18,6 +18,8 @@ public class SettingsMenu : MonoBehaviour
     GameObject pauseObject;
 
     
+
+    
     private void Start()
     {
         pauseObject = transform.GetChild(0).gameObject;
@@ -96,6 +98,12 @@ public class SettingsMenu : MonoBehaviour
 
 
         }
+    }
+
+    public void SetRotationSpeed(float rotationSpeed)
+    {
+        GameManager.Instance.fixedAnglePerFrame = rotationSpeed;
+        GameManager.Instance.RotationSpeed = rotationSpeed;
     }
 
 }

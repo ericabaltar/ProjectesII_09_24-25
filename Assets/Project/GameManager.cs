@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
     private int targetRotation = 0; //index of PossibleRotations
 
     public const float RotationAngle = 90.0f; //Deg
-    public const float RotationSpeed = 90.0f; //Deg/s
+    public float RotationSpeed = 90.0f; //Deg/s
+    public float fixedAnglePerFrame = 90f;
     private float lastAngle = 0.0f;
 
     public AnimationCurve rotationCurve;
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     private void RotatingStateUpdate()
     {
-        float fixedAnglePerFrame = 90f;
+        
         
         float rotationAngle = rotatingRight ? -fixedAnglePerFrame : fixedAnglePerFrame;
         rotationAngle *= Time.deltaTime;

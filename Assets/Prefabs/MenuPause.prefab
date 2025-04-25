@@ -687,22 +687,22 @@ MonoBehaviour:
   m_FillRect: {fileID: 7718402844656192612}
   m_HandleRect: {fileID: 7825500429999027798}
   m_Direction: 0
-  m_MinValue: 0.0001
-  m_MaxValue: 1
+  m_MinValue: 90
+  m_MaxValue: 360
   m_WholeNumbers: 0
-  m_Value: 0.392
+  m_Value: 270
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3774590741478000358}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: SetVolume
+        m_MethodName: SetRotationSpeed
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 270
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -1802,7 +1802,7 @@ GameObject:
   - component: {fileID: 3210977257303360931}
   - component: {fileID: 7985180876460790675}
   m_Layer: 5
-  m_Name: Volumen MUSIC (1)
+  m_Name: Slide Velocidad Texto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
