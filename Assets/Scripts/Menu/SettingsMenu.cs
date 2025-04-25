@@ -18,6 +18,8 @@ public class SettingsMenu : MonoBehaviour
     GameObject pauseObject;
 
     
+
+    
     private void Start()
     {
         pauseObject = transform.GetChild(0).gameObject;
@@ -45,7 +47,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        audioMixer.SetFloat("volume", volume);   
+        audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);   
     }
 
     public void SetQuality(int qualityIndex)
@@ -96,6 +98,12 @@ public class SettingsMenu : MonoBehaviour
 
 
         }
+    }
+
+    public void SetRotationSpeed(float rotationSpeed)
+    {
+        GameManager.Instance.fixedAnglePerFrame = rotationSpeed;
+        GameManager.Instance.RotationSpeed = rotationSpeed;
     }
 
 }
