@@ -72,6 +72,18 @@ MonoBehaviour:
     m_Localized: Low
     m_Metadata:
       m_Items: []
+  - m_Id: 55317905346560
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55645191081984
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55801508597760
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

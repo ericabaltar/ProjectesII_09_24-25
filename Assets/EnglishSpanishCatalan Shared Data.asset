@@ -69,6 +69,18 @@ MonoBehaviour:
     m_Key: Low
     m_Metadata:
       m_Items: []
+  - m_Id: 55317905346560
+    m_Key: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55645191081984
+    m_Key: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55801508597760
+    m_Key: Quit
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -71,6 +71,18 @@ MonoBehaviour:
     m_Localized: Baja
     m_Metadata:
       m_Items: []
+  - m_Id: 55317905346560
+    m_Localized: Jugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55645191081984
+    m_Localized: Ajustes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55801508597760
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
