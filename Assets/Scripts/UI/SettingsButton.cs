@@ -7,9 +7,11 @@ public class SettingsButton : MonoBehaviour
 {
     [SerializeField] private string settingsMenuSceneName = "SettingsMenu";
 
+    [SerializeField] Transform canvasMenu;
+
     public void GoToSettingsMenu()
     {
 
-        SceneManager.LoadScene(settingsMenuSceneName);
+        canvasMenu.gameObject.SetActive(!canvasMenu.gameObject.activeSelf);
     }
 }
