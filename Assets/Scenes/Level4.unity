@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dd83550f0e29e41abb3ee3a521e7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 0}
+  ps: {fileID: 34053404}
   force: 0.4
 --- !u!212 &196703166
 SpriteRenderer:
@@ -2907,7 +2907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dd83550f0e29e41abb3ee3a521e7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 0}
+  ps: {fileID: 34053404}
   force: 0.1
 --- !u!212 &1014928956
 SpriteRenderer:
@@ -3121,7 +3121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dd83550f0e29e41abb3ee3a521e7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 0}
+  ps: {fileID: 34053404}
   force: 0.2
 --- !u!212 &1191663180
 SpriteRenderer:
@@ -3584,6 +3584,16 @@ Tilemap:
   m_GameObject: {fileID: 1343470456}
   m_Enabled: 1
   m_Tiles:
+  - first: {x: -1, y: 4, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 8
+      m_TileSpriteIndex: 8
+      m_TileMatrixIndex: 3
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -9, y: 6, z: 0}
     second:
       serializedVersion: 2
@@ -3962,8 +3972,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: eec47b2936c6f7742841a30fc21ff322, type: 2}
   - m_RefCount: 6
     m_Data: {fileID: 11400000, guid: 01789afb0fc860841a7ccd8ba09deb7a, type: 2}
   - m_RefCount: 13
@@ -4003,8 +4013,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -273478392, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: -1756337898, guid: 5551dafd2454df64b8e8263a96f505c1, type: 3}
   - m_RefCount: 13
@@ -4082,7 +4092,7 @@ Tilemap:
       e31: 5.56e-43
       e32: 5.54e-43
       e33: 5.54e-43
-  - m_RefCount: 36
+  - m_RefCount: 37
     m_Data:
       e00: 1
       e01: 0
@@ -4101,7 +4111,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 36
+  - m_RefCount: 37
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -4235,7 +4245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dd83550f0e29e41abb3ee3a521e7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 0}
+  ps: {fileID: 34053404}
   force: 0.3
 --- !u!212 &1457732531
 SpriteRenderer:
@@ -6316,7 +6326,7 @@ MonoBehaviour:
   m_Color: {r: 0.8596443, g: 1, b: 0.069811285, a: 1}
   m_Intensity: 0.51
   m_LightVolumeIntensity: 0.15
-  m_LightVolumeIntensityEnabled: 1
+  m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 61dcc1b600000000
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
@@ -6331,8 +6341,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.121500015, y: -8.77965, z: 0}
-    m_Extent: {x: 5.8068, y: 7.87355, z: 0}
+    m_Center: {x: 0.11349988, y: -8.7754, z: 0}
+    m_Extent: {x: 5.807, y: 7.8729997, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.21
