@@ -1923,6 +1923,7 @@ GameObject:
   - component: {fileID: 228421499}
   - component: {fileID: 228421498}
   - component: {fileID: 228421501}
+  - component: {fileID: 228421502}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2175,8 +2176,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.23829997, y: -6.1419, z: 0}
-    m_Extent: {x: 3.2610998, y: 5.2376003, z: 0}
+    m_Center: {x: -0.24545002, y: -6.1514, z: 0}
+    m_Extent: {x: 3.25965, y: 5.2381997, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.21
@@ -5902,6 +5903,8 @@ MonoBehaviour:
   - 270
   - 360
   - 0
+  RotationSpeed: 90
+  fixedAnglePerFrame: 90
   rotationCurve:
     serializedVersion: 2
     m_Curve:
@@ -5938,7 +5941,6 @@ MonoBehaviour:
   zoneCollider3: {fileID: 0}
   zoneCollider4: {fileID: 0}
   rotationSound: {fileID: 1318662068}
-  fixedAnglePerFrame: 90
   typeOfCenter: 0
   centerGameObject: {fileID: 0}
 --- !u!4 &1318662067

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,28 +15,72 @@ public class SettingsMenu : MonoBehaviour
 
     [SerializeField] TMP_Dropdown resolutionDropdown;
 
+    [SerializeField] TMP_Dropdown qualityDropdown;
+
     GameObject pauseObject;
 
-    
 
-    
-    private void Start()
+
+    private void OnEnable()
     {
         pauseObject = transform.GetChild(0).gameObject;
         resolutions = Screen.resolutions;
-
         resolutionDropdown.ClearOptions();
 
         List<string> options = new List<string>();
+        int currentResolutionIndex = 0;
 
-        for(int i = 0; i < resolutions.Length; i++)
+        for (int i = 0; i < resolutions.Length; i++)
         {
             string option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(option);
+
+            // Buscar la resolución actual
+            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+            {
+                currentResolutionIndex = i;
+            }
         }
-        
 
         resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = currentResolutionIndex;
+        resolutionDropdown.RefreshShownValue();
+
+        // Configurar calidad
+        int currentQualityLevel = QualitySettings.GetQualityLevel();
+        qualityDropdown.value = currentQualityLevel;
+        qualityDropdown.RefreshShownValue();
+
+
+        // Player preffs
+        if (PlayerPrefs.HasKey("volume"))
+        {
+            float volume = PlayerPrefs.GetFloat("volume");
+            audioMixer.SetFloat("volume", volume);
+        }
+
+        if (PlayerPrefs.HasKey("qualityIndex"))
+        {
+            int qualityIndex = PlayerPrefs.GetInt("qualityIndex");
+            QualitySettings.SetQualityLevel(qualityIndex);
+
+            // ⚡ Ahora actualizamos el Dropdown después de aplicar el nivel de calidad
+            qualityDropdown.value = qualityIndex;
+            qualityDropdown.RefreshShownValue();
+        }
+        else
+        {
+            // Si no hay prefs, usamos el valor actual
+            qualityDropdown.value = QualitySettings.GetQualityLevel();
+            qualityDropdown.RefreshShownValue();
+        }
+
+        if (PlayerPrefs.HasKey("isFullScreen"))
+        {
+            bool isFullScreen = PlayerPrefs.GetInt("isFullScreen") == 1;
+            Screen.fullScreen = isFullScreen;
+        }
+
     }
 
     public void SetResolution(int resolutionIndex)
@@ -47,18 +91,20 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        audioMixer.SetFloat("volume", volume);   
+        audioMixer.SetFloat("volume", volume);
+        PlayerPrefs.SetFloat("volume", volume);
     }
 
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
-        Debug.Log(QualitySettings.GetQualityLevel());
+        PlayerPrefs.SetInt("qualityIndex", qualityIndex);
     }
 
     public void SetFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
+        PlayerPrefs.SetInt("isFullScreen", isFullScreen ? 1 : 0);
     }
 
     public void OnResume()
