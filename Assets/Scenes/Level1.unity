@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dd83550f0e29e41abb3ee3a521e7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 0}
+  ps: {fileID: 1989391776}
   force: 0.4
 --- !u!212 &201676665
 SpriteRenderer:
@@ -592,7 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dd83550f0e29e41abb3ee3a521e7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 0}
+  ps: {fileID: 1989391776}
   force: 0.2
 --- !u!212 &248385396
 SpriteRenderer:
@@ -2646,6 +2646,8 @@ MonoBehaviour:
   - 270
   - 360
   - 0
+  RotationSpeed: 90
+  fixedAnglePerFrame: 90
   rotationCurve:
     serializedVersion: 2
     m_Curve:
@@ -3533,7 +3535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dd83550f0e29e41abb3ee3a521e7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 0}
+  ps: {fileID: 1989391776}
   force: 0.3
 --- !u!212 &1619476320
 SpriteRenderer:
@@ -3917,7 +3919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dd83550f0e29e41abb3ee3a521e7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 0}
+  ps: {fileID: 1989391776}
   force: 0.1
 --- !u!212 &1937917803
 SpriteRenderer:
