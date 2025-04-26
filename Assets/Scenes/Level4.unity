@@ -1734,6 +1734,7 @@ GameObject:
   - component: {fileID: 735969633}
   - component: {fileID: 735969635}
   - component: {fileID: 735969634}
+  - component: {fileID: 735969636}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: StaticText
@@ -1845,7 +1846,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -0.3481593, z: -3.708003, w: 0}
+  m_margin: {x: -0.31187248, y: -0.570925, z: -3.708003, w: 3.1632776}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1859,6 +1860,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735969632}
   m_CullTransparentMesh: 1
+--- !u!114 &735969636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735969632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:19a7eb259d6389948b259ac9746df0b1
+    m_TableEntryReference:
+      m_KeyId: 62928205713408
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 735969634}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &794970341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6290,8 +6331,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.11975002, y: -8.78005, z: 0}
-    m_Extent: {x: 5.80165, y: 7.8700504, z: 0}
+    m_Center: {x: 0.121500015, y: -8.77965, z: 0}
+    m_Extent: {x: 5.8068, y: 7.87355, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.21
@@ -6922,6 +6963,8 @@ MonoBehaviour:
   - 270
   - 360
   - 0
+  RotationSpeed: 90
+  fixedAnglePerFrame: 90
   rotationCurve:
     serializedVersion: 2
     m_Curve:
@@ -6957,7 +7000,6 @@ MonoBehaviour:
   zoneCollider3: {fileID: 0}
   zoneCollider4: {fileID: 0}
   rotationSound: {fileID: 2137593257}
-  fixedAnglePerFrame: 90
   typeOfCenter: 1
   centerGameObject: {fileID: 0}
 --- !u!4 &2137593256

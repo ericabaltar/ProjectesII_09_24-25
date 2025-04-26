@@ -87,6 +87,11 @@ MonoBehaviour:
     m_Localized: Sortir
     m_Metadata:
       m_Items: []
+  - m_Id: 62928205713408
+    m_Localized: Les parets blaves permeten caminar contra la gravetat. Has d'allunyar-te
+      per caure de nou.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

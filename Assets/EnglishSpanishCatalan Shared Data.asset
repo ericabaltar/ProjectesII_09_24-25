@@ -81,6 +81,11 @@ MonoBehaviour:
     m_Key: Quit
     m_Metadata:
       m_Items: []
+  - m_Id: 62928205713408
+    m_Key: Blue walls can be walked  on, even when upside down! Move away from the
+      wall to fall from them again.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

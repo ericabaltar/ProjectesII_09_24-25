@@ -84,6 +84,11 @@ MonoBehaviour:
     m_Localized: Quit
     m_Metadata:
       m_Items: []
+  - m_Id: 62928205713408
+    m_Localized: Blue walls can be walked  on, even when upside down! Move away from
+      the wall to fall from them again.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

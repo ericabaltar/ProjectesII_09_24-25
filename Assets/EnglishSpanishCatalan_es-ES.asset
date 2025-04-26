@@ -83,6 +83,11 @@ MonoBehaviour:
     m_Localized: Salir
     m_Metadata:
       m_Items: []
+  - m_Id: 62928205713408
+    m_Localized: Las paredes azules permiten caminar contra la gravedad. Hay que
+      alejase para caer de nuevo.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
