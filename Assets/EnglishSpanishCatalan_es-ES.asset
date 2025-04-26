@@ -88,6 +88,10 @@ MonoBehaviour:
       alejase para caer de nuevo.
     m_Metadata:
       m_Items: []
+  - m_Id: 67061994295296
+    m_Localized: Pulsa ESPACIO para mover palancas i alterar las barreras.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

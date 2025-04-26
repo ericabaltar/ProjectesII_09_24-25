@@ -92,6 +92,10 @@ MonoBehaviour:
       per caure de nou.
     m_Metadata:
       m_Items: []
+  - m_Id: 67061994295296
+    m_Localized: Prem ESPAI per moure les palanques i alterar les barreres.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

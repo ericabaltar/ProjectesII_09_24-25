@@ -89,6 +89,10 @@ MonoBehaviour:
       the wall to fall from them again.
     m_Metadata:
       m_Items: []
+  - m_Id: 67061994295296
+    m_Localized: Press SPACE to switch levers to alter barriers.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
