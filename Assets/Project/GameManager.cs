@@ -30,10 +30,10 @@ public class GameManager : MonoBehaviour
     private float currentRotationTime = 0.0f;
     private float remainingRotation = 0.0f;
 
-    public List<GameObject> objectsToConsider; // Assign in the inspector
-    public List<GameObject> objectsToConsiderWorld2; // Assign in the inspector
-    public List<GameObject> objectsToConsiderWorld3; // Assign in the inspector
-    public List<GameObject> objectsToConsiderWorld4; // Assign in the inspector
+    public List<GameObject> objectsToConsider; 
+    public List<GameObject> objectsToConsiderWorld2; 
+    public List<GameObject> objectsToConsiderWorld3; 
+    public List<GameObject> objectsToConsiderWorld4; 
     private Vector3 centerPoint;
     private Vector3 centerPoint2;
     private Vector3 centerPoint3;
@@ -59,10 +59,6 @@ public class GameManager : MonoBehaviour
         return typeOfCenter;
     }
 
-    private void Awake()
-    {
-        RotationSpeed = fixedAnglePerFrame;
-    }
 
     private void OnEnable()
     {
@@ -70,6 +66,8 @@ public class GameManager : MonoBehaviour
             return;
 
         Instance = this;
+
+        LoadSettings();
 
         if (typeOfCenter == TypeOfCenter.Worlds)
         {
@@ -492,7 +490,15 @@ public class GameManager : MonoBehaviour
 
 
     }
-
+    private void LoadSettings()
+    {
+        if (PlayerPrefs.HasKey("rotationSpeed"))
+        {
+            float rotationSpeed = PlayerPrefs.GetFloat("rotationSpeed");
+            fixedAnglePerFrame = rotationSpeed;
+            RotationSpeed = rotationSpeed;
+        }
+    }
 
 
 

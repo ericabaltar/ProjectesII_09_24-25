@@ -139,7 +139,7 @@ PrefabInstance:
     - target: {fileID: 1747516888103760520, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1968951987}
     - target: {fileID: 3785038419143658550, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_Name
       value: Restart
@@ -230,11 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7556393742042524375, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -113.79999
-      objectReference: {fileID: 0}
-    - target: {fileID: 7556393742042524375, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -20.244995
+      value: -113.79988
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1696,8 +1692,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481383541}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.51, y: -4.52, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.51, y: -5.048, z: 0}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 722534024}
@@ -1718,8 +1714,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformHolder: {fileID: 161946903}
   tiles: {fileID: 1031124332}
-  rightSp: {fileID: 21300000, guid: 4a01c698e85124ecebf0209a771226bc, type: 3}
-  leftSp: {fileID: 21300000, guid: 3c714be12a86a4196bddb309e37037ef, type: 3}
+  rightSp: {fileID: -602843133, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
+  leftSp: {fileID: -1044560993, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
   col: {r: 0.95686275, g: 1, b: 0.07058824, a: 1}
   useOfLeaver: 0
   splineContainer: {fileID: 0}
@@ -1756,18 +1752,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0010926425, y: -0.0045264103}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 0.2, y: 0.14444445}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 0.23240516, y: 0.18917146}
   m_EdgeRadius: 0
 --- !u!212 &481383545
 SpriteRenderer:
@@ -1810,7 +1806,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a01c698e85124ecebf0209a771226bc, type: 3}
+  m_Sprite: {fileID: -602843133, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
   m_Color: {r: 0.95686275, g: 1, b: 0.07058824, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2385,7 +2381,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722534023}
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
-  m_LocalPosition: {x: 0.06, y: -0.55, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4944,8 +4940,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359900216}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: 2.49, y: 11.48, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.49, y: 12.046, z: 0}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2110145474}
@@ -4966,8 +4962,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformHolder: {fileID: 1200261776}
   tiles: {fileID: 1612445534}
-  rightSp: {fileID: 21300000, guid: 4a01c698e85124ecebf0209a771226bc, type: 3}
-  leftSp: {fileID: 21300000, guid: 3c714be12a86a4196bddb309e37037ef, type: 3}
+  rightSp: {fileID: -602843133, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
+  leftSp: {fileID: -1044560993, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
   col: {r: 0.043137256, g: 1, b: 0.6431373, a: 1}
   useOfLeaver: 0
   splineContainer: {fileID: 0}
@@ -5004,18 +5000,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0010926425, y: -0.0045264103}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 0.2, y: 0.14444445}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 0.23240516, y: 0.18917146}
   m_EdgeRadius: 0
 --- !u!212 &1359900220
 SpriteRenderer:
@@ -5058,7 +5054,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a01c698e85124ecebf0209a771226bc, type: 3}
+  m_Sprite: {fileID: -602843133, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
   m_Color: {r: 0.043137256, g: 1, b: 0.6431373, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8286,7 +8282,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110145473}
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
-  m_LocalPosition: {x: 0, y: -0.48, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8431,26 +8427,28 @@ MonoBehaviour:
   - 270
   - 360
   - 0
+  RotationSpeed: 90
+  fixedAnglePerFrame: 270
   rotationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 3.33514
+      outSlope: 3.33514
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.03673157
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -4.5855565
+      outSlope: -4.5855565
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.06586498
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -8466,7 +8464,6 @@ MonoBehaviour:
   zoneCollider3: {fileID: 0}
   zoneCollider4: {fileID: 0}
   rotationSound: {fileID: 2137593257}
-  fixedAnglePerFrame: 90
   typeOfCenter: 0
   centerGameObject: {fileID: 0}
 --- !u!4 &2137593256

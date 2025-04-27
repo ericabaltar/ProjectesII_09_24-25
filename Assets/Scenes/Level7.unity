@@ -6495,36 +6495,27 @@ MonoBehaviour:
   - 360
   - 0
   RotationSpeed: 90
-  fixedAnglePerFrame: 360
+  fixedAnglePerFrame: 270
   rotationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 3.1814234
-      outSlope: 3.1814234
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.31339532
-      value: 0.9970432
-      inSlope: 3.4441042
-      outSlope: 3.4441042
+      inSlope: 3.33514
+      outSlope: 3.33514
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.089723654
+      inWeight: 0
+      outWeight: 0.03673157
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: -8.49057
-      outSlope: -8.49057
+      inSlope: -4.5855565
+      outSlope: -4.5855565
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.01820551
+      inWeight: 0.06586498
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -7603,7 +7594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8829628465454721146, guid: 24b7c18fe8a8db64ca07586d10c491e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6
+      value: 6.113
       objectReference: {fileID: 0}
     - target: {fileID: 8829628465454721146, guid: 24b7c18fe8a8db64ca07586d10c491e9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7833,6 +7824,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClimbableWall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3167253601902914050, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3455069327595693067, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
       propertyPath: m_Size.x
       value: 1
@@ -7938,6 +7933,10 @@ PrefabInstance:
     - target: {fileID: 3167253601902914050, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
       propertyPath: m_Name
       value: ClimbableWall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167253601902914050, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3455069327595693067, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
       propertyPath: m_Size.x
@@ -9806,7 +9805,7 @@ PrefabInstance:
     - target: {fileID: 1747516888103760520, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 228421499}
     - target: {fileID: 3785038419143658550, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_Name
       value: Restart
@@ -9897,11 +9896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7556393742042524375, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -113.79999
-      objectReference: {fileID: 0}
-    - target: {fileID: 7556393742042524375, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -32
+      value: -113.799866
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 06e5630e4e480624cbe6b88a932943a8
   - enabled: 1
+    path: Assets/Scenes/LanguagesMenu.unity
+    guid: 2019bbf3e0c731c42904691f67f54720
+  - enabled: 1
     path: Assets/Scenes/SettingsMenu.unity
     guid: 806a81d041edd484a9548ec2b4feb2fd
   - enabled: 1
@@ -95,9 +98,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndGame.unity
     guid: 15984242d11865441ba1708d9c84b75e
-  - enabled: 1
-    path: Assets/Scenes/SceneSelector.unity
-    guid: f588fe88e7fd689488c9563050c98eb3
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 171a94b90fdfffd49ab31d848b88c130, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 14a6218f6cd9cdb4b8f30ae5bf5a25e3, type: 2}
