@@ -16,7 +16,6 @@ public class IdlePlayerState : PlayerBaseState
         stateMachine.InputReader.RotateRightEvent += stateMachine.RotateRight;
         
         stateMachine.particlesRunning.Stop();
-        //Debug.Log("Idle State");
     }
 
 
