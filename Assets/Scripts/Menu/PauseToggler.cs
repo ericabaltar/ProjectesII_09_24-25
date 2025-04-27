@@ -15,9 +15,12 @@ public class PauseToggler : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            GameManager.Instance.SetGamePause(!GameManager.Instance.GetGamePause());
-            transform.GetChild(0).gameObject.SetActive(!transform.GetChild(0).gameObject.activeSelf);
-            
+            bool isNowActive = !transform.GetChild(0).gameObject.activeSelf;
+            GameManager.Instance.SetGamePause(isNowActive);
+            transform.GetChild(0).gameObject.SetActive(isNowActive);
+
+            Time.timeScale = isNowActive ? 0f : 1f;
+
         }
     }
 }
