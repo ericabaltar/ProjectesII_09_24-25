@@ -18,8 +18,9 @@ public class LevelSelectorManager : MonoBehaviour
     void PopulateLevelButtons()
     {
         int sceneCount = SceneManager.sceneCountInBuildSettings;
-        
-        for (int i = 3; i < sceneCount-1; i++)
+        int numberScene = SceneManager.GetActiveScene().buildIndex +1;
+        int buttonNumber = 1; // Start number at 1
+        for (int i = numberScene;  i < sceneCount-1; i++)
         {
             string scenePath = SceneUtility.GetScenePathByBuildIndex(i); 
             string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath); 
@@ -30,7 +31,7 @@ public class LevelSelectorManager : MonoBehaviour
             TMP_Text buttonText = newButton.GetComponentInChildren<TMP_Text>();
             if (buttonText != null)
             {
-                buttonText.text = (i-2).ToString();
+                buttonText.text = buttonNumber.ToString();
             }
             else
             {
@@ -40,6 +41,8 @@ public class LevelSelectorManager : MonoBehaviour
             
             int index = i; 
             newButton.onClick.AddListener(() => LoadSelectedLevel(index));
+
+            buttonNumber++;
         }
     }
 
