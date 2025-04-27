@@ -110,6 +110,10 @@ MonoBehaviour:
     m_Key: Level select
     m_Metadata:
       m_Items: []
+  - m_Id: 458426225856512
+    m_Key: velocidad al rotar
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

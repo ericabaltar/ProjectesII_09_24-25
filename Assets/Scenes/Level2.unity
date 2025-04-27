@@ -3164,9 +3164,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuPause
       objectReference: {fileID: 0}
+    - target: {fileID: 3554354503425180844, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774590740726225809, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774590740794049973, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3774590741478000363, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157060054949409582, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 458426225856512
       objectReference: {fileID: 0}
     - target: {fileID: 5951021775775904047, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3283,6 +3299,26 @@ PrefabInstance:
     - target: {fileID: 7688537041952907688, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718402844656192612, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.6666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718402844656192612, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825500429999027798, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.6666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825500429999027798, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825500429999027798, guid: 0c54b64f5c245024caf76a7db70c41b1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.6666667
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
