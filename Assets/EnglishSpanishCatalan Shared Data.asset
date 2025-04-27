@@ -16,7 +16,7 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 19a7eb259d6389948b259ac9746df0b1
   m_Entries:
   - m_Id: 275760353280
-    m_Key: ROTATION SPEED
+    m_Key: VOLUM
     m_Metadata:
       m_Items: []
   - m_Id: 69413179392
@@ -100,6 +100,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 327642710085632
     m_Key: TEST PHRASE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443691130912768
+    m_Key: ROTATION SPEED
     m_Metadata:
       m_Items: []
   m_Metadata:

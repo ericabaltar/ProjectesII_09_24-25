@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 275760353280
-    m_Localized: VELOCIDAD DE GIRO
+    m_Localized: VOLUMEN
     m_Metadata:
       m_Items: []
   - m_Id: 1692835319808
@@ -102,6 +102,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 327642710085632
     m_Localized: FRASE PRUEBA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443691130912768
+    m_Localized: VELOCIDAD DE ROTACION
     m_Metadata:
       m_Items: []
   references:
