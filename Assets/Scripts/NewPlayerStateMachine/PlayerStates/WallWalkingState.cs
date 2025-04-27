@@ -40,13 +40,11 @@ public class WallWalkingState : PlayerBaseState
 
         if (hitLeft != null)
         {
-            Debug.Log("Left");
             stateMachine.spriteholder.transform.localRotation = Quaternion.Euler(0f, 0f, -90.0f) * stateMachine.transform.rotation;
             stateMachine.spriteholder.transform.localScale *= new Vector2(stateMachine.transform.rotation.eulerAngles.z < 10.0f ? 1.0f : - 1.0f, 1.0f);
         }
         else if (hitRight != null)
         {
-            Debug.Log("Right");
             stateMachine.spriteholder.transform.localRotation = Quaternion.Euler(0f, 0f, 90.0f) * stateMachine.transform.rotation;
             stateMachine.spriteholder.transform.localScale *= new Vector2(stateMachine.transform.rotation.eulerAngles.z > 10.0f ? 1.0f : - 1.0f, 1.0f);
         }
@@ -185,10 +183,8 @@ public class WallWalkingState : PlayerBaseState
         stateMachine.particlesRight.Stop();
         stateMachine.particlesUp.Stop();
         stateMachine.gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = true;
-        Debug.Log("Exit wall state!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         if (stateMachine.hit1 != null)
         {
-            Debug.Log("false");
             stateMachine.hit1.SetActive(false);
             stateMachine.hit1 = null;
         }
