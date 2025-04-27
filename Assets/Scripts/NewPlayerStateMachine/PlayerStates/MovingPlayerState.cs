@@ -32,7 +32,6 @@ public class MovingPlayerState : PlayerBaseState
             stateMachine.particlesRunning.Stop();
         }
 
-        //Debug.Log("MOVING");
         stateMachine.AnimateAndRotateAccording();
         stateMachine.StretchAndSquash();
 
@@ -45,6 +44,10 @@ public class MovingPlayerState : PlayerBaseState
         {
             stateMachine.SwitchState(new WallWalkingState(stateMachine));
         }
+
+        
+
+
 
     }
 

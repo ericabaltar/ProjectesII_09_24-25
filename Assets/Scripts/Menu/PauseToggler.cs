@@ -13,11 +13,15 @@ public class PauseToggler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             GameManager.Instance.SetGamePause(!GameManager.Instance.GetGamePause());
             transform.GetChild(0).gameObject.SetActive(!transform.GetChild(0).gameObject.activeSelf);
-            
+
+
+
         }
+
+        Time.timeScale = GameManager.Instance.GetGamePause() ? 0f : 1f;
     }
 }

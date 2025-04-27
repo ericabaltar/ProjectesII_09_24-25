@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: EnglishSpanishCatalan_es-ES
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es-ES
+  m_SharedData: {fileID: 11400000, guid: 19a7eb259d6389948b259ac9746df0b1, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 69413179392
+    m_Localized: PANTALLA COMPLETA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 275760353280
+    m_Localized: VOLUMEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1692835319808
+    m_Localized: "\xA1Cuidado, los\npinchos te hieren! \xA1Si tocas\nuno, vuelves
+      a empezar!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4806996987904
+    m_Localized: Recuerda, puedes moverte mientras caes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7032414998528
+    m_Localized: VOLUMEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7238393073664
+    m_Localized: SALIR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8817422700544
+    m_Localized: OPCIONES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9154879623168
+    m_Localized: SEGUIR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10109079588864
+    m_Localized: VOLVER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10269587214336
+    m_Localized: Muy baja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12192285528064
+    m_Localized: VOLUMEN MUSICAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12521991376896
+    m_Localized: VOLUMEN DE EFECTOS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15671058042880
+    m_Localized: Baja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55317905346560
+    m_Localized: Jugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55645191081984
+    m_Localized: Ajustes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55801508597760
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62928205713408
+    m_Localized: Las paredes azules permiten caminar contra la gravedad. Hay que
+      alejase para caer de nuevo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67061994295296
+    m_Localized: Pulsa ESPACIO para mover palancas i alterar las barreras.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 173101423333376
+    m_Localized: Lenguages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 327428783804416
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 327642710085632
+    m_Localized: FRASE PRUEBA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437657777278976
+    m_Localized: GRACIAS POR JUGAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 438747147079680
+    m_Localized: Escoger nivel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 458426225856512
+    m_Localized: VELOCIDAD AL ROTAR
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

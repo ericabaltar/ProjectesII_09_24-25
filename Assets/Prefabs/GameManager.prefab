@@ -53,26 +53,28 @@ MonoBehaviour:
   - 270
   - 0
   - 360
+  RotationSpeed: 90
+  fixedAnglePerFrame: 270
   rotationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 3.33514
+      outSlope: 3.33514
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.03673157
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -4.5855565
+      outSlope: -4.5855565
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.06586498
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -81,10 +83,19 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   objectsToConsiderWorld2:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   objectsToConsiderWorld3: []
   objectsToConsiderWorld4: []
+  zoneCollider1: {fileID: 0}
+  zoneCollider2: {fileID: 0}
+  zoneCollider3: {fileID: 0}
+  zoneCollider4: {fileID: 0}
   rotationSound: {fileID: 0}
   typeOfCenter: 3
   centerGameObject: {fileID: 0}

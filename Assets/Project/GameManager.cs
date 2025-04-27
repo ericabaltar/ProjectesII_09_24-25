@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using static UnityEngine.Rendering.DebugUI.Table;
 
 public class GameManager : MonoBehaviour
 {
+   
     public enum RotationState { IDLE, ROTATING, ADJUSTING }
 
     public RotationState rotationState { get; private set; } = RotationState.IDLE;
@@ -19,7 +21,8 @@ public class GameManager : MonoBehaviour
     private int targetRotation = 0; //index of PossibleRotations
 
     public const float RotationAngle = 90.0f; //Deg
-    public const float RotationSpeed = 90.0f; //Deg/s
+    public float RotationSpeed = 90.0f; //Deg/s
+    public float fixedAnglePerFrame = 270f;
     private float lastAngle = 0.0f;
 
     public AnimationCurve rotationCurve;
@@ -27,10 +30,10 @@ public class GameManager : MonoBehaviour
     private float currentRotationTime = 0.0f;
     private float remainingRotation = 0.0f;
 
-    public List<GameObject> objectsToConsider; // Assign in the inspector
-    public List<GameObject> objectsToConsiderWorld2; // Assign in the inspector
-    public List<GameObject> objectsToConsiderWorld3; // Assign in the inspector
-    public List<GameObject> objectsToConsiderWorld4; // Assign in the inspector
+    public List<GameObject> objectsToConsider; 
+    public List<GameObject> objectsToConsiderWorld2; 
+    public List<GameObject> objectsToConsiderWorld3; 
+    public List<GameObject> objectsToConsiderWorld4; 
     private Vector3 centerPoint;
     private Vector3 centerPoint2;
     private Vector3 centerPoint3;
@@ -43,8 +46,7 @@ public class GameManager : MonoBehaviour
 
     public bool isRotating { get; private set; } = false;
     private bool rotatingRight = false;
-    
-    
+
     public enum TypeOfCenter { None,MiddlePoint, GameObject, Worlds};
     public TypeOfCenter typeOfCenter;
     [SerializeField, HideInInspector] private GameObject centerGameObject;
@@ -58,13 +60,14 @@ public class GameManager : MonoBehaviour
     }
 
 
-
     private void OnEnable()
     {
         if (Instance != null)
             return;
 
         Instance = this;
+
+        LoadSettings();
 
         if (typeOfCenter == TypeOfCenter.Worlds)
         {
@@ -82,10 +85,10 @@ public class GameManager : MonoBehaviour
             
         }
     }
-
+    
     private void RotatingStateUpdate()
     {
-        float fixedAnglePerFrame = 90f;
+        
         
         float rotationAngle = rotatingRight ? -fixedAnglePerFrame : fixedAnglePerFrame;
         rotationAngle *= Time.deltaTime;
@@ -123,13 +126,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Start()
     {
-        if(typeOfCenter == TypeOfCenter.MiddlePoint)
+        if (typeOfCenter == TypeOfCenter.MiddlePoint)
         {
             CalculateCenter();
         }
-        else if(typeOfCenter == TypeOfCenter.None)
+        else if (typeOfCenter == TypeOfCenter.None)
         {
             centerPoint = Vector3.zero;
         }
@@ -137,7 +140,10 @@ public class GameManager : MonoBehaviour
         {
             centerPoint = centerGameObject.transform.position;
         }
-        
+    }
+
+    void Update()
+    {
 
         switch (rotationState)
         {
@@ -254,6 +260,14 @@ public class GameManager : MonoBehaviour
                 obj.transform.RotateAround(centerPoint4, Vector3.forward, angle);
 
             }
+        }
+
+        if(GetTypeOfCenter() == TypeOfCenter.Worlds)
+        {
+            zoneCollider1.transform.RotateAround(centerPoint, Vector3.forward, angle);
+            zoneCollider2.transform.RotateAround(centerPoint2, Vector3.forward, angle);
+            zoneCollider3.transform.RotateAround(centerPoint3, Vector3.forward, angle);
+            zoneCollider4.transform.RotateAround(centerPoint4, Vector3.forward, angle);
         }
     }
 
@@ -418,59 +432,74 @@ public class GameManager : MonoBehaviour
     {
         if (objects == null || objects.Count == 0)
             return;
-
+        Bounds bounds = new Bounds();
         BoxCollider2D col = zoneCollider.GetComponent<BoxCollider2D>();
 
-        Vector3 min = objects[0].transform.position;
-        Vector3 max = min;
+        //zoneCollider.tag = "RotateZone";
 
         foreach (GameObject obj in objects)
         {
-            if (obj == null) continue;
-            Vector3 pos = obj.transform.position;
-            min = Vector3.Min(min, pos);
-            max = Vector3.Max(max, pos);
+            Renderer renderer = obj.GetComponent<Renderer>();
+            Collider2D collider = obj.GetComponent<Collider2D>();
+
+            if (obj.GetComponent<PlayerStateMachine>() != null) continue;
+
+            if (renderer)
+                bounds.Encapsulate(renderer.bounds);
+            else if (collider)
+                bounds.Encapsulate(collider.bounds);
         }
 
-        Vector3 center = (min + max) / 2f;
-        Vector3 size = max - min;
-
-        zoneCollider.transform.position = center;
+        //zoneCollider.transform.position = center;
         col.offset = Vector2.zero;
-        col.size = size;
+        col.transform.position = bounds.center;
+        col.size = bounds.size;
+        
     }
 
     public void OnPlayerEnterZone(GameObject player, GameObject zoneCollider)
     {
-        if (zoneCollider == zoneCollider1) objectsToConsider.Add(player);
-        else if (zoneCollider == zoneCollider2) objectsToConsiderWorld2.Add(player);
-        else if (zoneCollider == zoneCollider3) objectsToConsiderWorld3.Add(player);
-        else if (zoneCollider == zoneCollider4) objectsToConsiderWorld4.Add(player);
+        if(!objectsToConsider.Contains(player) && !objectsToConsiderWorld2.Contains(player) && !objectsToConsiderWorld3.Contains(player) && !objectsToConsiderWorld4.Contains(player))
+        { 
+
+            if (zoneCollider == zoneCollider1) objectsToConsider.Add(player);
+            else if (zoneCollider == zoneCollider2) objectsToConsiderWorld2.Add(player);
+            else if (zoneCollider == zoneCollider3) objectsToConsiderWorld3.Add(player);
+            else if (zoneCollider == zoneCollider4) objectsToConsiderWorld4.Add(player);
+        }
+
+
     }
 
     public void OnPlayerExitZone(GameObject player, GameObject zoneCollider)
     {
-        if (zoneCollider == zoneCollider1) objectsToConsider.Remove(player);
-        else if (zoneCollider == zoneCollider2) objectsToConsiderWorld2.Remove(player);
-        else if (zoneCollider == zoneCollider3) objectsToConsiderWorld3.Remove(player);
-        else if (zoneCollider == zoneCollider4) objectsToConsiderWorld4.Remove(player);
-    }
+        
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
+        if (objectsToConsider.Contains(player) || objectsToConsiderWorld2.Contains(player) || objectsToConsiderWorld3.Contains(player) || objectsToConsiderWorld4.Contains(player))
         {
-            OnPlayerEnterZone(other.gameObject, gameObject);
+            player.GetComponent<Rigidbody2D>().simulated = true;
+
+            if (rotationState == RotationState.IDLE)
+            {
+            if (zoneCollider == zoneCollider1) objectsToConsider.Remove(player);
+            else if (zoneCollider == zoneCollider2) objectsToConsiderWorld2.Remove(player);
+            else if (zoneCollider == zoneCollider3) objectsToConsiderWorld3.Remove(player);
+            else if (zoneCollider == zoneCollider4) objectsToConsiderWorld4.Remove(player);
+            }
+        }
+
+
+    }
+    private void LoadSettings()
+    {
+        if (PlayerPrefs.HasKey("rotationSpeed"))
+        {
+            float rotationSpeed = PlayerPrefs.GetFloat("rotationSpeed");
+            fixedAnglePerFrame = rotationSpeed;
+            RotationSpeed = rotationSpeed;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            OnPlayerExitZone(other.gameObject, gameObject);
-        }
-    }
 
 
 }

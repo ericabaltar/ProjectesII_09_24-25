@@ -84,6 +84,7 @@ public class PlayerStateMachine : StateMachine
     [Space(10)]
     [Header("Death Part")]
     [Space(10)]
+    public GameObject spriteholder;
     public ParticleSystem particlesDeath;
     public AudioClip ouchSound;
     float timeToReset = 2f;
@@ -97,6 +98,8 @@ public class PlayerStateMachine : StateMachine
 
     RaycastHit2D groundCheck1;
     RaycastHit2D groundCheck2;
+
+    private bool isDead = false;
     private void Awake()
     {
         myAudioSource = GetComponentInChildren<AudioSource>();
@@ -204,6 +207,7 @@ public class PlayerStateMachine : StateMachine
             isWallWalking = true;
             safety_isWallWalking = true;
             }
+            gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = false;
         }
 
         if (collision.CompareTag("RotateZone"))
@@ -251,6 +255,8 @@ public class PlayerStateMachine : StateMachine
             safety_isWallWalking = false;
 
             //isWallWalking = false;
+            if (InputReader.MovementValue.x != 0f)
+                gameObject.GetComponentInChildren<RotationConstraint>().constraintActive = true;
         }
 
         if (collision.CompareTag("RotateZone"))
@@ -301,6 +307,7 @@ public class PlayerStateMachine : StateMachine
 
 public void GoToDeathState(PlayerStateMachine stateMachine)
     {
+        isDead = true;
         SwitchState(new PlayerDeathState(stateMachine));
     }
 
@@ -371,7 +378,12 @@ public void GoToDeathState(PlayerStateMachine stateMachine)
         else if (isWallWalking && !isGrounded)
         {
             anim.SetBool("climbing", true);
-            anim.SetBool("falling", false);            
+            anim.SetBool("falling", false);
+
+            myAudioSource.clip = landSound;
+            myAudioSource.pitch = 1.0f;
+            myAudioSource.volume = 1.0f;
+            myAudioSource.Play();
         }
         // mantener animaci?n en andar o quieto mientras no caiga
         else
@@ -413,5 +425,7 @@ public void GoToDeathState(PlayerStateMachine stateMachine)
         SceneManager.LoadScene(scene.buildIndex + 1);
     }
 
-
+    public bool IsDead() {
+        return isDead;
+    }
 }
