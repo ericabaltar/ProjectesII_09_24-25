@@ -3961,7 +3961,7 @@ PrefabInstance:
     - target: {fileID: 1747516888103760520, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 228421499}
     - target: {fileID: 3785038419143658550, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_Name
       value: Restart
@@ -4048,14 +4048,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6038848336541019612, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7556393742042524375, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -113.79999
-      objectReference: {fileID: 0}
-    - target: {fileID: 7556393742042524375, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5041,6 +5033,8 @@ MonoBehaviour:
   - 270
   - 360
   - 0
+  RotationSpeed: 90
+  fixedAnglePerFrame: 90
   rotationCurve:
     serializedVersion: 2
     m_Curve:
@@ -5075,7 +5069,6 @@ MonoBehaviour:
   zoneCollider3: {fileID: 0}
   zoneCollider4: {fileID: 0}
   rotationSound: {fileID: 1318662068}
-  fixedAnglePerFrame: 90
   typeOfCenter: 0
   centerGameObject: {fileID: 0}
 --- !u!4 &1318662067

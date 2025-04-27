@@ -672,7 +672,7 @@ PrefabInstance:
     - target: {fileID: 1747516888103760520, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1968951987}
     - target: {fileID: 3785038419143658550, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_Name
       value: Restart

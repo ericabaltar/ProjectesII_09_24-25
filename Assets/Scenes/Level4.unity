@@ -4500,7 +4500,7 @@ PrefabInstance:
     - target: {fileID: 1747516888103760520, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1968951987}
     - target: {fileID: 3785038419143658550, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_Name
       value: Restart
@@ -6341,8 +6341,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.11325002, y: -8.775551, z: 0}
-    m_Extent: {x: 5.80595, y: 7.8626504, z: 0}
+    m_Center: {x: 0.11675, y: -8.77695, z: 0}
+    m_Extent: {x: 5.8060503, y: 7.8685503, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.21
