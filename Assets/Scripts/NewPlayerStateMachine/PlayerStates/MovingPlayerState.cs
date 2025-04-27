@@ -42,22 +42,11 @@ public class MovingPlayerState : PlayerBaseState
 
         if (stateMachine.isWallWalking)
         {
-            Vector2 boxSize = new Vector2(1.32f, 0.1f); // Adjust width and height
-            Vector2 boxCenterL = new Vector2(stateMachine.transform.position.x - 0.91f, stateMachine.transform.position.y); // Offset
-            Vector2 boxCenterR = new Vector2(stateMachine.transform.position.x + 0.91f, stateMachine.transform.position.y); // Offset
-
-
-            Collider2D hitLeft = Physics2D.OverlapBox(boxCenterL, boxSize, 0f, stateMachine.layerMask);
-            Collider2D hitRight = Physics2D.OverlapBox(boxCenterR, boxSize, 0f, stateMachine.layerMask);
-            if (hitLeft != null || hitRight != null)
-            {
-                stateMachine.SwitchState(new WallWalkingState(stateMachine));
-            }
-            else
-            {
-                stateMachine.SetWallWalking(false);
-            }
+            stateMachine.SwitchState(new WallWalkingState(stateMachine));
         }
+
+        
+
 
 
     }

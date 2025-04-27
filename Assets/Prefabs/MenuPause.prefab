@@ -297,7 +297,7 @@ Transform:
   - {fileID: 3774590741478000359}
   - {fileID: 4397634082000873126}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4493026549364994399
 MonoBehaviour:
@@ -1192,7 +1192,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:19a7eb259d6389948b259ac9746df0b1
     m_TableEntryReference:
-      m_KeyId: 275760353280
+      m_KeyId: 458426225856512
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1398,6 +1398,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171896638114334055, guid: 288d73409bebf864085dadb0fe3f13e8, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171896638114334055, guid: 288d73409bebf864085dadb0fe3f13e8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171896638114334055, guid: 288d73409bebf864085dadb0fe3f13e8, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4171896638130838529, guid: 288d73409bebf864085dadb0fe3f13e8, type: 3}
