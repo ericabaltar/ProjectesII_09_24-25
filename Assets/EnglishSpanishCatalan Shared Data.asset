@@ -102,8 +102,12 @@ MonoBehaviour:
     m_Key: TEST PHRASE
     m_Metadata:
       m_Items: []
-  - m_Id: 443691130912768
-    m_Key: ROTATION SPEED
+  - m_Id: 437657777278976
+    m_Key: THANKS FOR PLAYING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 438747147079680
+    m_Key: Level select
     m_Metadata:
       m_Items: []
   m_Metadata:

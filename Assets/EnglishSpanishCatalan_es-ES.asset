@@ -104,8 +104,12 @@ MonoBehaviour:
     m_Localized: FRASE PRUEBA
     m_Metadata:
       m_Items: []
-  - m_Id: 443691130912768
-    m_Localized: VELOCIDAD DE ROTACION
+  - m_Id: 437657777278976
+    m_Localized: GRACIAS POR JUGAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 438747147079680
+    m_Localized: Escoger nivel
     m_Metadata:
       m_Items: []
   references:
