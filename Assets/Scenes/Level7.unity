@@ -7594,7 +7594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8829628465454721146, guid: 24b7c18fe8a8db64ca07586d10c491e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6
+      value: 6.113
       objectReference: {fileID: 0}
     - target: {fileID: 8829628465454721146, guid: 24b7c18fe8a8db64ca07586d10c491e9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7824,6 +7824,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClimbableWall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3167253601902914050, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3455069327595693067, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
       propertyPath: m_Size.x
       value: 1
@@ -7929,6 +7933,10 @@ PrefabInstance:
     - target: {fileID: 3167253601902914050, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
       propertyPath: m_Name
       value: ClimbableWall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167253601902914050, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3455069327595693067, guid: 667bc7da872a89949be72bd1dd0474e9, type: 3}
       propertyPath: m_Size.x
@@ -9888,7 +9896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7556393742042524375, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -113.79991
+      value: -113.799866
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
