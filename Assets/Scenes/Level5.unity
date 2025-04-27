@@ -3955,7 +3955,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 0.5424528, g: 0.82675403, b: 1, a: 1}
+  m_Color: {r: 0.5411765, g: 0.827451, b: 1, a: 1}
   m_Origin: {x: -10, y: -10, z: 0}
   m_Size: {x: 20, y: 20, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -5928,6 +5928,8 @@ MonoBehaviour:
   - 270
   - 360
   - 0
+  RotationSpeed: 90
+  fixedAnglePerFrame: 90
   rotationCurve:
     serializedVersion: 2
     m_Curve:
@@ -5963,7 +5965,6 @@ MonoBehaviour:
   zoneCollider3: {fileID: 0}
   zoneCollider4: {fileID: 0}
   rotationSound: {fileID: 2137593257}
-  fixedAnglePerFrame: 90
   typeOfCenter: 0
   centerGameObject: {fileID: 0}
 --- !u!4 &2137593256
