@@ -6869,27 +6869,27 @@ MonoBehaviour:
   - 360
   - 0
   RotationSpeed: 90
-  fixedAnglePerFrame: 90
+  fixedAnglePerFrame: 270
   rotationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 3.33514
+      outSlope: 3.33514
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.03673157
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -4.5855565
+      outSlope: -4.5855565
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.06586498
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -11727,6 +11727,10 @@ PrefabInstance:
     - target: {fileID: 6038848336541019612, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7556393742042524375, guid: 8e5ebe1424fac62408073338b163cd1c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -113.79991
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
