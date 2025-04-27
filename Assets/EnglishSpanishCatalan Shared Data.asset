@@ -90,6 +90,18 @@ MonoBehaviour:
     m_Key: Press SPACE to switch levers to alter barriers.
     m_Metadata:
       m_Items: []
+  - m_Id: 173101423333376
+    m_Key: Languages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 327428783804416
+    m_Key: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 327642710085632
+    m_Key: TEST PHRASE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

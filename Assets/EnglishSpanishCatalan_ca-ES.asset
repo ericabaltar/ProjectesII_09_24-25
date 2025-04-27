@@ -96,6 +96,18 @@ MonoBehaviour:
     m_Localized: Prem ESPAI per moure les palanques i alterar les barreres.
     m_Metadata:
       m_Items: []
+  - m_Id: 173101423333376
+    m_Localized: Llenguatges
+    m_Metadata:
+      m_Items: []
+  - m_Id: 327428783804416
+    m_Localized: Sortir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 327642710085632
+    m_Localized: FRASE PROVA
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

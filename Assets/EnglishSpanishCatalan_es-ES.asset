@@ -92,6 +92,18 @@ MonoBehaviour:
     m_Localized: Pulsa ESPACIO para mover palancas i alterar las barreras.
     m_Metadata:
       m_Items: []
+  - m_Id: 173101423333376
+    m_Localized: Lenguages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 327428783804416
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 327642710085632
+    m_Localized: FRASE PRUEBA
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
