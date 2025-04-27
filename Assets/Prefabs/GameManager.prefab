@@ -53,6 +53,8 @@ MonoBehaviour:
   - 270
   - 0
   - 360
+  RotationSpeed: 90
+  fixedAnglePerFrame: 270
   rotationCurve:
     serializedVersion: 2
     m_Curve:
@@ -95,6 +97,5 @@ MonoBehaviour:
   zoneCollider3: {fileID: 0}
   zoneCollider4: {fileID: 0}
   rotationSound: {fileID: 0}
-  fixedAnglePerFrame: 360
   typeOfCenter: 3
   centerGameObject: {fileID: 0}

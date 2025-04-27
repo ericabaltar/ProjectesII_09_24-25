@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public const float RotationAngle = 90.0f; //Deg
     public float RotationSpeed = 90.0f; //Deg/s
-    public float fixedAnglePerFrame = 90f;
+    public float fixedAnglePerFrame = 270f;
     private float lastAngle = 0.0f;
 
     public AnimationCurve rotationCurve;
@@ -59,7 +59,10 @@ public class GameManager : MonoBehaviour
         return typeOfCenter;
     }
 
-
+    private void Awake()
+    {
+        RotationSpeed = fixedAnglePerFrame;
+    }
 
     private void OnEnable()
     {
