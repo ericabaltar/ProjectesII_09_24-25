@@ -19,7 +19,28 @@ public class SettingsMenu : MonoBehaviour
 
     GameObject pauseObject;
 
+    private void Awake()
+    {
+        // Restore saved settings
+        if (PlayerPrefs.HasKey("volume"))
+        {
+            float volume = PlayerPrefs.GetFloat("volume");
+            audioMixer.SetFloat("volume", volume);
+        }
 
+        if (PlayerPrefs.HasKey("qualityIndex"))
+        {
+            int qualityIndex = PlayerPrefs.GetInt("qualityIndex");
+            QualitySettings.SetQualityLevel(qualityIndex);
+        }
+
+        if (PlayerPrefs.HasKey("isFullScreen"))
+        {
+            bool isFullScreen = PlayerPrefs.GetInt("isFullScreen") == 1;
+            Screen.fullScreen = isFullScreen;
+        }
+
+    }
 
     private void OnEnable()
     {
@@ -150,6 +171,8 @@ public class SettingsMenu : MonoBehaviour
     {
         GameManager.Instance.fixedAnglePerFrame = rotationSpeed;
         GameManager.Instance.RotationSpeed = rotationSpeed;
+        PlayerPrefs.SetFloat("rotationSpeed", rotationSpeed);
+        PlayerPrefs.Save();
     }
 
 }
