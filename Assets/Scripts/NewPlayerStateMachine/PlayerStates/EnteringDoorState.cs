@@ -34,6 +34,8 @@ public class EnteringDoorState : PlayerBaseState
             .SetEase(Ease.InSine).OnComplete(() => {
                 isComplete = true;
             });
+
+        stateMachine.transform.DOScale(.1f,lerpProgress).SetEase(Ease.InSine);
         
         
     }
