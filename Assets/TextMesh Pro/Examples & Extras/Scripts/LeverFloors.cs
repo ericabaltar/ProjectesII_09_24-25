@@ -15,6 +15,11 @@ public class LeverFloors : MonoBehaviour
 
     public Color col;
 
+
+    public AudioClip clack;
+    public AudioClip appear;
+    public AudioClip disappear;
+
     enum TypeOfLeaver {WallSwitcher, Platforms }
     [SerializeField] TypeOfLeaver useOfLeaver = TypeOfLeaver.WallSwitcher;
 
@@ -54,21 +59,21 @@ public class LeverFloors : MonoBehaviour
 
     void PlayLever() {
         AudioSource newSource = gameObject.AddComponent<AudioSource>();
-        newSource.clip = Resources.Load<AudioClip>("lever");
+        newSource.clip = clack;
         newSource.PlayOneShot(newSource.clip);
 
         Destroy(newSource, newSource.clip.length);
     }
     void PlayWallAppear() {
         AudioSource newSource2 = gameObject.AddComponent<AudioSource>();
-        newSource2.clip = Resources.Load<AudioClip>("wallAppearSound");
+        newSource2.clip = appear;
         newSource2.PlayOneShot(newSource2.clip);
         
         Destroy(newSource2, newSource2.clip.length);
     }
     void PlayWallDissappear() {
         AudioSource newSource3 = gameObject.AddComponent<AudioSource>();
-        newSource3.clip = Resources.Load<AudioClip>("wallDissappearSound");
+        newSource3.clip = disappear;
         newSource3.PlayOneShot(newSource3.clip);
 
         Destroy(newSource3, newSource3.clip.length);
