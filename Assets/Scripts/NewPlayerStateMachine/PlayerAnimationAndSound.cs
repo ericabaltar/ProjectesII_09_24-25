@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
@@ -11,35 +9,57 @@ public class PlayerAnimationAndSound : MonoBehaviour
     private bool canRotate = true;
     private bool canStretch = true;
     private bool canSquish = false;
-    PlayerStateMachine playerState;
-    SpriteRenderer mySprite;
-    AudioSource myAudioSource;
+
+    private PlayerStateMachine playerState;
+    private SpriteRenderer mySprite;
+    private AudioSource myAudioSource;
+
     [field: SerializeField] public AudioClip landSound;
     [field: SerializeField] public AudioClip stepSound;
+
+    private InputAction nextSceneAction;
+    private InputAction prevSceneAction;
+
+    private void Awake()
+    {
+        
+        nextSceneAction = new InputAction(binding: "<Keyboard>/0");
+        prevSceneAction = new InputAction(binding: "<Keyboard>/9");
+
+        nextSceneAction.performed += _ => LoadNextScene();
+        prevSceneAction.performed += _ => LoadPreviousScene();
+    }
+
+    private void OnEnable()
+    {
+        nextSceneAction.Enable();
+        prevSceneAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        nextSceneAction.Disable();
+        prevSceneAction.Disable();
+    }
+
     void Start()
     {
-
-        ConstraintSource source = new ConstraintSource();
-        source.sourceTransform = Camera.main.transform;
-        source.weight = 1.0f;
-        gameObject.GetComponent<RotationConstraint>().SetSource(0, source);
+        ConstraintSource source = new ConstraintSource
+        {
+            sourceTransform = Camera.main.transform,
+            weight = 1.0f
+        };
+        GetComponent<RotationConstraint>().SetSource(0, source);
     }
 
-    
-    void Update()
+    private void LoadNextScene()
     {
-                   //NICE 
-        //evento ejecutable cuando se mueva el jugador
-       
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
-        //evento animación cuando el jugador detecta no tocar suelo
-       
-
-
-        //cambiar niveles para <-- o -->
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        else if (Input.GetKeyDown(KeyCode.Alpha9))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    private void LoadPreviousScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
+
