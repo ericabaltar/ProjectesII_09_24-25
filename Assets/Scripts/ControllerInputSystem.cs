@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControllerInputSystem : MonoBehaviour, InputSystem.IPlayerActions
 {
@@ -12,6 +13,10 @@ public class ControllerInputSystem : MonoBehaviour, InputSystem.IPlayerActions
     public event Action RotateLeftEvent;
     
     InputSystem controls;
+
+    bool restartPress = false;
+    bool nextLevelPress = false;
+    bool prevLevelPress = false;
 
     private void Awake()
     {
@@ -56,4 +61,30 @@ public class ControllerInputSystem : MonoBehaviour, InputSystem.IPlayerActions
         
     }
 
+    public void OnRestartLevel(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        
+        if(context.started)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        
+    }
+
+    public void OnNextLevel(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
+
+    public void OnPrevLevel(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
+           
+    }
 }
