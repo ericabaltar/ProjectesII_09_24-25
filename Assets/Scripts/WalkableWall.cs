@@ -1,94 +1,82 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class WalkableWalls : MonoBehaviour
 {
+    [Header("Wall Settings")]
     public bool isWalkable = false;
-    private Rigidbody2D playerRigidbody;
-    [SerializeField] private bool playerIsOnWall = false;
-    private float resetGravity;
-    Color saveColor;
-
     public float wallMoveSpeed = 5f;
-    SpriteRenderer spriteRenderer;
 
+    [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip attachSound;
     public AudioClip detachSound;
 
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+
+    private Rigidbody2D playerRigidbody;
+    private ControllerInputSystem playerInput;
+    private float originalGravity;
+    private bool playerIsOnWall = false;
 
     private void Awake()
     {
-       spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isWalkable && other.transform.CompareTag("Player"))
-        {
-            playerRigidbody = other.transform.GetComponent<Rigidbody2D>();
-            if (playerRigidbody != null)
-            {
-                
-                saveColor = spriteRenderer.color;
-                spriteRenderer.color = Color.red;
-                resetGravity = playerRigidbody.gravityScale;
-                playerRigidbody.gravityScale = 0;
-                playerIsOnWall = true;
-                playerRigidbody.velocity = Vector2.zero; // detener cualquier movimiento previo
+        if (!isWalkable || !other.CompareTag("Player")) return;
 
-                if (audioSource != null && attachSound != null)
-                {
-                    audioSource.PlayOneShot(attachSound);
-                }
-            }
+        playerRigidbody = other.GetComponent<Rigidbody2D>();
+        playerInput = other.GetComponent<ControllerInputSystem>();
+
+        if (playerRigidbody != null && playerInput != null)
+        {
+            originalGravity = playerRigidbody.gravityScale;
+            playerRigidbody.gravityScale = 0f;
+            playerRigidbody.velocity = Vector2.zero;
+            playerIsOnWall = true;
+
+            spriteRenderer.color = Color.red;
+
+            PlaySound(attachSound);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (isWalkable && other.transform.CompareTag("Player"))
+        if (!isWalkable || !other.CompareTag("Player")) return;
+
+        if (playerRigidbody != null)
         {
-            if (playerRigidbody != null)
-            {
-                spriteRenderer.color = saveColor;
-                playerRigidbody.gravityScale = resetGravity;
-                playerIsOnWall = false;
-                playerRigidbody.velocity = Vector2.zero; // detener movimiento al salir de la pared
+            playerRigidbody.gravityScale = originalGravity;
+            playerRigidbody.velocity = Vector2.zero;
+            playerIsOnWall = false;
+            spriteRenderer.color = originalColor;
 
-                if (audioSource != null && attachSound != null)
-                {
-                    audioSource.PlayOneShot(attachSound);
-                }
-            }
+            PlaySound(detachSound);
         }
+
+        playerRigidbody = null;
+        playerInput = null;
     }
-
-
 
     private void FixedUpdate()
     {
-        if (playerIsOnWall && playerRigidbody != null)
-        {
-            Vector2 wallMovement = Vector2.zero;
+        if (!playerIsOnWall || playerInput == null || playerRigidbody == null)
+            return;
 
+        float vertical = playerInput.MovementValue.y;
+        Vector2 wallMovement = new Vector2(0f, vertical * wallMoveSpeed);
+        playerRigidbody.velocity = wallMovement;
+    }
 
-            if (Input.GetKey(KeyCode.W))
-            {
-                wallMovement = Vector2.up * wallMoveSpeed;
-            }
-
-            else if (Input.GetKey(KeyCode.S))
-            {
-                wallMovement = Vector2.down * wallMoveSpeed;
-            }
-
-            // si no se presiona ninguna tecla se detiene el movimiento
-            playerRigidbody.velocity = wallMovement;
-        }
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+            audioSource.PlayOneShot(clip);
     }
 }
-
-
-
