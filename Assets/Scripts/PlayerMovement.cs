@@ -1,110 +1,95 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class PlayerController : MonoBehaviour
 {
-    [Header("Player Part")]
-    
-    private float moveHorizontal;
-    private float moveVertical;
-    private Vector2 currentVelocity;
-    [SerializeField] //para poder editar la velocidad desde el editor de unity aunque la variable sea privada
-    private float movementSpeed = 3f;
+    [Header("Player Movement")]
+    [SerializeField] private float movementSpeed = 3f;
     private Rigidbody2D characterRigidBody;
-    
 
-    [Space(10)]
-    [Header("Particles Part")]
-    [Space(10)]
+    private ControllerInputSystem inputSystem;
+    private Vector2 inputDirection;
+
+    [Header("Particles")]
     public LayerMask layerMask;
-    
-
     public ParticleSystem particlesLeft;
     public ParticleSystem particlesRight;
     public ParticleSystem particlesUp;
     public ParticleSystem particlesDown;
-    Scene scene;
 
-    float time = 2f;
-
+    [Header("UI & Scene")]
+    public List<MoveUiToCenter> moveUiToCenterList = new List<MoveUiToCenter>();
     public AudioSource sceneSound;
+
+    private Scene scene;
+    private float transitionDelay = 2f;
 
     public bool isWallWalking { get; private set; } = false;
 
-    [Space(10)]
-    [Header("UI Transition")]
-    public List<MoveUiToCenter> moveUiToCenterList = new List<MoveUiToCenter>();
-
-
-    Collider2D myCollider;
-    // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
         characterRigidBody = GetComponent<Rigidbody2D>();
-        myCollider = GetComponent<Collider2D>();
+        inputSystem = GetComponent<ControllerInputSystem>();
+
+        if (inputSystem == null)
+        {
+            Debug.LogError("ControllerInputSystem no encontrado.");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        moveHorizontal = Input.GetAxis("Horizontal");
-        moveVertical = Input.GetAxis("Vertical");
+        if (inputSystem != null)
+        {
+            inputSystem.enabled = true;
+        }
+    }
 
+    private void OnDisable()
+    {
+        if (inputSystem != null)
+        {
+            inputSystem.enabled = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (inputSystem != null)
+        {
+            inputDirection = inputSystem.MovementValue;
+        }
     }
 
     private void FixedUpdate()
     {
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical).normalized;
-
+        Vector2 movement = inputDirection.normalized;
         characterRigidBody.velocity = movement * movementSpeed;
-        /*
-            if (moveHorizontal != 0)
-            {
-                characterRigidBody.AddForce(new Vector2(moveHorizontal,0.00f) * movementSpeed,ForceMode2D.Force);
-                //this.characterRigidBody.velocity = new Vector2(this.moveHorizontal * this.movementSpeed, this.currentVelocity.y);
-            }
-        */
     }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       
-
-        if(collision.transform.CompareTag("Door"))
+        if (collision.transform.CompareTag("Door"))
         {
-
             if (sceneSound != null)
             {
-                
                 sceneSound.Play();
-                foreach (MoveUiToCenter ui in moveUiToCenterList)
+                foreach (var ui in moveUiToCenterList)
                 {
                     ui.MoveToCloseCurtains();
                 }
-             
             }
-            StartCoroutine(Wait(time));
-           
+            StartCoroutine(WaitAndLoadScene(transitionDelay));
         }
     }
 
-    IEnumerator Wait(float time)
+    private IEnumerator WaitAndLoadScene(float time)
     {
-       
         yield return new WaitForSeconds(time);
         scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.buildIndex + 1);
     }
-
-
-
-
-   
-
-    
-
 }
