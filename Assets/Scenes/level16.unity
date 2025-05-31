@@ -1717,6 +1717,9 @@ MonoBehaviour:
   rightSp: {fileID: -602843133, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
   leftSp: {fileID: -1044560993, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
   col: {r: 0.95686275, g: 1, b: 0.07058824, a: 1}
+  clack: {fileID: 8300000, guid: 9e0a93bc19d495f4099a164d4bb658ab, type: 3}
+  appear: {fileID: 8300000, guid: 4c567f822e5fc8846ba02b8b0679b9cb, type: 3}
+  disappear: {fileID: 8300000, guid: 7d33d4eda16ce5643bf7cb7c3fd4fb84, type: 3}
   useOfLeaver: 0
   splineContainer: {fileID: 0}
   speed: 2
@@ -4965,6 +4968,9 @@ MonoBehaviour:
   rightSp: {fileID: -602843133, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
   leftSp: {fileID: -1044560993, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
   col: {r: 0.043137256, g: 1, b: 0.6431373, a: 1}
+  clack: {fileID: 8300000, guid: 9e0a93bc19d495f4099a164d4bb658ab, type: 3}
+  appear: {fileID: 8300000, guid: 4c567f822e5fc8846ba02b8b0679b9cb, type: 3}
+  disappear: {fileID: 8300000, guid: 7d33d4eda16ce5643bf7cb7c3fd4fb84, type: 3}
   useOfLeaver: 0
   splineContainer: {fileID: 0}
   speed: 2

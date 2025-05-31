@@ -3111,6 +3111,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: clack
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e0a93bc19d495f4099a164d4bb658ab, type: 3}
+    - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: col.b
       value: 0
       objectReference: {fileID: 0}
@@ -3127,6 +3131,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 973519085}
     - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: appear
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c567f822e5fc8846ba02b8b0679b9cb, type: 3}
+    - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: leftSp
       value: 
       objectReference: {fileID: -1044560993, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
@@ -3134,6 +3142,10 @@ PrefabInstance:
       propertyPath: rightSp
       value: 
       objectReference: {fileID: -602843133, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
+    - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: disappear
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d33d4eda16ce5643bf7cb7c3fd4fb84, type: 3}
     - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: platformHolder
       value: 
@@ -3361,6 +3373,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: clack
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e0a93bc19d495f4099a164d4bb658ab, type: 3}
+    - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: col.b
       value: 0.54509807
       objectReference: {fileID: 0}
@@ -3377,6 +3393,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1392079028}
     - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: appear
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c567f822e5fc8846ba02b8b0679b9cb, type: 3}
+    - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: leftSp
       value: 
       objectReference: {fileID: -1044560993, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
@@ -3384,6 +3404,10 @@ PrefabInstance:
       propertyPath: rightSp
       value: 
       objectReference: {fileID: -602843133, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
+    - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: disappear
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d33d4eda16ce5643bf7cb7c3fd4fb84, type: 3}
     - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: platformHolder
       value: 
@@ -4635,6 +4659,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: clack
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e0a93bc19d495f4099a164d4bb658ab, type: 3}
+    - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: col.b
       value: 0
       objectReference: {fileID: 0}
@@ -4651,6 +4679,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1337972453}
     - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: appear
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c567f822e5fc8846ba02b8b0679b9cb, type: 3}
+    - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: leftSp
       value: 
       objectReference: {fileID: -1044560993, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
@@ -4658,6 +4690,10 @@ PrefabInstance:
       propertyPath: rightSp
       value: 
       objectReference: {fileID: -602843133, guid: fd41b68d799c1a641be90c4d17d6c482, type: 3}
+    - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
+      propertyPath: disappear
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d33d4eda16ce5643bf7cb7c3fd4fb84, type: 3}
     - target: {fileID: 4337189806485809584, guid: d70a09da69249d94c8d2ac799727f399, type: 3}
       propertyPath: platformHolder
       value: 
